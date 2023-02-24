@@ -1,14 +1,14 @@
 <template>
-    <div class="container header">
-        <div class="row justify-content-center">
-            <h1>{{ title }}</h1>
-        </div>
+    <div class="container">
+        <footer class="row footer">
+            <p class="footer-item">Copyright &copy; RMC 2023</p>
+            <p class="footer-item">Terms and Conditions</p>
+        </footer>
     </div>
 </template>
 
 <script>
     export default {
-        props:['title'],
         mounted() {
             console.log('Component mounted.')
         }
@@ -16,23 +16,23 @@
 </script>
 
 <style scoped>
-    .header{
+    .footer{
+        display: flex;
+        justify-content: center;
+        height: 8vh;
+        background-color: #FFCB77;
+        margin-top: 1vh;
+    }
+
+    .footer-item{
         display: flex;
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        height: 15vh;
-        background-color: #FFCB77;
-    }
-
-    h1{
-        text-align: center;
-        margin: auto;
-        font-style: italic;
+        margin-left: 1vh;
+        margin-right: 1vh;
         font-family: 'K2D', sans-serif;
-        font-size: 8vh;
-        color: #FEF9EF;
-        text-shadow: -2px -2px 0 #000, 2px -2px #000, -2px 2px #000, 2px 2px #000;
+        font-style: italic;
     }
 
 </style>

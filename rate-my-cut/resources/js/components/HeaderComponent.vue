@@ -30,7 +30,7 @@
         margin: auto;
         font-style: italic;
         font-family: 'K2D', sans-serif;
-        font-size: 8vh;
+        font-size: 10vh;
         color: #FEF9EF;
         text-shadow: -2px -2px 0 #000, 2px -2px #000, -2px 2px #000, 2px 2px #000;
     }

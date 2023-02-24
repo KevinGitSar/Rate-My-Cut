@@ -20,6 +20,45 @@
     <body class="antialiased">
         <div id="app">
             <Headercomponent title='Rate My Cut!'></Headercomponent>
+            <Navbar1component></Navbar1component>
+            <div class="container fit">
+                <div class="container filter-box">
+                    
+                    <div>
+                        <h4 class="filter-title">Location</h4>
+                        <div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="filter-title">Category</h4>
+                        <div>
+                        </div>
+                    </div>    
+                    
+                    <div>
+                        <h4 class="filter-title">Hair Length</h4>
+                        <div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="filter-title">Hair Type</h4>
+                        <div>
+                        </div>
+                    </div>    
+                    
+                    <div>
+                        <h4 class="filter-title">Hair Style</h4>
+                        <div>
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="container content-container">
+                </div>
+            </div>
+            <Footercomponent></Footercomponent>
         </div>
     </body>
 </html>
