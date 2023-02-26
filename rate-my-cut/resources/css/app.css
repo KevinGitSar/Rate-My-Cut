@@ -35,3 +35,64 @@ body{
         margin-top: 1vh;
         background-color: gainsboro;
 }
+
+.form-container{
+        height: 61vh;
+        width: 25%;
+        border: 1px solid black;
+        border-radius: 25px;
+        margin: auto;
+        margin-top: 1vh;
+        text-align: center;
+}
+
+.form-container h4{
+        font-size: 36px;
+}
+
+.login-item, .form-fields{
+        margin-top: 6vh;
+}
+
+.form-fields{
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        flex-direction: column;
+        width: 70%;
+        margin: auto;
+}
+
+.form-fields label, .form-fields input{
+        margin: 1vh;
+}
+
+.form-fields input{
+        border-radius: 10px;
+        background-color: #FFCB77;
+        height: 20px;
+}
+
+.form-btn, .form-msg{
+        margin-top: 5vh;
+}
+
+.form-msg{
+        display: flex;
+        justify-content: end;
+        margin-right: 4vh;
+        font-size: 14px;
+}
+
+.form-msg a{
+        color: red;
+}
+
+.form-btn button{
+        background-color: #FFCB77;
+        width: 100px;
+        height: 35px;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+}

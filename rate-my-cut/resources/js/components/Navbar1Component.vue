@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <nav class="row navbar">
-            <p class="nav-item">About</p>
-            <p class="nav-item">Catalogue</p>
-            <p class="nav-item">Log In</p>
+            <a href="/login" class="nav-item btn-nav">About</a>
+            <a href="/" class="nav-item btn-nav">Catalogue</a>
+            <a href="/login" class="nav-item btn-nav">Log In</a>
         </nav>
     </div>
 </template>
@@ -36,6 +36,16 @@
         font-family: 'K2D', sans-serif;
         color: #FEF9EF;
         text-shadow: -1px -1px 0 #000, 1px -1px #000, -1px 1px #000, 1px 1px #000;
+    }
+
+    a{
+        text-decoration: none;
+    }
+    .btn-nav:hover{
+        color: #227C9D;
+        text-decoration: underline 2px solid;
+        text-underline-offset: 5px;
+        cursor: pointer;
     }
 
 </style>
