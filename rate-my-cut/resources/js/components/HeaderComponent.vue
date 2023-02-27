@@ -23,6 +23,7 @@
         flex-direction: column;
         height: 15vh;
         background-color: #FFCB77;
+        width: 100%;
     }
 
     h1{
