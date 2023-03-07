@@ -18,79 +18,79 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Headercomponent title='Rate My Cut!'></Headercomponent>
-            <Navbar1component></Navbar1component>
-            <div class="container fit">
-                <div class="container form-container">
+            <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
+            <Navbar1component class="max-w-full"></Navbar1component>
+            <div class="flex grow max-w-full">
+                <div class="flex flex-col w-4/5 mt-2 m-auto min-h-61vh justify-center">
 
-                    <h4 class="">Sign up!</h4>
+                    <h4 class="text-center text-5xl mt-5">Sign up!</h4>
 
-                    <form class="" action="#" method="">
-                        <div class="">
-                            <div>
-                                <label>First Name:</label>
-                                <input type="text" />
+                    <form class="mt-5" action="#" method="">
+                        <div class="flex max-w-full mx-auto justify-around text-sm">
+                            <p>Already have an account? Log in <a href="/login" class="text-red-500">here</a>!</p>
+                        </div>
+                        <div class="flex max-w-full mx-auto justify-around mt-10">
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">First Name:</label>
+                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
                             </div>
 
-                            <div>
-                                <label>Last Name:</label>
-                                <input type="text" />
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">Last Name:</label>
+                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
                             </div>
                         </div>
 
-                        <div class="">
-                            <div>
-                                <label>Birthdate:</label>
-                                <input type="date" />
+                        <div class="flex max-w-full mx-auto justify-around mt-5">
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">Birthdate:</label>
+                                <input type="date" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                             </div>
 
-                            <div>
-                                <label>E-mail:</label>
-                                <input type="email" />
-                            </div>
-                        </div>
-
-                        <div class="">
-                            <div class="">
-                                <label>City:</label>
-                                <input type="text" />
-                            </div>
-
-                            <div class="">
-                                <label>Province:</label>
-                                <input type="text" />
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">E-mail:</label>
+                                <input type="email" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                             </div>
                         </div>
 
-                        <div class="">
-                            <div class="">
-                                <label>Country:</label>
-                                <input type="text" />
+                        <div class="flex max-w-full mx-auto justify-around mt-5">
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">City:</label>
+                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                             </div>
 
-                            <div>
-                                <label>Postal Code</label>
-                                <input type="text" />
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">Province:</label>
+                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                             </div>
                         </div>
 
-                        <div class="">
-                            <div>
-                                <label>Username:</label>
-                                <input type="text" />
+                        <div class="flex max-w-full mx-auto justify-around mt-5">
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">Country:</label>
+                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                             </div>
 
-                            <div>
-                                <label>Password:</label>
-                                <input type="password" />
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">Postal Code</label>
+                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                            </div>
+                        </div>
+
+                        <div class="flex max-w-full mx-auto justify-around mt-5">
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">Username:</label>
+                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                            </div>
+
+                            <div class="flex justify-center w-3/6 mx-3">
+                                <label class="w-1/4">Password:</label>
+                                <input type="password" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                             </div>
                         </div>
                         
-                        <div class="">
-                            <button>Login!</button>
-                        </div>
-                        <div class="">
-                            <p>Don't have an account? Sign up <a href="/signup">here</a>!</p>
+                        <div class="text-center mb-5">
+                            <button class="mt-10 bg-[#FFCB77] w-32 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Sign up!</button>
                         </div>
                     </form>
                 </div>

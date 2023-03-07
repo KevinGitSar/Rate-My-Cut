@@ -23,6 +23,8 @@
             <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
             <Navbar1component class="max-w-full"></Navbar1component>
             <div class="flex grow max-w-full">
+
+                <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
                 <div class="flex flex-col justify-between items-center w-1/5 border-r-2 border-[#FEB3B1]/25 mt-2">
                     <div>
                         <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-lg text-shadow">Location</h4>
@@ -55,7 +57,7 @@
                     </div>                    
                 </div>
 
-                <div class="w-3/5 mt-2 bg-slate-50 h-screen">
+                <div class="w-3/5 mt-2 h-screen">
                 </div>
             </div>
             <Footercomponent class="max-w-full"></Footercomponent>
