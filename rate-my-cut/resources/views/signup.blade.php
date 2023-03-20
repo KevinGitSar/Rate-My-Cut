@@ -29,63 +29,61 @@
                         <div class="flex max-w-full mx-auto justify-around text-sm">
                             <p>Already have an account? Log in <a href="/login" class="text-red-500">here</a>!</p>
                         </div>
-                        <div class="flex max-w-full mx-auto justify-around mt-10">
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">First Name:</label>
-                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
-                            </div>
 
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">Last Name:</label>
-                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
-                            </div>
-                        </div>
+                        <div class="flex mt-5">
+                            <div class="w-3/6 border-2 border-[#291F1F]">
 
-                        <div class="flex max-w-full mx-auto justify-around mt-5">
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">Birthdate:</label>
-                                <input type="date" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                             </div>
+                            <div class="flex flex-col justify-center  w-3/6 ml-auto mr-0 border-2 border-[#291F1F]">
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">First Name:</label>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
+                                </div>
 
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">E-mail:</label>
-                                <input type="email" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
-                            </div>
-                        </div>
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">Last Name:</label>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
+                                </div>
 
-                        <div class="flex max-w-full mx-auto justify-around mt-5">
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">City:</label>
-                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
-                            </div>
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">Birthdate:</label>
+                                    <input type="date" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
 
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">Province:</label>
-                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
-                            </div>
-                        </div>
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">E-mail:</label>
+                                    <input type="email" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
 
-                        <div class="flex max-w-full mx-auto justify-around mt-5">
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">Country:</label>
-                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
-                            </div>
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">City:</label>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
 
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">Postal Code</label>
-                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
-                            </div>
-                        </div>
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">Province:</label>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
 
-                        <div class="flex max-w-full mx-auto justify-around mt-5">
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">Username:</label>
-                                <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
-                            </div>
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">Country:</label>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
 
-                            <div class="flex justify-center w-3/6 mx-3">
-                                <label class="w-1/4">Password:</label>
-                                <input type="password" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">Postal Code</label>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
+
+                                <div class="flex mt-5 mx-3">
+                                    <label class="w-1/4">Username:</label>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
+
+                                <div class="flex mt-5 mb-5 mx-3">
+                                    <label class="w-1/4">Password:</label>
+                                    <input type="password" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                </div>
                             </div>
                         </div>
                         
@@ -95,7 +93,7 @@
                     </form>
                 </div>
             </div>
-            <Footercomponent></Footercomponent>
+            <Footercomponent class="max-w-full"></Footercomponent>
         </div>
     </body>
 </html>
