@@ -57,7 +57,7 @@
                     </div>                    
                 </div>
 
-                <div class="w-3/5 mt-2 h-screen">
+                <div class="w-3/5 mt-2 h-[63vh]">
                 </div>
             </div>
             <Footercomponent class="max-w-full"></Footercomponent>

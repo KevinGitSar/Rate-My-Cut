@@ -28,3 +28,11 @@ Route::get('/signup', function(){
 Route::get('/profile', function(){
     return view('profile');
 });
+
+Route::get('/setting', function(){
+    return view('setting');
+});
+
+Route::get('/password', function(){
+    return view('password');
+});
