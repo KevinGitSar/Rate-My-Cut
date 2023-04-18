@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,26 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Anyone can see
 Route::get('/', function () {
     return view('home');
 });
 
+//Edit function - user specific
 Route::get('/login', function(){
     return view('login');
 });
 
+//Anyone can see
 Route::get('/signup', function(){
     return view('signup');
 });
 
+//Edit function
 Route::get('/profile', function(){
     return view('profile');
 });
 
+// On successful, store a user in the database
+Route::post('/signup/user', [UserController::class, 'store']);
+
+//Edit function - user specific
 Route::get('/setting', function(){
     return view('setting');
 });
 
+//Edit function - user specific
 Route::get('/password', function(){
     return view('password');
 });
