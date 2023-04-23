@@ -26,6 +26,7 @@ class UserController extends Controller
             'email' => ['required', 'email', Rule::unique('users','email')],
             'country' => ['required'],
             'city' => ['required', 'min:2'],
+            'province' => ['required', 'min:2', 'max:2'],
             'postal_code' => ['required', 'regex:/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVXY][ -]?\d[ABCEGHJKLMNPRSTVXY]\d$/i'],
             'username' => ['required', 'min:6', 'max:30'],
             'password' => ['required', 'min:8', 'confirmed']
@@ -35,7 +36,7 @@ class UserController extends Controller
         $form['birthdate'] = Carbon::parse($form['birthdate'])->format('Y-m-d');
         //Encrypt password
         $form['password'] = bcrypt($form['password']);
-
+        
         $user = User::create($form);
 
         
