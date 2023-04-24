@@ -25,15 +25,19 @@
 
                     <h4 class="text-center text-5xl mt-5">Login</h4>
 
-                    <form class="mt-5" action="#" method="">
+                    <form class="mt-5" action="/login/authenticate" method="GET">
                         <div class="flex flex-col w-3/6 m-auto justify-around mt-5">
-                            <label>Username</label>
-                            <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" />
+                            <label for="username">Username</label>
+                            <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" name="username" value="{{ old('first_name')}}"/>
+                            @error('username')
+                                <p class="text-red-600 mt-1">{{$message}}</p>
+                            @enderror
                         </div>
                         
+                        
                         <div class="flex flex-col w-3/6 m-auto justify-around mt-5">
-                            <label>Password</label>
-                            <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="password" />
+                            <label for="password">Password</label>
+                            <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" name="password" type="password" />
                         </div>
                         <div class="text-center">
                             <button class="mt-10 bg-[#FFCB77] w-32 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Login!</button>

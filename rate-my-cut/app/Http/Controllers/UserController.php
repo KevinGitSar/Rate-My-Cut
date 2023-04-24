@@ -16,13 +16,21 @@ class UserController extends Controller
         return redirect('/');
     }
 
+
+    /**
+     * Account Registration
+     * 
+     * Validate registration
+     * On success store user account and direct to login page.
+     * On failure refresh current page with error message and previous user input.
+     */
     //Revise validation for country, city, postal code.
     //Add 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/' to password for UPPERCASE, LOWERCASE, 1 DIGIT, NON-ALPHANUMERIC, UNICODE CHARACTERS
     public function store(Request $request){
         $form = $request->validate([
             'first_name' => ['required', 'min:2'],
             'last_name' => ['required', 'min:2'],
-            'birthdate' => ['required'],
+            'birthdate' => ['required', 'before:18 years ago'],
             'email' => ['required', 'email', Rule::unique('users','email')],
             'country' => ['required'],
             'city' => ['required', 'min:2'],
@@ -30,7 +38,9 @@ class UserController extends Controller
             'postal_code' => ['required', 'regex:/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVXY][ -]?\d[ABCEGHJKLMNPRSTVXY]\d$/i'],
             'username' => ['required', 'min:6', 'max:30'],
             'password' => ['required', 'min:8', 'confirmed']
-        ]);
+        ],
+            //Custom error messages.
+            ['birthdate.before' => 'You must be at least 18 years of age.']);
 
         //Re-format birthdate to year month day.
         $form['birthdate'] = Carbon::parse($form['birthdate'])->format('Y-m-d');
@@ -39,8 +49,21 @@ class UserController extends Controller
         
         $user = User::create($form);
 
-        
-
         return redirect('/login');
+    }
+
+    public function authenticate(Request $request){
+        $form = $request -> validate([
+            'username' =>['required'],
+            'password' =>['required']
+        ]);
+
+        if(auth()->attempt($form)){
+            $request->session()->regenerate();
+
+            return redirect('/');
+        }
+
+        return back()->withErrors(['username' => 'Invalid Username or Password.'])->onlyInput('username');
     }
 }

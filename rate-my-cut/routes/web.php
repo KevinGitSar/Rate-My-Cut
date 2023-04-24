@@ -34,8 +34,11 @@ Route::get('/profile', function(){
     return view('profile');
 });
 
-// On successful, store a user in the database
+// On successful, store a user in the database.
 Route::post('/signup/user', [UserController::class, 'store']);
+
+// On successful, authenticate and log in the user.
+Route::get('login/authenticate', [UserController::class, 'authenticate']);
 
 //Edit function - user specific
 Route::get('/setting', function(){
