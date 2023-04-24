@@ -38,7 +38,9 @@ Route::get('/profile', function(){
 Route::post('/signup/user', [UserController::class, 'store']);
 
 // On successful, authenticate and log in the user.
-Route::get('login/authenticate', [UserController::class, 'authenticate']);
+Route::get('/user/authenticate', [UserController::class, 'authenticate']);
+
+Route::get('/user/logout', [UserController::class, 'logout']);
 
 //Edit function - user specific
 Route::get('/setting', function(){

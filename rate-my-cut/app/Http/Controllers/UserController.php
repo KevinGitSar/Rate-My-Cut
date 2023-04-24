@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
@@ -52,6 +54,10 @@ class UserController extends Controller
         return redirect('/login');
     }
 
+    /**
+     * Authenticate the user
+     * On success the user is logged in and redirected to the home page.
+     */
     public function authenticate(Request $request){
         $form = $request -> validate([
             'username' =>['required'],
@@ -66,4 +72,18 @@ class UserController extends Controller
 
         return back()->withErrors(['username' => 'Invalid Username or Password.'])->onlyInput('username');
     }
+
+    /**
+     * Logout the user.
+     * On success the user is logged out and will need to log back in to access their profile.
+     */
+    public function logout(Request $request): RedirectResponse{
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
 }

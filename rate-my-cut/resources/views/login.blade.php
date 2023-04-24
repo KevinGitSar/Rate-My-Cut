@@ -25,7 +25,7 @@
 
                     <h4 class="text-center text-5xl mt-5">Login</h4>
 
-                    <form class="mt-5" action="/login/authenticate" method="GET">
+                    <form class="mt-5" action="/user/authenticate" method="GET">
                         <div class="flex flex-col w-3/6 m-auto justify-around mt-5">
                             <label for="username">Username</label>
                             <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" name="username" value="{{ old('first_name')}}"/>

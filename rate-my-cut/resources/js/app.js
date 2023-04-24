@@ -16,12 +16,14 @@ import { createApp } from 'vue';
 import HeaderComponent from './components/HeaderComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';
 import Navbar1Component from './components/Navbar1Component.vue';
+import Navbar2Component from './components/Navbar2Component.vue';
 
 const app = createApp({
     components: {
         'Headercomponent' : HeaderComponent,
         'Footercomponent' : FooterComponent,
         'Navbar1component' : Navbar1Component,
+        'Navbar2component' : Navbar2Component,
     }
 });
 

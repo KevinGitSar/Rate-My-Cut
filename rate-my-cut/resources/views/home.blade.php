@@ -21,7 +21,14 @@
     <body class="antialiased">
         <div id="app">
             <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
-            <Navbar1component class="max-w-full"></Navbar1component>
+            
+            
+            
+            @auth
+                <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
+            @else
+                <Navbar1component class="max-w-full"></Navbar1component>
+            @endauth
             <div class="flex grow max-w-full">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
