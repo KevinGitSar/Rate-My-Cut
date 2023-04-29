@@ -34,54 +34,54 @@
                             <div class="flex flex-col justify-center  w-5/12 p-5">
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">First Name:</label>
-                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->first_name}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">Last Name:</label>
-                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->last_name}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">Birthdate:</label>
-                                    <input type="date" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                    <input type="date" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->birthdate}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">E-mail:</label>
-                                    <input type="email" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                    <input type="email" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->email}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">City:</label>
-                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->city}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">Province:</label>
-                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->province}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">Country:</label>
-                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->country}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">Postal Code</label>
-                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->postal_code}}"/>
                                 </div>
 
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4">Username:</label>
-                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                    <input type="text" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->username}}"/>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="text-center mb-5 flex justify-evenly w-1/2 mx-auto">
-                            <button class="mt-10 bg-[#FFCB77] w-36 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Changes</button>
-                            <button class="mt-10 bg-[#FFCB77] w-36 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Change Password</button>
+                            <button type="submit" class="mt-10 bg-[#FFCB77] w-36 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Changes</button>
+                            <button type="submit" class="mt-10 bg-[#FFCB77] w-36 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]" formaction="/login">Change Password</button>
                         </div>
                     </form>
                 </div>

@@ -22,11 +22,11 @@
         <div id="app">
             <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
             
-            
-            
             @auth
+                <!-- Logged In User -->
                 <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
             @else
+                <!-- Not Logged In -->
                 <Navbar1component class="max-w-full"></Navbar1component>
             @endauth
             <div class="flex grow max-w-full">

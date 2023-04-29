@@ -20,14 +20,10 @@ Route::get('/', function () {
 });
 
 //Edit function - user specific
-Route::get('/login', function(){
-    return view('login');
-});
+Route::get('/login', [UserController::class, 'login']);
 
 //Anyone can see
-Route::get('/signup', function(){
-    return view('signup');
-});
+Route::get('/signup', [UserController::class, 'signup']);
 
 //Edit function
 Route::get('/profile', function(){
@@ -43,11 +39,12 @@ Route::get('/user/authenticate', [UserController::class, 'authenticate']);
 Route::get('/user/logout', [UserController::class, 'logout']);
 
 //Edit function - user specific
-Route::get('/setting', function(){
-    return view('setting');
-});
+Route::get('/settings', [UserController::class, 'setting']);
 
 //Edit function - user specific
 Route::get('/password', function(){
     return view('password');
 });
+
+// Return a user's profile view.
+Route::get('/{username?}', [UserController::class, 'profile']);

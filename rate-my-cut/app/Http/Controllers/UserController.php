@@ -18,6 +18,82 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    /**
+     * Display Login Page.
+     * If user is logged in, log them out.
+     */
+    public function login(Request $request){
+        if(Auth::check()){
+
+            Auth::logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            
+            return view('/login');
+
+        } else{
+
+            return view('/login');
+
+        }
+    }
+
+    /**
+     * Display Signup Page.
+     * If user is logged in, log them out.
+     */
+    public function signup(Request $request){
+        if(Auth::check()){
+
+            Auth::logout();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            
+            return view('/signup');
+
+        } else{
+
+            return view('/signup');
+        }
+    }
+
+
+    /**
+     * Returns a user's profile page
+     */
+    public function profile(String $username){
+
+        if(User::where('username', $username)->exists()){
+            
+            $user = User::where('username', $username)->first();
+            return view('/profile', compact('user'));
+        } else{
+            //User not found
+            return view('/login');
+            //return view('/errorpage');
+        }
+    }
+
+    /**
+     * Display setting's page for authenticated users only.
+     * Or
+     * Display Error Page
+     */
+    public function setting(){
+        if(Auth::check()){
+
+            $user = Auth::user();
+
+            return view('/setting', compact('user'));
+
+        } else{
+
+            return redirect('/login');
+        }
+    }
+
 
     /**
      * Account Registration

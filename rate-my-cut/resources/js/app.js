@@ -47,3 +47,9 @@ const app = createApp({
  */
 
 app.mount('#app');
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("password_change_button").onclick = function(){
+        location.href = "google.com";
+    };
+  });
+
