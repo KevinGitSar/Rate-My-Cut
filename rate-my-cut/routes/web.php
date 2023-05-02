@@ -42,9 +42,15 @@ Route::get('/user/logout', [UserController::class, 'logout']);
 Route::get('/settings', [UserController::class, 'setting']);
 
 //Edit function - user specific
-Route::get('/password', function(){
-    return view('password');
-});
+Route::get('/password', [UserController::class, 'password']);
+
+//
+Route::post('/settings/update', [UserController::class, 'updateUser']);
+
+
+Route::post('/settings/passwordUpdate', [UserController::class, 'updatePassword']);
+
+
 
 // Return a user's profile view.
 Route::get('/{username?}', [UserController::class, 'profile']);

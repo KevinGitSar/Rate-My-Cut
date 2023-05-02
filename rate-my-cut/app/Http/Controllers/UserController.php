@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -21,6 +22,8 @@ class UserController extends Controller
     /**
      * Display Login Page.
      * If user is logged in, log them out.
+     * And return them to the login view.
+     * Else return the login view.
      */
     public function login(Request $request){
         if(Auth::check()){
@@ -42,6 +45,8 @@ class UserController extends Controller
     /**
      * Display Signup Page.
      * If user is logged in, log them out.
+     * And return the sign up view.
+     * Else return the sign up view for new users.
      */
     public function signup(Request $request){
         if(Auth::check()){
@@ -94,6 +99,21 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Display password change page for authenticated users only.
+     * Or
+     * Display Error Page
+     */
+    public function password(){
+        if(Auth::check()){
+
+            return view('/password');
+
+        } else{
+
+            return redirect('/login');
+        }
+    }
 
     /**
      * Account Registration
@@ -128,6 +148,71 @@ class UserController extends Controller
         $user = User::create($form);
 
         return redirect('/login');
+    }
+
+    //Make usernames unique
+    public function updateUser(Request $request){
+        if(Auth::check()){
+            if($request->input('update') == 'save'){
+                $user = Auth::user();
+                $form = $request->validate([
+                    'first_name' => ['required', 'min:2'],
+                    'last_name' => ['required', 'min:2'],
+                    'birthdate' => ['required', 'before:18 years ago'],
+                    'email' => ['required', 'email', Rule::unique('users','email')->ignore($user->id)],
+                    'country' => ['required'],
+                    'city' => ['required', 'min:2'],
+                    'province' => ['required', 'min:2', 'max:2'],
+                    'postal_code' => ['required', 'regex:/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVXY][ -]?\d[ABCEGHJKLMNPRSTVXY]\d$/i'],
+                    'username' => ['required', 'min:6', 'max:30']
+                ],
+                    //Custom error messages.
+                    ['birthdate.before' => 'You must be at least 18 years of age.']);
+                
+                //Re-format birthdate to year month day.
+                $form['birthdate'] = Carbon::parse($form['birthdate'])->format('Y-m-d');
+
+                $user->first_name = $form['first_name'];
+                $user->last_name = $form['last_name'];
+                $user->birthdate = $form['birthdate'];
+                $user->email = $form['email'];
+                $user->country = $form['country'];
+                $user->city = $form['city'];
+                $user->province = $form['province'];
+                $user->postal_code = $form['postal_code'];
+                $user->username = $form['username'];
+
+                $user->save();
+
+                return redirect('/settings')->with('notification', 'Information Change Successful!');
+            } else{
+                return view('/password');
+            }
+        } 
+    }
+
+    public function updatePassword(Request $request){
+        if(Auth::check()){
+            
+            $user = Auth::user();
+            $form = $request->validate([
+                'password_old' =>['required'],
+                'password' =>['required', 'min:8', 'confirmed'],
+                'password_confirmation' =>['required']
+            ]);
+
+            $userPassword = $user->password;
+
+            if(Hash::check($form['password_old'], $userPassword)){
+                $user->password = bcrypt($form['password']);
+
+                $user->save();
+                return redirect('/settings')->with('notification', 'Password Change Successful!');
+            } else{
+                return redirect('/settings')->with('notification', 'Password Change Failed!');
+            }
+
+        } 
     }
 
     /**
