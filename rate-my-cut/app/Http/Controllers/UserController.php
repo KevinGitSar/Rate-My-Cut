@@ -134,7 +134,7 @@ class UserController extends Controller
             'city' => ['required', 'min:2'],
             'province' => ['required', 'min:2', 'max:2'],
             'postal_code' => ['required', 'regex:/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVXY][ -]?\d[ABCEGHJKLMNPRSTVXY]\d$/i'],
-            'username' => ['required', 'min:6', 'max:30'],
+            'username' => ['required', 'min:6', 'max:30', Rule::unique('users','username')],
             'password' => ['required', 'min:8', 'confirmed']
         ],
             //Custom error messages.
@@ -164,7 +164,7 @@ class UserController extends Controller
                     'city' => ['required', 'min:2'],
                     'province' => ['required', 'min:2', 'max:2'],
                     'postal_code' => ['required', 'regex:/^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVXY][ -]?\d[ABCEGHJKLMNPRSTVXY]\d$/i'],
-                    'username' => ['required', 'min:6', 'max:30']
+                    'username' => ['required', 'min:6', 'max:30', Rule::unique('users','username')->ignore($user->id)]
                 ],
                     //Custom error messages.
                     ['birthdate.before' => 'You must be at least 18 years of age.']);

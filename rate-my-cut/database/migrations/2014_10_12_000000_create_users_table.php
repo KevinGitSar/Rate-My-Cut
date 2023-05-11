@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('province');
             $table->string('country');
             $table->string('postal_code');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('password');
+            $table->longText('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
