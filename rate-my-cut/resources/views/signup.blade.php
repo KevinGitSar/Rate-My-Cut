@@ -117,7 +117,7 @@
                                 @enderror
 
                                 <div class="flex mt-5 mb-5 mx-3 justify-center">
-                                    <label class="w-1/4" for="password_confirmation">Password:</label>
+                                    <label class="w-1/4" for="password_confirmation">Confirm Password:</label>
                                     <input type="password" name="password_confirmation" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
                                 </div>
                                 @error('password_confirmation')
