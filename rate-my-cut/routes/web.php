@@ -25,11 +25,6 @@ Route::get('/login', [UserController::class, 'login']);
 //Anyone can see
 Route::get('/signup', [UserController::class, 'signup']);
 
-//Edit function
-Route::get('/profile', function(){
-    return view('profile');
-});
-
 // On successful, store a user in the database.
 Route::post('/signup/user', [UserController::class, 'store']);
 
@@ -50,7 +45,9 @@ Route::post('/settings/update', [UserController::class, 'updateUser']);
 
 Route::post('/settings/passwordUpdate', [UserController::class, 'updatePassword']);
 
+Route::get('/follow/{username?}', [FollowingController::class, 'follow']);
 
+Route::get('/unfollow/{username?}', [FollowingController::class, 'unfollow']);
 
 // Return a user's profile view.
 Route::get('/{username?}', [UserController::class, 'profile']);

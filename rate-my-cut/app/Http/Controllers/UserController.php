@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
+use App\Models\Following;
 use Carbon\Carbon;
 
 class UserController extends Controller
@@ -71,9 +72,18 @@ class UserController extends Controller
     public function profile(String $username){
 
         if(User::where('username', $username)->exists()){
-            
             $user = User::where('username', $username)->first();
-            return view('/profile', compact('user'));
+
+            //Get Authenticated User
+            $auth = Auth::user();
+
+            //Check if authenticated user is following other user.
+            if(Following::where('username', $user->username)->where('following_user', $auth->username)->exists()){
+                return view('/profile', ['user' => $user, 'testing' => 'is following']);
+            } else{
+                return view('/profile', ['user' => $user, 'testing' => 'not following']);
+            }
+            //return view('/profile', compact('user'));
         } else{
             //User not found
             return view('/login');

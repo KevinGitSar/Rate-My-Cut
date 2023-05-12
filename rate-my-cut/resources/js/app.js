@@ -18,6 +18,7 @@ import FooterComponent from './components/FooterComponent.vue';
 import Navbar1Component from './components/Navbar1Component.vue';
 import Navbar2Component from './components/Navbar2Component.vue';
 import AlertSuccess from './components/AlertSuccess.vue';
+import FollowButton from './components/FollowButton.vue';
 
 const app = createApp({
     components: {
@@ -26,6 +27,7 @@ const app = createApp({
         'Navbar1component' : Navbar1Component,
         'Navbar2component' : Navbar2Component,
         'Alertsuccess' : AlertSuccess,
+        'Followbutton' : FollowButton,
     }
 });
 
