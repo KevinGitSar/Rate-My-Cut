@@ -116,16 +116,10 @@
                             <!--Profile Image-->
                             <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
                             
-                            @if(isset($testing))
-                                <Followbutton message="Following" user="{{$user->username}}"></Followbutton>
-                            @else
-                                <Followbutton message="Not Following" user="{{$user->username}}"></Followbutton>
+                            @if(isset($following))
+                                <!-- binding must be all lower case and adding quotes ('') to username enforces that it's a string -->
+                                <Followbutton :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></Followbutton>
                             @endif
-                            <div class="flex justify-center">
-                                <form action="/follow/{{$user->username}}" method="GET">
-                                    <button class="rounded-full outline outline-offset-2 outline-black px-2 m-5">Follow</button>
-                                </form>
-                            </div>
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
 
@@ -137,7 +131,6 @@
                                     Generally like my hair short,
                                     prefer asian ethnic hairstyles.
                                 </p>
-
                             </div>
                         </div>
                     </div>

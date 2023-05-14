@@ -78,10 +78,15 @@ class UserController extends Controller
             $auth = Auth::user();
 
             //Check if authenticated user is following other user.
-            if(Following::where('username', $user->username)->where('following_user', $auth->username)->exists()){
-                return view('/profile', ['user' => $user, 'testing' => 'is following']);
-            } else{
-                return view('/profile', ['user' => $user, 'testing' => 'not following']);
+            //USER IS FOLLOWING
+            if(Following::where('username', $auth->username)->where('following_user', $user->username)->exists()){
+                $following = 'true';
+                return view('/profile', ['user' => $user, 'following' => $following]);
+            } 
+            //USER IS NOT FOLLOWING
+            else{
+                $following = 'false';
+                return view('/profile', ['user' => $user, 'following' => $following]);
             }
             //return view('/profile', compact('user'));
         } else{
