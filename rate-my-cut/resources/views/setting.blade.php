@@ -104,6 +104,14 @@
                                 @error('username')
                                     <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
                                 @enderror
+
+                                <div class="flex mt-5 mx-3 justify-center">
+                                    <label class="w-1/4" for="bio">Bio:</label>
+                                    <textarea name="bio" rows="2" cols="50" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->bio}}"></textarea>
+                                </div>
+                                @error('bio')
+                                    <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
+                                @enderror
                             </div>
                         </div>
                         

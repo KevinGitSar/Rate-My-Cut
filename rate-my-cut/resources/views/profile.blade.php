@@ -37,13 +37,12 @@
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
 
-                                <p class="my-2 ml-1">1000 Followers</p>
+                                <p class="my-2 ml-1">{{$followers}} Followers</p>
 
-                                <p class="my-2 ml-1">Following 100</p>
+                                <p class="my-2 ml-1">Follows {{$follows}}</p>
 
                                 <p class="my-2 ml-1">
-                                    Generally like my hair short,
-                                    prefer asian ethnic hairstyles.
+                                    {{$user->bio}}
                                 </p>
 
                             </div>
@@ -123,13 +122,12 @@
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
 
-                                <p class="my-2 ml-1">1000 Followers</p>
+                                <p class="my-2 ml-1">{{$followers}} Followers</p>
 
-                                <p class="my-2 ml-1">Following 100</p>
+                                <p class="my-2 ml-1">Follows {{$follows}}</p>
 
                                 <p class="my-2 ml-1">
-                                    Generally like my hair short,
-                                    prefer asian ethnic hairstyles.
+                                    {{$user->bio}}
                                 </p>
                             </div>
                         </div>
