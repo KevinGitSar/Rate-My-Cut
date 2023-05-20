@@ -61,7 +61,9 @@
                                     <div class="flex justify-evenly w-3/5">
                                         <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Heart</button>
                                         
-                                        <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Plus+</button>
+                                        <form action="/create/post" method="GET">
+                                            <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Plus+</button>
+                                        </form>
                                     </div>
 
 
@@ -89,21 +91,7 @@
                         </div>
                     </div>
 
-                    <!--Show following-->
-                    <div class="w-1/5 h-auto">
-                        <div class="border-2 border-[#291F1F] h-full mx-10">
-                            <h3 class="text-center mt-5 underline decoration-1 text-xl">Following List</h3>
-                            <ul class="list-none mt-5">
-                                <li class="mx-auto w-1/2 mt-5">
-                                    <a href="#">User123123Example</a>
-                                </li>
-                                <li class="mx-auto w-1/2 mt-5">
-                                    <a href="#">User123123Example2</a>
-                                </li>
-                            </ul>
-                            <!--Add Followers Here-->
-                        </div>
-                    </div>
+                    
                 </div>
 
                 @else
@@ -162,21 +150,7 @@
                         </div>
                     </div>
 
-                    <!--Show following-->
-                    <div class="w-1/5 h-auto">
-                        <div class="border-2 border-[#291F1F] h-full mx-10">
-                            <h3 class="text-center mt-5 underline decoration-1 text-xl">Following List</h3>
-                            <ul class="list-none mt-5">
-                                <li class="mx-auto w-1/2 mt-5">
-                                    <a href="#">User123123Example</a>
-                                </li>
-                                <li class="mx-auto w-1/2 mt-5">
-                                    <a href="#">User123123Example2</a>
-                                </li>
-                            </ul>
-                            <!--Add Followers Here-->
-                        </div>
-                    </div>
+                    
                 </div>
                 @endif
                 
@@ -246,21 +220,7 @@
                         </div>
                     </div>
 
-                    <!--Show following-->
-                    <div class="w-1/5 h-auto">
-                        <div class="border-2 border-[#291F1F] h-full mx-10">
-                            <h3 class="text-center mt-5 underline decoration-1 text-xl">Following List</h3>
-                            <ul class="list-none mt-5">
-                                <li class="mx-auto w-1/2 mt-5">
-                                    <a href="#">User123123Example</a>
-                                </li>
-                                <li class="mx-auto w-1/2 mt-5">
-                                    <a href="#">User123123Example2</a>
-                                </li>
-                            </ul>
-                            <!--Add Followers Here-->
-                        </div>
-                    </div>
+                    
                 </div>
             @endauth
             

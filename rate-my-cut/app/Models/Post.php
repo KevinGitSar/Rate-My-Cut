@@ -17,6 +17,7 @@ class Post extends Model
     protected $fillable = [
         'username',
         'image',
+        'description',
         'category',
         'hair_length',
         'hair_style',

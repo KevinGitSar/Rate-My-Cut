@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowingController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +21,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-//Edit function - user specific
+// Show the login page
 Route::get('/login', [UserController::class, 'login']);
 
-//Anyone can see
+// Show the signup page
 Route::get('/signup', [UserController::class, 'signup']);
 
 // On successful, store a user in the database.
@@ -32,23 +33,30 @@ Route::post('/signup/user', [UserController::class, 'store']);
 // On successful, authenticate and log in the user.
 Route::get('/user/authenticate', [UserController::class, 'authenticate']);
 
+// Log out the user
 Route::get('/user/logout', [UserController::class, 'logout']);
 
-//Edit function - user specific
+// Authenticated user can view their account settings
 Route::get('/settings', [UserController::class, 'setting']);
 
-//Edit function - user specific
+// Authenticated user can view the page to update their own password
 Route::get('/password', [UserController::class, 'password']);
 
-//
+// Authenticated user can update their account settings
 Route::post('/settings/update', [UserController::class, 'updateUser']);
 
-
+// Authenticated user can change their password
 Route::post('/settings/passwordUpdate', [UserController::class, 'updatePassword']);
 
+// Athenticated user can follow another user
+// Need to add check if already follow don't do anything
 Route::get('/follow/{username?}', [FollowingController::class, 'follow']);
 
+// Authenticated user can unfollow another user
+// Need to add check if not following can not unfollow again.
 Route::get('/unfollow/{username?}', [FollowingController::class, 'unfollow']);
+
+Route::get('/create/post', [PostController::class, 'index']);
 
 // Return a user's profile view.
 Route::get('/{username?}', [UserController::class, 'profile']);

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('username');
             $table->foreign('username')->references('username')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->binary('image');
+            $table->string('description');
             $table->string('category', 1);
             $table->string('hair_length');
             $table->string('hair_style');
