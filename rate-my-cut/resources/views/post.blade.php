@@ -23,9 +23,9 @@
             <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
             <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
             <div class="flex grow max-w-full">
-                <div class="flex flex-col w-4/5 mt-2 m-auto min-h-61vh justify-center">
+                <div class="flex flex-col w-4/5 m-auto min-h-61vh">
 
-                    <h4 class="text-center text-5xl mt-5">Show off your HAIRSTYLE!</h4>
+                    <h4 class="text-center text-5xl my-5">Show off your HAIRSTYLE!</h4>
 
                     <form class="mt-5" action="/create/post/{{Auth::user()->username}}" method="POST">
                         {{ csrf_field() }}
@@ -33,8 +33,7 @@
                         <div class="flex justify-center mt-5">
                             <div class="flex flex-col justify-center  w-4/6 border-2 border-[#291F1F] p-5">
                                 <div class="flex mt-5 mx-3 justify-center">
-                                    <label class="w-1/4" for="first_name">First Name:</label>
-                                    <input type="text" name="first_name" value="{{ old('first_name')}}" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"/>
+                                    <Postformcomponent></Postformcomponent>
                                 </div>
                                 @error('first_name')
                                     <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>

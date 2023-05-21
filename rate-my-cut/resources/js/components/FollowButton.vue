@@ -7,13 +7,6 @@
 </template>
 
 <script>
-//     //user = username of the user to follow
-// window.csrf_token = "{{ csrf_token() }}";
-// import axios from 'axios';
-// axios.defaults.headers.common = {
-//     'X-Requested-With': 'XMLHttpRequest',
-//     'X-CSRF-TOKEN': window.csrf_token
-// };
 
     //message will determine if authenticated user is already following or not
     export default 
