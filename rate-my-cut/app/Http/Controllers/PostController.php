@@ -18,4 +18,15 @@ class PostController extends Controller
             //show error page not logged in
         }
     }
+
+    public function store(Request $request, String $username){
+        $form = $request->validate([
+            'image' => ['required'],
+            'description' => ['required'],
+            'category' => ['required'],
+            'hair_length' => ['required'],
+            'hair_type' => ['required'],
+            'hair_style' => ['required'],
+        ]);
+    }
 }

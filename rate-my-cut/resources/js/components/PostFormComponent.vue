@@ -1,13 +1,75 @@
 <template>
     <div>
-        <form>
-            <!-- <label class="w-1/4" for="image">Image Chosen</label> -->
-            <input type="file" accept="image/*" name="image" @change="onFileChange" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+        <form :action="'/create/post/'+user.username" method="POST">
+            <input type="hidden" name="_token" :value="csrf">
+            <div>
+                <!-- <label class="w-1/4" for="image">Image Chosen</label> -->
+                <input type="file" accept="image/*" name="image" @change="onFileChange" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+            </div>
+            <strong v-if="errors && errors.image">{{ errors.image[0] }}</strong>
+
+            <div id="preview">
+                <img v-if="url" :src="url" />
+            </div>
+            
+            <div>
+                <label class="w-1/4" for="description">Tell us about your new hair style!</label>
+                <textarea name="description" id="description" v-model="description" rows="2" cols="50" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6"></textarea>
+            </div>
+            <strong v-if="errors && errors.description">{{ errors.description[0] }}</strong>
+            
+            <div>
+                <label class="w-1/4" for="category">Who is this hair style generally for?</label>
+                <select name="category" id="category" v-model="category">
+                    <option disabled selected value> -- Please Select an Option -- </option>
+                    <option value="W">Women</option>
+                    <option value="M">Men</option>
+                    <option value="G">Girls</option>
+                    <option value="B">Boys</option>
+                </select>
+            </div>
+            <strong v-if="errors && errors.category">{{ errors.category[0] }}</strong>
+
+            <div>
+                <label class="w-1/4" for="hair_length">How long is the hair?</label>
+                <select name="hair_length" id="hair_length" v-model="length">
+                    <option disabled selected value> -- Please Select an Option -- </option>
+                    <option value="short">Short</option>
+                    <option value="medium">Medium</option>
+                    <option value="long">Long</option>
+                    <option value="ear length">Ear Length</option>
+                    <option value="chin length">Chin Length</option>
+                    <option value="shoulder length">Shoulder Length</option>
+                    <option value="armpit length">Armpit Length</option>
+                    <option value="mid-back length">Mid-back Length</option>
+                    <option value="tailbone length">Tailbone Length</option>
+                </select>
+            </div>
+            <strong v-if="errors && errors.description">{{ errors.hair_length[0] }}</strong>
+
+            <div>
+                <label class="w-1/4" for="hair_type">What is your hair type?</label>
+                <select name="hair_type" id="hair_type" v-model="type">
+                    <option disabled selected value> -- Please Select an Option -- </option>
+                    <option value="straight">Stright</option>
+                    <option value="wavy">Wavy</option>
+                    <option value="curly">Curly</option>
+                    <option value="coily">Coily</option>
+                </select>
+            </div>
+            <strong v-if="errors && errors.description">{{ errors.hair_type[0] }}</strong>
+            
+            <div>
+                <label class="w-1/4" for="hair_style">What is this hair style called?</label>
+                <input type="text" name="hair_style" id="hair_style" />
+            </div>
+            <strong v-if="errors && errors.description">{{ errors.hair_style[0] }}</strong>
+
+            <div class="text-center mb-5">
+                <button class="mt-10 bg-[#FFCB77] w-32 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Show off!</button>
+            </div>
         </form>
 
-        <div id="preview">
-            <img v-if="url" :src="url" />
-        </div>
     </div>
 </template>
 
@@ -15,9 +77,11 @@
 
     export default 
     {
+        props:['user', 'errors'],
         data(){
             return {
                 url: null,
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             }
         },
         methods: {

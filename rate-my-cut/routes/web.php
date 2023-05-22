@@ -50,13 +50,17 @@ Route::post('/settings/passwordUpdate', [UserController::class, 'updatePassword'
 
 // Athenticated user can follow another user
 // Need to add check if already follow don't do anything
-Route::get('/follow/{username?}', [FollowingController::class, 'follow']);
+Route::get('/follow/{username}', [FollowingController::class, 'follow']);
 
 // Authenticated user can unfollow another user
 // Need to add check if not following can not unfollow again.
-Route::get('/unfollow/{username?}', [FollowingController::class, 'unfollow']);
+Route::get('/unfollow/{username}', [FollowingController::class, 'unfollow']);
 
+// Display post creation page.
 Route::get('/create/post', [PostController::class, 'index']);
 
+// Authenticated user can store a post
+Route::post('/create/post/{username}', [PostController::class, 'store']);
+
 // Return a user's profile view.
-Route::get('/{username?}', [UserController::class, 'profile']);
+Route::get('/{username}', [UserController::class, 'profile']);

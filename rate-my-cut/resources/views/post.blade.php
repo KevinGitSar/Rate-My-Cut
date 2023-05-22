@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Rate My Cut!</title>
 
@@ -27,26 +28,17 @@
 
                     <h4 class="text-center text-5xl my-5">Show off your HAIRSTYLE!</h4>
 
-                    <form class="mt-5" action="/create/post/{{Auth::user()->username}}" method="POST">
-                        {{ csrf_field() }}
-
-                        <div class="flex justify-center mt-5">
-                            <div class="flex flex-col justify-center  w-4/6 border-2 border-[#291F1F] p-5">
-                                <div class="flex mt-5 mx-3 justify-center">
-                                    <Postformcomponent></Postformcomponent>
-                                </div>
-                                @error('first_name')
-                                    <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
-                                @enderror
-
-                                
-                                <div class="text-center mb-5">
-                                    <button class="mt-10 bg-[#FFCB77] w-32 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Show off!</button>
-                                </div>
+                    <div class="flex justify-center mt-5">
+                        <div class="flex flex-col justify-center  w-4/6 border-2 border-[#291F1F] p-5">
+                            <div class="flex mt-5 mx-3 justify-center">
+                                <Postformcomponent :user="{{ Auth::user() }}" :errors="{{$errors}}"></Postformcomponent>
                             </div>
+                            <!-- <p>{{$errors}}</P>
+                            @error('image')
+                                <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
+                            @enderror -->
                         </div>
-                        
-                    </form>
+                    </div>
                 </div>
             </div>
             
