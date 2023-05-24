@@ -13,7 +13,9 @@ class FollowingController extends Controller
     public function follow(Request $request, String $usertoFollow){
         if(Auth::check()){
             $authUser = Auth::user();
-            Following::create(['username' => $authUser->username, 'following_user' => $usertoFollow]);
+            Following::create([
+                'username' => $authUser->username, 
+                'following_user' => $usertoFollow]);
 
             $following = 'true';
             return $following;

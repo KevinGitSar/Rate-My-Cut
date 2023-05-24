@@ -33,10 +33,6 @@
                             <div class="flex mt-5 mx-3 justify-center">
                                 <Postformcomponent :user="{{ Auth::user() }}" :errors="{{$errors}}"></Postformcomponent>
                             </div>
-                            <!-- <p>{{$errors}}</P>
-                            @error('image')
-                                <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
-                            @enderror -->
                         </div>
                     </div>
                 </div>

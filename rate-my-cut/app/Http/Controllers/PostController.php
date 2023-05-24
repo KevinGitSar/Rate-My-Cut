@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\File;
 use App\Models\User;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -20,13 +22,48 @@ class PostController extends Controller
     }
 
     public function store(Request $request, String $username){
-        $form = $request->validate([
-            'image' => ['required'],
-            'description' => ['required'],
-            'category' => ['required'],
-            'hair_length' => ['required'],
-            'hair_type' => ['required'],
-            'hair_style' => ['required'],
-        ]);
+        if(Auth::check()){
+            $form = $request->validate([
+                'image' => ['required', File::image()->max(64)],
+                'description' => ['required'],
+                'category' => ['required'],
+                'hair_length' => ['required'],
+                'hair_type' => ['required'],
+                'hair_style' => ['required'],
+            ],
+            //Custom error messages.
+            [
+                'image.required' => 'Upload your haircut/hairstyle to show off!',
+                'image.max' => 'File size must be less than 64kb.',
+                'description.required' => 'Describe it however you like!',
+                'category.required' => 'Help them find what you have!',
+                'hair_length.required' => 'What is the hair length?',
+                'hair_type.required' => 'What is your hair type?',
+                'hair_style.required' => 'If it is new, name it!'
+
+            ]);
+
+            Post::create([
+                'username' => $username,
+                'image' => $this->storeImage($request),
+                'description' => $form['description'],
+                'category' => $form['category'],
+                'hair_length' => $form['hair_length'],
+                'hair_style' => $form['hair_style'],
+                'hair_type' => $form['hair_type']
+            ]);
+
+            return redirect('/' . $username);
+        }
+    }
+
+    private function storeImage($request){
+        $newImageName = uniqid() . '.' . $request->image->extension();
+        $request->image->move(public_path('images'), $newImageName);
+        return $newImageName;
+    }
+
+    public function delete(){
+
     }
 }
