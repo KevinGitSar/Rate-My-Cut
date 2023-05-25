@@ -24,7 +24,7 @@ class PostController extends Controller
     public function store(Request $request, String $username){
         if(Auth::check()){
             $form = $request->validate([
-                'image' => ['required', File::image()->max(64)],
+                'image' => ['required'], //, File::image()->max(2000)
                 'description' => ['required'],
                 'category' => ['required'],
                 'hair_length' => ['required'],
@@ -34,7 +34,7 @@ class PostController extends Controller
             //Custom error messages.
             [
                 'image.required' => 'Upload your haircut/hairstyle to show off!',
-                'image.max' => 'File size must be less than 64kb.',
+                // 'image.max' => 'File size must be less than 2mb.',
                 'description.required' => 'Describe it however you like!',
                 'category.required' => 'Help them find what you have!',
                 'hair_length.required' => 'What is the hair length?',

@@ -94,14 +94,15 @@
         methods: {
             onFileChange(e){
                 const file = e.target.files[0];
-                console.log(file.size);
-                if(file.size > 64000){
-                    this.fileErrorMessage = 'This file size is too large. :' + file.size;
-                    this.url = null;
-                } else {
-                    this.url = URL.createObjectURL(file);
-                    this.fileErrorMessage = null;
-                }
+                this.url = URL.createObjectURL(file);
+                // console.log(file.size);
+                // if(file.size > 2000000){
+                //     this.fileErrorMessage = 'This file size is too large. :' + file.size;
+                //     this.url = null;
+                // } else {
+                //     this.url = URL.createObjectURL(file);
+                //     this.fileErrorMessage = null;
+                // }
             }
         },
     }

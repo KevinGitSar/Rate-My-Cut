@@ -75,17 +75,20 @@
                                 <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Prev</button></div>
 
                                 <div class="flex flex-auto flex-wrap justify-items-start w-max">
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
-                                        
-                                    <img src="{{ URL::to('/') }}/images/646d5fd359e31.png" />
-                                    </div>
+                                    @if($posts !== null)
+                                        @foreach($posts as $post)
+                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                    <!-- <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
                                     <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
                                     <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
                                     <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
                                     <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
                                     <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
+                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div> -->
                                 </div>
 
                                 <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Next</button></div>
@@ -137,15 +140,13 @@
                                 <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Prev</button></div>
 
                                 <div class="flex flex-auto flex-wrap justify-items-start w-max">
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
-                                    </div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
+                                    @if($posts !== null)
+                                        @foreach($posts as $post)
+                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
 
                                 <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Next</button></div>

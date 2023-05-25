@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\User;
 use App\Models\Following;
+use App\Models\Post;
 use Carbon\Carbon;
 
 class UserController extends Controller
@@ -82,16 +83,21 @@ class UserController extends Controller
             //Get Authenticated User
             $auth = Auth::user();
 
+            $userPosts = null;
+            if(Post::where('username', $user->username)->exists()){
+                $userPosts = Post::where('username', $user->username)->get();
+            }
+
             //Check if authenticated user is following other user.
             //USER IS FOLLOWING
             if(Following::where('username', $auth->username)->where('following_user', $user->username)->exists()){
                 $following = 'true';
-                return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows]);
+                return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
             } 
             //USER IS NOT FOLLOWING
             else{
                 $following = 'false';
-                return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows]);
+                return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
             }
             //return view('/profile', compact('user'));
         } else{
