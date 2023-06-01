@@ -78,6 +78,8 @@
                                     @if($posts !== null)
                                         @foreach($posts as $post)
                                             <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
+                                                <Deletebutton :user="{{ Auth::user() }}" :imagepath="{{ URL::to('/') }}/images/{{$post->image}}"></Deletebutton>
+                                                <!-- <img src="{{ URL::to('/') }}/icons/eraser.png" class="w-4 h-4 bg-white absolute" /> -->
                                                 <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                             </div>
                                         @endforeach

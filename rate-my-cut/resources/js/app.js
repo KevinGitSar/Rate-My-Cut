@@ -20,6 +20,7 @@ import Navbar2Component from './components/Navbar2Component.vue';
 import AlertSuccess from './components/AlertSuccess.vue';
 import FollowButton from './components/FollowButton.vue';
 import PostFormComponent from './components/PostFormComponent.vue';
+import DeleteButton from './components/DeleteButton.vue';
 
 const app = createApp({
     components: {
@@ -30,6 +31,7 @@ const app = createApp({
         'Alertsuccess' : AlertSuccess,
         'Followbutton' : FollowButton,
         'Postformcomponent' : PostFormComponent,
+        'Deletebutton' : DeleteButton,
     }
 });
 
