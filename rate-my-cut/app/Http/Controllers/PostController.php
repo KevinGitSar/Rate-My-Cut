@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 //use App\Models\User;
 use App\Models\Post;
+use Mockery\Undefined;
 
 class PostController extends Controller
 {
@@ -43,6 +44,20 @@ class PostController extends Controller
 
             ]);
 
+            $locationName = $request['location_name'];
+            $locationAddress = $request['location_address'];
+            
+            if($locationName === 'undefined' || $locationName === null || $locationName === ''){
+                $locationName = 'N/A';
+            }
+
+            if($locationAddress === 'undefined' || $locationAddress === null || $locationAddress === ''){
+                $locationAddress = 'N/A';
+            }
+
+            $form['location_name'] = $locationName;
+            $form['location_address'] = $locationAddress;
+
             Post::create([
                 'username' => $username,
                 'image' => $this->storeImage($request),
@@ -50,7 +65,9 @@ class PostController extends Controller
                 'category' => $form['category'],
                 'hair_length' => $form['hair_length'],
                 'hair_style' => $form['hair_style'],
-                'hair_type' => $form['hair_type']
+                'hair_type' => $form['hair_type'],
+                'location_name' => $form['location_name'],
+                'location_address' => $form['location_address'],
             ]);
 
             return redirect('/' . $username);

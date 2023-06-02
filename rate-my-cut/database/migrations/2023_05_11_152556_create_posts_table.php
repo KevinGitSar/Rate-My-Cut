@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('hair_length');
             $table->string('hair_style');
             $table->string('hair_type');
+            $table->string('location_name')->nullable();
+            $table->string('location_address')->nullable();
             $table->timestamps();
         });
     }

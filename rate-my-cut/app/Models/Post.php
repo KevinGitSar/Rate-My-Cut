@@ -21,6 +21,8 @@ class Post extends Model
         'category',
         'hair_length',
         'hair_style',
-        'hair_type'
+        'hair_type',
+        'location_name',
+        'location_address'
     ];
 }
