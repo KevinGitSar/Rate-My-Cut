@@ -1,9 +1,12 @@
 <template>
     <div class="nav-dropdown">
-        <div class="relative">
-            <button @click="isOpen = !isOpen" class="nav-item btn-nav">Delete</button>
-            <div v-if="isOpen" class="absolute py-2 rounded-lg bg-white w-full shadow-xl mt-1">
-                <a :href="'/'+user.username+'/'+imagepath" class="block px-4 py-2 hover:bg-indigo-500">Delete</a>
+        <div class="relative" @mouseleave="isOpen = false">
+            <button @click="isOpen = !isOpen" class="nav-item btn-nav eraser"><img v-bind:src="'/icons/eraser.png'" class="w-4 h-4 bg-white absolute border-2 border-[#291F1F] hover:border-[#FEB3B1]" /></button>
+            <div v-if="isOpen" class="absolute left-0 z-10 mt-0 w-20 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <form :action="'/delete/post/'+imagepath" method="POST">
+                    <input type="hidden" name="_token" :value="csrf">
+                    <button type="submit" class="hover:bg-[#FEB3B1] w-full">Delete</button>
+                </form>
             </div>
         </div>
     </div>
@@ -14,14 +17,15 @@
         props:['user', 'imagepath'],
         data(){
             return {
-                isOpen: false
+                isOpen: false,
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             }
         }
     }
 </script>
 
 <style scoped>
-    button {
+    .eraser {
         width: 25px;
         height: 25px;
         background-image: "{{ URL::to('/') }}/icons/eraser.png";
@@ -32,8 +36,6 @@
         justify-content: center;
         align-content: center;
         flex-direction: column;
-        margin-left: 6%;
-        margin-right: 6%;
         font-size: 4vh;
         font-family: 'K2D', sans-serif;
         color: #FEF9EF;
@@ -41,9 +43,6 @@
     }
 
     .btn-nav:hover{
-        color: #227C9D;
-        text-decoration: underline 2px solid;
-        text-underline-offset: 5px;
         cursor: pointer;
     }
 </style>

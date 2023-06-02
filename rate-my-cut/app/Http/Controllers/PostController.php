@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\File;
-use App\Models\User;
+use Illuminate\Support\Facades\File;
+//use App\Models\User;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -63,7 +63,18 @@ class PostController extends Controller
         return $newImageName;
     }
 
-    public function delete(){
+    public function destroy($filename){
+        
+        $auth = Auth::user();
+        if(Post::where('username', $auth->username)->where('image', $filename)->exists()){
+            if(File::exists(public_path('images/' . $filename))){
+                File::delete(public_path('images/' . $filename));
+                Post::where('username', $auth->username)->where('image', $filename)->delete();
+
+                return redirect('/' . $auth->username);
+            }
+        }
+        
 
     }
 }

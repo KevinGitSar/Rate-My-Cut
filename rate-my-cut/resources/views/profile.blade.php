@@ -77,8 +77,8 @@
                                 <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                     @if($posts !== null)
                                         @foreach($posts as $post)
-                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
-                                                <Deletebutton :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></Deletebutton>
+                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F] relative">
+                                                <Deletebutton class="absolute right-1" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></Deletebutton>
                                                 <!-- <img src="{{ URL::to('/') }}/icons/eraser.png" class="w-4 h-4 bg-white absolute" /> -->
                                                 <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                             </div>

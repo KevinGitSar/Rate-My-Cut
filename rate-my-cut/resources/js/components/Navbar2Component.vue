@@ -3,11 +3,10 @@
         <nav class="row navbar">
             <a href="/login" class="nav-item btn-nav">About</a>
             <a href="/" class="nav-item btn-nav">Catalogue</a>
-            <button v-if="isOpen" @click="isOpen = false" class="fixed inset-0 h-full w-full bg-black opacity-0 cursor-default"></button>
-            <div class="nav-dropdown">
+            <div class="nav-dropdown" @mouseleave="isOpen = false">
                 <div class="relative">
                     <button @click="isOpen = !isOpen" class="nav-item btn-nav">{{user.username}}</button>
-                    <div v-if="isOpen" class="absolute py-2 rounded-lg bg-white w-full shadow-xl mt-1">
+                    <div v-if="isOpen" class="absolute py-2 rounded-lg bg-white w-28 shadow-xl mt-1">
                         <a :href="'/'+user.username" class="block px-4 py-2 hover:bg-indigo-500">Profile</a>
                         <a href="/settings" class="block px-4 py-2 hover:bg-indigo-500">Settings</a>
                         <a href="/user/logout" class="block px-4 py-2 hover:bg-indigo-500">Sign Out</a>
