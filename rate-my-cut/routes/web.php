@@ -17,9 +17,10 @@ use App\Http\Controllers\PostController;
 */
 
 //Anyone can see
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+Route::get('/', [PostController::class, 'home']);
 
 // Show the login page
 Route::get('/login', [UserController::class, 'login']);

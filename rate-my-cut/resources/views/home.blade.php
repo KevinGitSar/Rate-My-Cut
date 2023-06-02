@@ -65,6 +65,17 @@
                 </div>
 
                 <div class="w-3/5 mt-2 h-[63vh]">
+                    
+                    <div class="flex flex-auto flex-wrap justify-items-start">
+                        @if($posts !== null)
+                            @foreach($posts as $post)
+                                <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
+                                    <!-- <img src="{{ URL::to('/') }}/icons/eraser.png" class="w-4 h-4 bg-white absolute" /> -->
+                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
                 </div>
             </div>
             <Footercomponent class="max-w-full"></Footercomponent>

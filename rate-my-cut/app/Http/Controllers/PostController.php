@@ -11,6 +11,10 @@ use Mockery\Undefined;
 
 class PostController extends Controller
 {
+    public function home(){
+        $posts = Post::all();
+        return view('home', ['posts' => $posts]);
+    }
     //
     public function index(){
         if(Auth::check()){
