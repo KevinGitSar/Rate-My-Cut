@@ -12,24 +12,78 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters){
 
-        if($filters['category'] ?? false){
-            $query->where('category', 'like', request('category'));
-                // ->orWhere('hair_length', 'like', $filters['length'])
-                // ->orWhere('hair_type', 'like', $filters['type'])
-                // ->orWhere('hair_style', 'like', '%' . $filters['style'] . '%');
+        if($filters['category1'] ?? false){
+            $query->orWhere('category', 'like', request('category1'));
         }
 
-        if($filters['length'] ?? false){
-            $query->where('hair_length', 'like', request('length'));
+        if($filters['category2'] ?? false){
+            $query->orWhere('category', 'like', request('category2'));
         }
 
-        if($filters['type'] ?? false){
-            $query->where('hair_type', 'like', request('type'));
+        if($filters['category3'] ?? false){
+            $query->orWhere('category', 'like', request('category3'));
+        }
+
+        if($filters['category4'] ?? false){
+            $query->orWhere('category', 'like', request('category4'));
+        }
+
+        if($filters['length1'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length1'));
+        }
+
+        if($filters['length2'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length2'));
+        }
+
+        if($filters['length3'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length3'));
+        }
+
+        if($filters['length4'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length4'));
+        }
+
+        if($filters['length5'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length5'));
+        }
+
+        if($filters['length6'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length6'));
+        }
+
+        if($filters['length7'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length7'));
+        }
+
+        if($filters['length8'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length8'));
+        }
+
+        if($filters['length9'] ?? false){
+            $query->orWhere('hair_length', 'like', request('length9'));
+        }
+
+        if($filters['type1'] ?? false){
+            $query->orWhere('hair_type', 'like', request('type1'));
+        }
+
+        if($filters['type2'] ?? false){
+            $query->orWhere('hair_type', 'like', request('type2'));
+        }
+
+        if($filters['type3'] ?? false){
+            $query->orWhere('hair_type', 'like', request('type3'));
+        }
+
+        if($filters['type4'] ?? false){
+            $query->orWhere('hair_type', 'like', request('type4'));
         }
 
         if($filters['style'] ?? false){
-            $query->where('hair_style', 'like', '%' . request('style') . '%');
+            $query->orWhere('hair_style', 'like', '%' . request('style') . '%');
         }
+
     }
 
     /**

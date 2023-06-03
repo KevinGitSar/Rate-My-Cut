@@ -11,7 +11,9 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function home(){
-        $posts = Post::latest()->filter(request(['category','length', 'type', 'style']))->get();
+        $posts = Post::latest()->filter(request(['category1','category2','category3','category4',
+        'length1','length2','length3','length4','length5','length6','length7','length8','length9',
+        'type1','type2','type3','type4','style']))->get();
         return view('home', ['posts' => $posts]);
     }
     //

@@ -21,6 +21,7 @@ import AlertSuccess from './components/AlertSuccess.vue';
 import FollowButton from './components/FollowButton.vue';
 import PostFormComponent from './components/PostFormComponent.vue';
 import DeleteButton from './components/DeleteButton.vue';
+import FilterForm from './components/FilterForm.vue';
 
 const app = createApp({
     components: {
@@ -32,6 +33,7 @@ const app = createApp({
         'Followbutton' : FollowButton,
         'Postformcomponent' : PostFormComponent,
         'Deletebutton' : DeleteButton,
+        'Filterform' : FilterForm,
     }
 });
 

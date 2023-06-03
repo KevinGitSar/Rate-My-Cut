@@ -33,35 +33,7 @@
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
                 <div class="flex flex-col justify-between items-center w-1/5 border-r-2 border-[#FEB3B1]/25 mt-2">
-                    <div>
-                        <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-lg text-shadow">Location</h4>
-                        <div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-lg text-shadow">Category</h4>
-                        <div>
-                        </div>
-                    </div>    
-                    
-                    <div>
-                        <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-lg text-shadow">Hair Length</h4>
-                        <div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-lg text-shadow">Hair Type</h4>
-                        <div>
-                        </div>
-                    </div>    
-                    
-                    <div>
-                        <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-lg text-shadow">Hair Style</h4>
-                        <div>
-                        </div>
-                    </div>                    
+                    <Filterform></Filterform>
                 </div>
 
                 <div class="w-3/5 mt-2 h-[63vh]">
