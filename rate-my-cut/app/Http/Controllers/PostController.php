@@ -7,12 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 //use App\Models\User;
 use App\Models\Post;
-use Mockery\Undefined;
 
 class PostController extends Controller
 {
     public function home(){
-        $posts = Post::all();
+        $posts = Post::latest()->filter(request(['category','length', 'type', 'style']))->get();
         return view('home', ['posts' => $posts]);
     }
     //
