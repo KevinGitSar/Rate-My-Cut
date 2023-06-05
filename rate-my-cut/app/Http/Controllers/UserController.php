@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -199,6 +200,9 @@ class UserController extends Controller
                 //Re-format birthdate to year month day.
                 $form['birthdate'] = Carbon::parse($form['birthdate'])->format('Y-m-d');
 
+                if($request->profile !== null){
+                    $user->profile = $this->storeImage($request);
+                }
                 $user->first_name = $form['first_name'];
                 $user->last_name = $form['last_name'];
                 $user->birthdate = $form['birthdate'];
@@ -217,6 +221,24 @@ class UserController extends Controller
                 return view('/password');
             }
         } 
+    }
+
+    private function storeImage($request){
+        $auth = Auth::user();
+        
+        if($request->profile !== null){
+
+            if(User::where('username', $auth->username)->where('profile', $auth->profile)->exists()){
+                
+                if(File::exists(public_path('images/' . $auth->profile))){
+                    File::delete(public_path('images/' . $auth->profile));
+                }
+            }
+
+            $newImageName = uniqid() . '.' . $request->profile->extension();
+            $request->profile->move(public_path('images'), $newImageName);
+            return $newImageName;
+        }
     }
 
     public function updatePassword(Request $request){

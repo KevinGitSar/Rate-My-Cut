@@ -25,7 +25,7 @@
 
                     <h4 class="text-center text-5xl mt-5">Account Information</h4>
 
-                    <form class="mt-5" action="/settings/update" method="POST">
+                    <form class="mt-5" action="/settings/update" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @if (session('notification'))
                             <Alertsuccess :message="'{{session('notification')}}'"></Alertsuccess>
@@ -33,6 +33,12 @@
 
                         <div class="flex justify-center mt-5">
                             <div class="flex flex-col justify-center  w-5/12 p-5">
+                                
+                                <div class="flex mt-5 mx-3 justify-center">
+                                    <label class="w-1/4" for="profile">Upload Profile</label>
+                                    <input type="file" accept="image/*" name="profile" class="w-3/6 pl-2 pr-2 ml-2"/>
+                                </div>
+
                                 <div class="flex mt-5 mx-3 justify-center">
                                     <label class="w-1/4" for="first_name">First Name:</label>
                                     <input type="text" name="first_name" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" value="{{$user->first_name}}"/>

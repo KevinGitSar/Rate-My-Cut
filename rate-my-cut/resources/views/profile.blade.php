@@ -32,7 +32,13 @@
                     <div class="w-1/5 h-auto">
                         <div class="border-2 border-[#291F1F] h-full mx-10">
                             <!--Profile Image-->
-                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                            <div>
+                                @if($user->profile !== null)
+                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                @else
+                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                @endif
+                            </div>
                             
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
@@ -109,7 +115,11 @@
                     <div class="w-1/5 h-auto">
                         <div class="border-2 border-[#291F1F] h-full mx-10">
                             <!--Profile Image-->
-                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                            @if($user->profile !== null)
+                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                            @else
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                            @endif
                             
                             @if(isset($following))
                                 <!-- binding must be all lower case and adding quotes ('') to username enforces that it's a string -->

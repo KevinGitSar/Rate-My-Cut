@@ -66,5 +66,7 @@ Route::post('/create/post/{username}', [PostController::class, 'store']);
 // Authenticated user can delete their post
 Route::post('/delete/post/{filename}', [PostController::class, 'destroy']);
 
+Route::get('/upload/profile/{username}',[UserController::class, 'uploadProfile']);
+
 // Return a user's profile view.
 Route::get('/{username}', [UserController::class, 'profile']);

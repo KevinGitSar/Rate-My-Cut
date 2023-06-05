@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('postal_code');
             $table->string('username')->unique();
             $table->string('password');
+            $table->string('profile')->nullable();
             $table->longText('bio')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

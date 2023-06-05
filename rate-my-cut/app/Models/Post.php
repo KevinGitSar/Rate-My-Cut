@@ -11,7 +11,7 @@ class Post extends Model
     use HasFactory;
 
     public function scopeFilter($query, array $filters){
-
+        //Change filter to be more precise
         if($filters['category1'] ?? false){
             $query->orWhere('category', 'like', request('category1'));
         }
