@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <nav class="row navbar">
-            <a href="/login" class="nav-item btn-nav">About</a>
+            <a href="/search" class="nav-item btn-nav">Search</a>
             <a href="/" class="nav-item btn-nav">Catalogue</a>
             <div class="nav-dropdown" @mouseleave="isOpen = false">
                 <div class="relative">

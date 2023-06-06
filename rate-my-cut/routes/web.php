@@ -28,6 +28,12 @@ Route::get('/login', [UserController::class, 'login']);
 // Show the signup page
 Route::get('/signup', [UserController::class, 'signup']);
 
+// Show the search page
+Route::get('/search', [UserController::class, 'search']);
+
+//
+Route::get('/search/user/', [UserController::class, 'userSearch']);
+
 // On successful, store a user in the database.
 Route::post('/signup/user', [UserController::class, 'store']);
 

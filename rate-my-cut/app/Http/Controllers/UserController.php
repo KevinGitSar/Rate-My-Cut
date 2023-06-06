@@ -285,6 +285,19 @@ class UserController extends Controller
     }
 
     /**
+     * Show the search page
+     * Available to guests and authenticated users
+     */
+    public function search(){
+        return view('search');
+    }
+
+    public function userSearch(){
+        $users = User::filter(request(['search']))->get();
+        return view('/search', ['users' => $users]);
+    }
+
+    /**
      * Logout the user.
      * On success the user is logged out and will need to log back in to access their profile.
      */
