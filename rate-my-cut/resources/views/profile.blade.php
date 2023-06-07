@@ -43,7 +43,7 @@
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
 
-                                <p class="my-2 ml-1">{{$followers}} Followers</p>
+                                <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
 
                                 <p class="my-2 ml-1">Follows {{$follows}}</p>
 
@@ -120,7 +120,7 @@
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
 
-                                <p class="my-2 ml-1">{{$followers}} Followers</p>
+                                <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
 
                                 <p class="my-2 ml-1">Follows {{$follows}}</p>
 
@@ -180,7 +180,7 @@
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
 
-                                <p class="my-2 ml-1">{{$followers}} Followers</p>
+                                <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
 
                                 <p class="my-2 ml-1">Follows {{$follows}}</p>
 

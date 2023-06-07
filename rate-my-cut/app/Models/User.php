@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -16,6 +17,10 @@ class User extends Authenticatable
         if($filters['search'] ?? false){
             $query->where('username', 'like', '%' . request('search') . '%');
         }
+    }
+
+    public function followings(): HasMany{
+        return $this->hasMany(Following::class, 'username');
     }
 
     /**

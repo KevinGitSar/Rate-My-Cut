@@ -36,4 +36,48 @@ class FollowingController extends Controller
             //return error page user not logged in.
         }
     }
+
+    public function followerList(String $username){
+        if(User::where('username', $username)->exists()){
+            if(Following::where('following_user', $username)->exists()){
+                // For each follower get follower user information
+
+                // Collect name of all followers
+                $listOfFollowers = [];
+                $followers = Following::where('following_user', $username)->get();
+                
+                $total = sizeOf($followers);
+                // Store names in an array
+                foreach($followers as $follower){
+                    array_push($listOfFollowers, $follower->username);
+                }
+                
+                // Store data of followers
+                $followerData = [];
+                for($index = 0; $index < sizeOf($listOfFollowers); $index++){
+                    array_push($followerData, User::where('username', $listOfFollowers[$index])->first());
+                }
+
+                return view('followers', ['followerData' => $followerData, 'user' => $username, 'total' => $total]);
+            } else{
+                // Return User has no followers
+            }
+        } else{
+            // Return Error Page user does not exists.
+        }
+    }
+
+    public function followingList(String $username){
+        if(User::where('username', $username)->exists()){
+            if(Following::where('username', $username)->exists()){
+                $followingList = Following::where('username', $username)->get();
+
+                return redirect('/following', ['followingList' => $followingList]);
+            } else{
+                //Return Error Page This user does not Follow anyone
+            }
+        } else{
+            // Return Error Page user does not exists.
+        }
+    }
 }

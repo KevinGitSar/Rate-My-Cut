@@ -31,7 +31,7 @@ Route::get('/signup', [UserController::class, 'signup']);
 // Show the search page
 Route::get('/search', [UserController::class, 'search']);
 
-//
+// Show searched users
 Route::get('/search/user/', [UserController::class, 'userSearch']);
 
 // On successful, store a user in the database.
@@ -62,6 +62,12 @@ Route::get('/follow/{username}', [FollowingController::class, 'follow']);
 // Authenticated user can unfollow another user
 // Need to add check if not following can not unfollow again.
 Route::get('/unfollow/{username}', [FollowingController::class, 'unfollow']);
+
+//
+Route::get('/followers/{username}', [FollowingController::class, 'followerList']);
+
+//
+Route::get('/followings/{username}', [FollowingController::class, 'followingList']);
 
 // Display post creation page.
 Route::get('/create/post', [PostController::class, 'index']);
