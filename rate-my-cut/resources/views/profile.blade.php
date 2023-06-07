@@ -34,9 +34,9 @@
                             <!--Profile Image-->
                             <div>
                                 @if($user->profile !== null)
-                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
                                 @else
-                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
                                 @endif
                             </div>
                             
@@ -85,18 +85,10 @@
                                         @foreach($posts as $post)
                                             <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F] relative">
                                                 <Deletebutton class="absolute right-1" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></Deletebutton>
-                                                <!-- <img src="{{ URL::to('/') }}/icons/eraser.png" class="w-4 h-4 bg-white absolute" /> -->
                                                 <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                             </div>
                                         @endforeach
                                     @endif
-                                    <!-- <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div> -->
                                 </div>
 
                                 <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Next</button></div>
@@ -179,20 +171,22 @@
                     <div class="w-1/5 h-auto">
                         <div class="border-2 border-[#291F1F] h-full mx-10">
                             <!--Profile Image-->
-                            <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                            @if($user->profile !== null)
+                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                            @else
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                            @endif
                             
                             <div class="flex flex-col justify-around">
-                                <p class="my-2 ml-1">User's Name</p>
+                                <p class="my-2 ml-1">{{$user->username}}</p>
 
-                                <p class="my-2 ml-1">1000 Followers</p>
+                                <p class="my-2 ml-1">{{$followers}} Followers</p>
 
-                                <p class="my-2 ml-1">Following 100</p>
+                                <p class="my-2 ml-1">Follows {{$follows}}</p>
 
                                 <p class="my-2 ml-1">
-                                    Generally like my hair short,
-                                    prefer asian ethnic hairstyles.
+                                    {{$user->bio}}
                                 </p>
-
                             </div>
                         </div>
                     </div>
@@ -200,19 +194,8 @@
                     <!--User's uploaded content (images + filtering)-->
                     <div class="w-3/5 h-auto border-2 border-[#291F1F]">
                         <div class="h-full">
-                            <div class="w-10/12 m-5 mx-auto flex justify-between">
-                                <div>
-                                    <label>Search : </label>
-                                    <input type="text" class="border-2 border-[#291F1F]">
-                                </div>
+                        <div class="w-10/12 m-5 mx-auto flex justify-between">
                                 <div class="flex justify-between w-1/3">
-                                    <div class="flex justify-evenly w-3/5">
-                                        <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Heart</button>
-                                        
-                                        <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Plus+</button>
-                                    </div>
-
-
                                     <label class="rounded-full outline outline-offset-2 outline-blue-500 px-2">Page: 1</label>
                                 </div>
                             </div>
@@ -221,14 +204,13 @@
                                 <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Prev</button></div>
 
                                 <div class="flex flex-auto flex-wrap justify-items-start w-max">
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
-                                    <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]"></div>
+                                    @if($posts !== null)
+                                        @foreach($posts as $post)
+                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
 
                                 <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Next</button></div>

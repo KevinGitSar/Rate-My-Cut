@@ -19,10 +19,16 @@
     <body class="antialiased">
         <div id="app">
             <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
-            <Navbar1component class="max-w-full"></Navbar1component>
+            @auth
+                <!-- Logged In User -->
+                <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
+            @else
+                <!-- Not Logged In -->
+                <Navbar1component class="max-w-full"></Navbar1component>
+            @endauth
             <div class="flex grow max-w-full">
                 <div class="flex justify-start flex-col w-5/6 border-2 border-[#291F1F] rounded-3xl mt-2 m-auto min-h-61vh">
-                    <div class="mx-auto mt-10">
+                    <div class="mx-auto my-10 ">
                         <form action="/search/user/" method="GET">
                             <label class="text-2xl" for="search">Search: </label>
                             <input type="text" name="search" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
@@ -30,10 +36,25 @@
                         </form>
                     </div>
 
-                    <div>
-                        @if($users !== null)
+                    <div class="flex">
+                        @if(isset($users))
                             @foreach($users as $user)
-                                <p>{{$user->username}}</p>
+                                <div class="w-1/5 rounded overflow-hidden shadow-lg m-2 hover:bg-[#FEB3B1]">
+                                    <a href="/{{$user->username}}">
+                                    @if($user->profile !== null)
+                                        <img class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
+                                    @else
+                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                    @endif
+                                    <div class="px-6 py-4">
+                                        <div class="font-bold text-xl mb-2">{{$user->username}}</div>
+                                        <div class="font-bold text-l mb-2">{{$user->first_name}} {{$user->last_name}}</div>
+                                        <p class="text-gray-700 text-base">
+                                            {{$user->bio}}
+                                        </p>
+                                    </div>
+                                    </a>
+                                </div>
                             @endforeach
                         @endif
                     </div>

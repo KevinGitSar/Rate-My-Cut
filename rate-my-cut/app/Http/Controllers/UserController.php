@@ -72,39 +72,56 @@ class UserController extends Controller
      * Returns a user's profile page
      */
     public function profile(String $username){
+        if(Auth::check()){
+            if(User::where('username', $username)->exists()){
+                $user = User::where('username', $username)->first();
 
-        if(User::where('username', $username)->exists()){
-            $user = User::where('username', $username)->first();
+                //Number of followers that the searched user has.
+                $followers = Following::where('following_user', $user->username)->get()->count();
+                //Number of follows that the searched user is following.
+                $follows = Following::where('username', $user->username)->get()->count();
 
-            //Number of followers that the searched user has.
-            $followers = Following::where('following_user', $user->username)->get()->count();
-            //Number of follows that the searched user is following.
-            $follows = Following::where('username', $user->username)->get()->count();
+                //Get Authenticated User
+                $auth = Auth::user();
 
-            //Get Authenticated User
-            $auth = Auth::user();
+                $userPosts = null;
+                if(Post::where('username', $user->username)->exists()){
+                    $userPosts = Post::where('username', $user->username)->get();
+                }
 
-            $userPosts = null;
-            if(Post::where('username', $user->username)->exists()){
-                $userPosts = Post::where('username', $user->username)->get();
+                //Check if authenticated user is following other user.
+                //USER IS FOLLOWING
+                if(Following::where('username', $auth->username)->where('following_user', $user->username)->exists()){
+                    $following = 'true';
+                    return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
+                } 
+                //USER IS NOT FOLLOWING
+                else{
+                    $following = 'false';
+                    return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
+                }
+                //return view('/profile', compact('user'));
+            } else{
+                //User not found
+                return view('/');
+                //return view('/errorpage');
             }
-
-            //Check if authenticated user is following other user.
-            //USER IS FOLLOWING
-            if(Following::where('username', $auth->username)->where('following_user', $user->username)->exists()){
-                $following = 'true';
-                return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
-            } 
-            //USER IS NOT FOLLOWING
-            else{
-                $following = 'false';
-                return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
-            }
-            //return view('/profile', compact('user'));
         } else{
-            //User not found
-            return view('/login');
-            //return view('/errorpage');
+            if(User::where('username', $username)->exists()){
+                $user = User::where('username', $username)->first();
+
+                //Number of followers that the searched user has.
+                $followers = Following::where('following_user', $user->username)->get()->count();
+                //Number of follows that the searched user is following.
+                $follows = Following::where('username', $user->username)->get()->count();
+
+                $userPosts = null;
+                if(Post::where('username', $user->username)->exists()){
+                    $userPosts = Post::where('username', $user->username)->get();
+                }
+
+                return view('/profile', ['user' => $user, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
+            }
         }
     }
 
