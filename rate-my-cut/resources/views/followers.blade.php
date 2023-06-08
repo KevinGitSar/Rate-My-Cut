@@ -29,7 +29,7 @@
             <div class="flex grow max-w-full">
                 <div class="flex justify-start flex-col w-5/6 border-2 border-[#291F1F] rounded-3xl mt-2 m-auto min-h-61vh">
                     <div class="mx-auto my-10 ">
-                        <h1 class="text-4xl font-semibold">{{$user}} has {{$total}} Followers</h1>
+                        <h1 class="text-4xl font-semibold">{{$user}} has {{$total}} Follower(s).</h1>
                     </div>
 
                     <div class="flex">
@@ -54,7 +54,6 @@
                             @endforeach
                         @endif
                     </div>
-                    
                 </div>
             </div>
             <footer-component class="max-w-full"></footer-component>

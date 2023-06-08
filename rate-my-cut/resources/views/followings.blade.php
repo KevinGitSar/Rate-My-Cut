@@ -54,7 +54,6 @@
                             @endforeach
                         @endif
                     </div>
-                    
                 </div>
             </div>
             <footer-component class="max-w-full"></footer-component>

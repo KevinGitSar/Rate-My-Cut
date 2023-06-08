@@ -64,7 +64,8 @@ class FollowingController extends Controller
 
                 return view('followers', ['followerData' => $followerData, 'user' => $username, 'total' => $total]);
             } else{
-                // Return User has no followers
+                $total = 0;
+                return view('followers', ['user' => $username, 'total' => $total]);
             }
         } else{
             //User not found
@@ -96,7 +97,8 @@ class FollowingController extends Controller
 
                 return view('followings', ['followingData' => $followingData, 'user' => $username, 'total' => $total]);
             } else{
-                //Return Error Page This user does not Follow anyone
+                $total = 0;
+                return view('followings', ['user' => $username, 'total' => $total]);
             }
         } else{
             //User not found
