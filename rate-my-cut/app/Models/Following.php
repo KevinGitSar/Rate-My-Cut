@@ -10,12 +10,6 @@ class Following extends Model
 {
     use HasFactory;
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
-
     /**
      * The attributes that are mass assignable.
      *

@@ -19,10 +19,6 @@ class User extends Authenticatable
         }
     }
 
-    public function followings(): HasMany{
-        return $this->hasMany(Following::class, 'username');
-    }
-
     /**
      * The attributes that are mass assignable.
      *
