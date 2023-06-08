@@ -45,7 +45,7 @@
 
                                 <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
 
-                                <p class="my-2 ml-1">Follows {{$follows}}</p>
+                                <a href="/followings/{{$user->username}}" class="my-2 ml-1">Follows {{$follows}}</a>
 
                                 <p class="my-2 ml-1">
                                     {{$user->bio}}
@@ -122,7 +122,7 @@
 
                                 <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
 
-                                <p class="my-2 ml-1">Follows {{$follows}}</p>
+                                <a href="/followings/{{$user->username}}" class="my-2 ml-1">Follows {{$follows}}</a>
 
                                 <p class="my-2 ml-1">
                                     {{$user->bio}}
@@ -181,8 +181,8 @@
                                 <p class="my-2 ml-1">{{$user->username}}</p>
 
                                 <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
-
-                                <p class="my-2 ml-1">Follows {{$follows}}</p>
+                                
+                                <a href="/followings/{{$user->username}}" class="my-2 ml-1">Follows {{$follows}}</a>
 
                                 <p class="my-2 ml-1">
                                     {{$user->bio}}
