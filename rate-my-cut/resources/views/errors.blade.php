@@ -3,13 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Rate My Cut!</title>
 
         <!-- Fonts -->
-        <!-- <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" /> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
@@ -22,22 +19,20 @@
     <body class="antialiased">
         <div id="app">
             <header-component class="max-w-full" title='Rate My Cut!'></header-component>
-            <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
+            @auth
+                <!-- Logged In User -->
+                <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
+            @else
+                <!-- Not Logged In -->
+                <navbar-1-component class="max-w-full"></navbar-1-component>
+            @endauth
             <div class="flex grow max-w-full">
-                <div class="flex flex-col w-4/5 m-auto min-h-61vh">
-
-                    <h4 class="text-center text-5xl my-5">Show off your HAIRSTYLE!</h4>
-
-                    <div class="flex justify-center mt-5">
-                        <div class="flex flex-col justify-center  w-4/6 border-2 border-[#291F1F] p-5">
-                            <div class="flex mt-5 mx-3 justify-center">
-                                <post-form-component :user="{{ Auth::user() }}" :errors="{{$errors}}"></post-form-component>
-                            </div>
-                        </div>
+                @if(isset($errorCode))
+                    <div class="flex justify-center flex-col w-5/6 m-auto min-h-61vh">
+                        <error-component :error-code="{{$errorCode}}"></error-component>
                     </div>
-                </div>
+                @endif
             </div>
-            
             <footer-component class="max-w-full"></footer-component>
         </div>
     </body>

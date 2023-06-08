@@ -20,20 +20,19 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
-            
+        <header-component class="max-w-full" title='Rate My Cut!'></header-component>
             @auth
                 <!-- Logged In User -->
-                <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
+                <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
             @else
                 <!-- Not Logged In -->
-                <Navbar1component class="max-w-full"></Navbar1component>
+                <navbar-1-component class="max-w-full"></navbar-1-component>
             @endauth
             <div class="flex grow max-w-full">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
                 <div class="flex flex-col justify-between items-center w-1/5 border-r-2 border-[#FEB3B1]/25 mt-2">
-                    <Filterform :filters="{{json_encode($filters)}}"></Filterform>
+                    <filter-form :filters="{{json_encode($filters)}}"></filter-form>
                 </div>
 
                 <div class="w-3/5 mt-2 h-[63vh]">
@@ -50,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <Footercomponent class="max-w-full"></Footercomponent>
+            <footer-component class="max-w-full"></footer-component>
         </div>
     </body>
 </html>

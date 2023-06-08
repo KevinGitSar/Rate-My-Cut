@@ -18,8 +18,8 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
-            <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
+            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
+            <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
             <div class="flex grow max-w-full">
                 <div class="flex flex-col w-4/5 mt-2 m-auto min-h-61vh justify-center">
 
@@ -28,7 +28,7 @@
                     <form class="mt-5" action="/settings/update" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @if (session('notification'))
-                            <Alertsuccess :message="'{{session('notification')}}'"></Alertsuccess>
+                            <alert-success :message="'{{session('notification')}}'"></alert-success>
                         @endif
 
                         <div class="flex justify-center mt-5">
@@ -129,7 +129,7 @@
                     
                 </div>
             </div>
-            <Footercomponent class="max-w-full"></Footercomponent>
+            <footer-component class="max-w-full"></footer-component>
         </div>
     </body>
 </html>

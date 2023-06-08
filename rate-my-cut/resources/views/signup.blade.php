@@ -18,8 +18,8 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
-            <Navbar1component class="max-w-full"></Navbar1component>
+            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
+            <navbar-1-component class="max-w-full"></navbar-1-component>
             <div class="flex grow max-w-full">
                 <div class="flex flex-col w-4/5 mt-2 m-auto min-h-61vh justify-center">
 
@@ -133,7 +133,7 @@
                     </form>
                 </div>
             </div>
-            <Footercomponent class="max-w-full"></Footercomponent>
+            <footer-component class="max-w-full"></footer-component>
         </div>
     </body>
 </html>

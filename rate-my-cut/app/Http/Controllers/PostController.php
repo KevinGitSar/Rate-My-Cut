@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-//use App\Models\User;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -39,7 +38,9 @@ class PostController extends Controller
 
             return view('/post', ['user' => $user]);
         } else{
-            //show error page not logged in
+            // User Not Logged In!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -92,6 +93,10 @@ class PostController extends Controller
             ]);
 
             return redirect('/' . $username);
+        } else{
+            // User Not Logged In!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -102,17 +107,20 @@ class PostController extends Controller
     }
 
     public function destroy($filename){
-        
-        $auth = Auth::user();
-        if(Post::where('username', $auth->username)->where('image', $filename)->exists()){
-            if(File::exists(public_path('images/' . $filename))){
-                File::delete(public_path('images/' . $filename));
-                Post::where('username', $auth->username)->where('image', $filename)->delete();
+        if(Auth::check()){
+            $auth = Auth::user();
+            if(Post::where('username', $auth->username)->where('image', $filename)->exists()){
+                if(File::exists(public_path('images/' . $filename))){
+                    File::delete(public_path('images/' . $filename));
+                    Post::where('username', $auth->username)->where('image', $filename)->delete();
 
-                return redirect('/' . $auth->username);
+                    return redirect('/' . $auth->username);
+                }
             }
+        }else{
+            // User Not Logged In!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
-        
-
     }
 }

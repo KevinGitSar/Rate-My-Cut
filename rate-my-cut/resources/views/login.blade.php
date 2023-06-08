@@ -18,8 +18,8 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
-            <Navbar1component class="max-w-full"></Navbar1component>
+            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
+            <navbar-1-component class="max-w-full"></navbar-1-component>
             <div class="flex grow max-w-full">
                 <div class="flex flex-col w-3/6 border-2 border-[#291F1F] rounded-3xl mt-2 m-auto min-h-61vh justify-center">
 
@@ -34,21 +34,22 @@
                             @enderror
                         </div>
                         
-                        
                         <div class="flex flex-col w-3/6 m-auto justify-around mt-5">
                             <label for="password">Password</label>
                             <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" name="password" type="password" />
                         </div>
+
                         <div class="text-center">
                             <button class="mt-10 bg-[#FFCB77] w-32 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Login!</button>
                         </div>
+
                         <div class="flex justify-end mr-3.5 text-sm mt-10">
                             <p>Don't have an account? Sign up <a href="/signup" class="text-red-500">here</a>!</p>
                         </div>
                     </form>
                 </div>
             </div>
-            <Footercomponent class="max-w-full"></Footercomponent>
+            <footer-component class="max-w-full"></footer-component>
         </div>
     </body>
 </html>

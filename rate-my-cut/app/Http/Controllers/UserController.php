@@ -100,11 +100,11 @@ class UserController extends Controller
                     $following = 'false';
                     return view('/profile', ['user' => $user, 'following' => $following, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
                 }
-                //return view('/profile', compact('user'));
+
             } else{
                 //User not found
-                return view('/');
-                //return view('/errorpage');
+                $errorCode = 1001;
+                return view('/errors', ['errorCode' => $errorCode]);
             }
         } else{
             if(User::where('username', $username)->exists()){
@@ -121,6 +121,10 @@ class UserController extends Controller
                 }
 
                 return view('/profile', ['user' => $user, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);
+            } else{
+                //User not found
+                $errorCode = 1001;
+                return view('/errors', ['errorCode' => $errorCode]);
             }
         }
     }
@@ -138,8 +142,9 @@ class UserController extends Controller
             return view('/setting', compact('user'));
 
         } else{
-
-            return redirect('/login');
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -154,8 +159,9 @@ class UserController extends Controller
             return view('/password');
 
         } else{
-
-            return redirect('/login');
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -194,7 +200,6 @@ class UserController extends Controller
         return redirect('/login');
     }
 
-    //Make usernames unique
     public function updateUser(Request $request){
         if(Auth::check()){
             if($request->input('update') == 'save'){
@@ -237,7 +242,11 @@ class UserController extends Controller
             } else{
                 return view('/password');
             }
-        } 
+        } else{
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
+        }
     }
 
     private function storeImage($request){
@@ -279,7 +288,11 @@ class UserController extends Controller
                 return redirect('/settings')->with('notification', 'Password Change Failed!');
             }
 
-        } 
+        }else{
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
+        }
     }
 
     /**
@@ -326,5 +339,4 @@ class UserController extends Controller
 
         return redirect('/');
     }
-
 }

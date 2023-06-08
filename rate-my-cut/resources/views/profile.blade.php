@@ -21,10 +21,9 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
-            
+            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
             @auth
-            <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
+            <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
                 @if(Auth::user()->username == $user->username)
                 <!-- Logged In User and User's profile -->
                 <div class="flex grow h-screen mt-5 mb-5">
@@ -84,7 +83,7 @@
                                     @if($posts !== null)
                                         @foreach($posts as $post)
                                             <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F] relative">
-                                                <Deletebutton class="absolute right-1" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></Deletebutton>
+                                                <delete-button class="absolute right-1" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
                                                 <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                             </div>
                                         @endforeach
@@ -96,8 +95,6 @@
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
 
                 @else
@@ -115,7 +112,7 @@
                             
                             @if(isset($following))
                                 <!-- binding must be all lower case and adding quotes ('') to username enforces that it's a string -->
-                                <Followbutton :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></Followbutton>
+                                <follow-button :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></follow-button>
                             @endif
                             <div class="flex flex-col justify-around">
                                 <p class="my-2 ml-1">{{$user->username}}</p>
@@ -158,21 +155,19 @@
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
                 @endif
                 
             @else
                 <!-- Not Logged In -->
-                <Navbar1component class="max-w-full"></Navbar1component>
+                <navbar-1-component class="max-w-full"></navbar-1-component>
                 <div class="flex grow h-screen mt-5 mb-5">
                     <!--Profile Info/Bio etc...-->
                     <div class="w-1/5 h-auto">
                         <div class="border-2 border-[#291F1F] h-full mx-10">
                             <!--Profile Image-->
                             @if($user->profile !== null)
-                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
                             @else
                                 <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
                             @endif
@@ -218,12 +213,10 @@
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
             @endauth
             
-            <Footercomponent class="max-w-full"></Footercomponent>
+            <footer-component class="max-w-full"></footer-component>
         </div>
     </body>
 </html>

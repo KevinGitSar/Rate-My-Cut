@@ -22,18 +22,20 @@ import FollowButton from './components/FollowButton.vue';
 import PostFormComponent from './components/PostFormComponent.vue';
 import DeleteButton from './components/DeleteButton.vue';
 import FilterForm from './components/FilterForm.vue';
+import ErrorComponent from './components/ErrorComponent.vue';
 
 const app = createApp({
     components: {
-        'Headercomponent' : HeaderComponent,
-        'Footercomponent' : FooterComponent,
-        'Navbar1component' : Navbar1Component,
-        'Navbar2component' : Navbar2Component,
-        'Alertsuccess' : AlertSuccess,
-        'Followbutton' : FollowButton,
-        'Postformcomponent' : PostFormComponent,
-        'Deletebutton' : DeleteButton,
-        'Filterform' : FilterForm,
+        'header-component' : HeaderComponent,
+        'footer-component' : FooterComponent,
+        'navbar-1-component' : Navbar1Component,
+        'navbar-2-component' : Navbar2Component,
+        'alert-success' : AlertSuccess,
+        'follow-button' : FollowButton,
+        'post-form-component' : PostFormComponent,
+        'delete-button' : DeleteButton,
+        'filter-form' : FilterForm,
+        'error-component' : ErrorComponent,
     }
 });
 

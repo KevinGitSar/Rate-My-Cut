@@ -20,7 +20,9 @@ class FollowingController extends Controller
             $following = 'true';
             return $following;
         } else{
-            //return error page user not logged in.
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -33,7 +35,9 @@ class FollowingController extends Controller
             $following = 'false';
             return $following;
         } else{
-            //return error page user not logged in.
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -63,7 +67,9 @@ class FollowingController extends Controller
                 // Return User has no followers
             }
         } else{
-            // Return Error Page user does not exists.
+            //User not found
+            $errorCode = 1001;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -93,7 +99,9 @@ class FollowingController extends Controller
                 //Return Error Page This user does not Follow anyone
             }
         } else{
-            // Return Error Page user does not exists.
+            //User not found
+            $errorCode = 1001;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 }

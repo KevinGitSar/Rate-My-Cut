@@ -18,13 +18,13 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Headercomponent class="max-w-full" title='Rate My Cut!'></Headercomponent>
+            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
             @auth
                 <!-- Logged In User -->
-                <Navbar2component class="max-w-full" :user="{{ Auth::user() }}"></Navbar2component>
+                <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
             @else
                 <!-- Not Logged In -->
-                <Navbar1component class="max-w-full"></Navbar1component>
+                <navbar-1-component class="max-w-full"></navbar-1-component>
             @endauth
             <div class="flex grow max-w-full">
                 <div class="flex justify-start flex-col w-5/6 border-2 border-[#291F1F] rounded-3xl mt-2 m-auto min-h-61vh">
@@ -61,7 +61,7 @@
                     
                 </div>
             </div>
-            <Footercomponent class="max-w-full"></Footercomponent>
+            <footer-component class="max-w-full"></footer-component>
         </div>
     </body>
 </html>
