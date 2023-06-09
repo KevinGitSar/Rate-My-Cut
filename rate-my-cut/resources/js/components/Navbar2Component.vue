@@ -1,11 +1,13 @@
 <template>
-    <div class="container">
-        <nav class="row navbar">
-            <a href="/search" class="nav-item btn-nav">Search</a>
-            <a href="/" class="nav-item btn-nav">Catalogue</a>
-            <div class="nav-dropdown" @mouseleave="isOpen = false">
+    <div class="">
+        <nav class="flex justify-between h-16 bg-[#FEB3B1]">
+            <a href="/search" class="flex flex-col w-full justify-center align-center text-center text-[#FEF9EF] hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer mx-5 nav-item">Search</a>
+
+            <a href="/" class="flex flex-col w-full justify-center align-center text-center text-[#FEF9EF] hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer mx-5 nav-item">Catalogue</a>
+
+            <div class="flex flex-col w-full justify-center align-center mx-5" @mouseleave="isOpen = false">
                 <div class="relative">
-                    <button @click="isOpen = !isOpen" class="nav-item btn-nav">{{user.username}}</button>
+                    <button @click="isOpen = !isOpen" class="flex flex-col justify-center align-center text-[#FEF9EF] hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer mx-5 nav-item">{{user.username}}</button>
                     <div v-if="isOpen" class="absolute py-2 rounded-lg bg-white w-28 shadow-xl mt-1">
                         <a :href="'/'+user.username" class="block px-4 py-2 hover:bg-indigo-500">Profile</a>
                         <a href="/settings" class="block px-4 py-2 hover:bg-indigo-500">Settings</a>
@@ -29,44 +31,8 @@
 </script>
 
 <style scoped>
-    .navbar{
-        display: flex;
-        justify-content: space-between;
-        height: 10vh;
-        background-color: #FEB3B1;
-        margin-top: 1vh;
-    }
-
-    .nav-dropdown{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        margin-left: 6%;
-        margin-right: 6%;
-    }
-
     .nav-item{
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-direction: column;
-        margin-left: 6%;
-        margin-right: 6%;
-        font-size: 4vh;
         font-family: 'K2D', sans-serif;
-        color: #FEF9EF;
         text-shadow: -1px -1px 0 #000, 1px -1px #000, -1px 1px #000, 1px 1px #000;
     }
-
-    a{
-        text-decoration: none;
-    }
-    .btn-nav:hover{
-        color: #227C9D;
-        text-decoration: underline 2px solid;
-        text-underline-offset: 5px;
-        cursor: pointer;
-    }
-
 </style>

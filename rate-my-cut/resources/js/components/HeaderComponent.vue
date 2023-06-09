@@ -1,7 +1,7 @@
 <template>
-    <div class="container header">
+    <div class="container flex flex-col justify-center bg-[#FFCB77] w-full h-20">
         <div class="row justify-content-center">
-            <h1>{{ title }}</h1>
+            <h1 class="text-4xl text-center text-[#FEF9EF] m-auto ">{{ title }}</h1>
         </div>
     </div>
 </template>
@@ -13,24 +13,11 @@
 </script>
 
 <style scoped>
-    .header{
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-direction: column;
-        height: 15vh;
-        background-color: #FFCB77;
-        width: 100%;
-    }
-
+    
     h1{
-        text-align: center;
-        margin: auto;
         font-style: italic;
         font-family: 'K2D', sans-serif;
-        font-size: 10vh;
-        color: #FEF9EF;
-        text-shadow: -2px -2px 0 #000, 2px -2px #000, -2px 2px #000, 2px 2px #000;
+        text-shadow: -1px -1px 0 #000, 1px -1px #000, -1px 1px #000, 1px 1px #000;
     }
 
 </style>
