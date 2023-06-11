@@ -40,7 +40,7 @@
                         <div class="flex flex-auto flex-wrap justify-items-start">
                             @if($posts !== null)
                                 @foreach($posts as $post)
-                                    <div class="w-1/3 h-auto px-1 relative">
+                                    <div class="w-1/3 h-auto px-1">
                                         <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                     </div>
                                 @endforeach
