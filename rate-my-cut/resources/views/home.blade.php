@@ -28,24 +28,24 @@
                 <!-- Not Logged In -->
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
-            <div class="flex grow max-w-full justify-center grow shrink basis-auto">
+            <div class="flex flex-col grow max-w-full grow shrink basis-auto">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
-                <div class="flex flex-col justify-between items-center mt-2">
+                <div class="flex items-center m-2">
                     <filter-form :filters="{{json_encode($filters)}}"></filter-form>
                 </div>
 
-                <div class="w-3/5 mt-2 h-[63vh]">
-                    
-                    <div class="flex flex-auto flex-wrap justify-items-start">
-                        @if($posts !== null)
-                            @foreach($posts as $post)
-                                <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
-                                    <!-- <img src="{{ URL::to('/') }}/icons/eraser.png" class="w-4 h-4 bg-white absolute" /> -->
-                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
-                                </div>
-                            @endforeach
-                        @endif
+                <div class="flex flex-col justify-start">
+                    <div class="flex flex-auto justify-between">
+                        <div class="flex flex-auto flex-wrap justify-items-start">
+                            @if($posts !== null)
+                                @foreach($posts as $post)
+                                    <div class="w-1/3 h-auto px-1 relative">
+                                        <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

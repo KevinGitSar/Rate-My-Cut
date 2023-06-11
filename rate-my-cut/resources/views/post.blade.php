@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full m-0">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,26 +19,22 @@
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
     </head>
-    <body class="antialiased">
-        <div id="app">
-            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
-            <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
-            <div class="flex grow max-w-full">
-                <div class="flex flex-col w-4/5 m-auto min-h-61vh">
+    <body class="antialiased h-full m-0">
+        <div id="app" class="flex flex-col h-full">
+            <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
+            <navbar-2-component class="max-w-full grow-0 shrink basis-auto" :user="{{ Auth::user() }}"></navbar-2-component>
+            <div class="max-w-full grow shrink basis-auto">
+                <div class="flex justify-start flex-col m-auto">
 
-                    <h4 class="text-center text-5xl my-5">Show off your HAIRSTYLE!</h4>
+                    <h4 class="text-center text-5xl mt-20">Show off your HAIRSTYLE!</h4>
 
-                    <div class="flex justify-center mt-5">
-                        <div class="flex flex-col justify-center  w-4/6 border-2 border-[#291F1F] p-5">
-                            <div class="flex mt-5 mx-3 justify-center">
-                                <post-form-component :user="{{ Auth::user() }}" :errors="{{$errors}}"></post-form-component>
-                            </div>
-                        </div>
+                    <div class="flex flex-col justify-evenly">
+                        <post-form-component :user="{{ Auth::user() }}" :errors="{{$errors}}"></post-form-component>
                     </div>
                 </div>
             </div>
             
-            <footer-component class="max-w-full"></footer-component>
+            <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>
         </div>
     </body>
 </html>

@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            <footer-component class="max-w-full"></footer-component>
+            <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>
         </div>
     </body>
 </html>

@@ -28,15 +28,16 @@
 
                     <form class="mb-5" action="/user/authenticate" method="GET">
                         <div class="flex flex-col m-auto justify-around mt-5">
-                            <label class="text-sm" for="username">Username</label>
+                            <label class="text-sm" for="username">Username: 
+                                @error('username')
+                                    <span class="text-red-600 mt-1">*{{$message}}*</span>
+                                @enderror
+                            </label>
                             <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" name="username" value="{{ old('first_name')}}"/>
-                            @error('username')
-                                <p class="text-red-600 mt-1">{{$message}}</p>
-                            @enderror
                         </div>
                         
                         <div class="flex flex-col m-auto justify-around mt-5">
-                            <label class="text-sm" for="password">Password</label>
+                            <label class="text-sm" for="password">Password:</label>
                             <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" name="password" type="password" />
                         </div>
 
