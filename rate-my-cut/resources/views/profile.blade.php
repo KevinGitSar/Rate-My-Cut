@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full m-0">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,79 +19,73 @@
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
     </head>
-    <body class="antialiased">
-        <div id="app">
-            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
+    <body class="antialiased h-full m-0">
+        <div id="app" class="flex flex-col h-full">
+            <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
             @auth
-            <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
+            <navbar-2-component class="max-w-full grow-0 shrink basis-auto" :user="{{ Auth::user() }}"></navbar-2-component>
                 @if(Auth::user()->username == $user->username)
                 <!-- Logged In User and User's profile -->
-                <div class="flex grow h-screen mt-5 mb-5">
+                <div class="max-w-full grow shrink basis-auto">
                     <!--Profile Info/Bio etc...-->
-                    <div class="w-1/5 h-auto">
-                        <div class="border-2 border-[#291F1F] h-full mx-10">
+                    <div class="flex flex-col justify-start m-auto">
+                        <div class="mx-2 my-10">
                             <!--Profile Image-->
-                            <div>
+                            <div class="flex justify-around">
                                 @if($user->profile !== null)
-                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
                                 @else
-                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
                                 @endif
                             </div>
+
+                            <div class="flex justify-evenly">
+                                <a href="#" class="flex flex-col justify-center m-2 text-center">
+                                    <p>22</p>
+                                    <p>Postings</p>
+                                </a>
+
+                                
+                                <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                    <p>{{$followers}}</p>
+                                    <p>Followers</p>
+                                </a>
+
+                                <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                    <p>{{$follows}}</p>
+                                    <p>Followings</p>
+                                </a>
+                            </div>
                             
-                            <div class="flex flex-col justify-around">
-                                <p class="my-2 ml-1">{{$user->username}}</p>
+                            <div class="flex flex-col justify-around mt-5">
+                                <p class="my-2 ml-1 text-5xl font-semibold">{{$user->username}}</p>
 
-                                <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
-
-                                <a href="/followings/{{$user->username}}" class="my-2 ml-1">Follows {{$follows}}</a>
-
-                                <p class="my-2 ml-1">
+                                <p class="my-2 ml-1 text-2xl">
                                     {{$user->bio}}
                                 </p>
-
                             </div>
                         </div>
                     </div>
                     
                     <!--User's uploaded content (images + filtering)-->
-                    <div class="w-3/5 h-auto border-2 border-[#291F1F]">
-                        <div class="h-full">
-                            <div class="w-10/12 m-5 mx-auto flex justify-between">
-                                <div>
-                                    <label>Search : </label>
-                                    <input type="text" class="border-2 border-[#291F1F]">
-                                </div>
-                                <div class="flex justify-between w-1/3">
-                                    <div class="flex justify-evenly w-3/5">
-                                        <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Heart</button>
-                                        
-                                        <form action="/create/post" method="GET">
-                                            <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Plus+</button>
-                                        </form>
-                                    </div>
+                    <div class="flex flex-col justify-start m-auto">
 
+                        <div class="flex justify-between m-5">
+                            <form action="/create/post" method="GET">
+                                <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Plus+</button>
+                            </form>
+                        </div>
 
-                                    <label class="rounded-full outline outline-offset-2 outline-blue-500 px-2">Page: 1</label>
-                                </div>
-                            </div>
-                            <div class="flex flex-auto justify-between h-5/6">
-
-                                <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Prev</button></div>
-
-                                <div class="flex flex-auto flex-wrap justify-items-start w-max">
-                                    @if($posts !== null)
-                                        @foreach($posts as $post)
-                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F] relative">
-                                                <delete-button class="absolute right-1" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
-                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
-
-                                <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Next</button></div>
-
+                        <div class="flex flex-auto justify-between">
+                            <div class="flex flex-auto flex-wrap justify-items-start w-max">
+                                @if($posts !== null)
+                                    @foreach($posts as $post)
+                                        <div class="w-1/3 h-auto px-1 relative">
+                                            <delete-button class="absolute right-1" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
+                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -99,59 +93,57 @@
 
                 @else
                 <!-- Logged In User viewing another profile-->
-                <div class="flex grow h-screen mt-5 mb-5">
+                <div class="max-w-full grow shrink basis-auto">
                     <!--Profile Info/Bio etc...-->
-                    <div class="w-1/5 h-auto">
-                        <div class="border-2 border-[#291F1F] h-full mx-10">
+                    <div class="mx-2 my-10">
+                        <div class="flex justify-around">
                             <!--Profile Image-->
                             @if($user->profile !== null)
-                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
                             @else
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
                             @endif
+                        </div>
+                        <div class="flex justify-evenly">
+                            <a href="#" class="flex flex-col justify-center m-2 text-center">
+                                <p>22</p>
+                                <p>Postings</p>
+                            </a>
+
                             
+                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                <p>{{$followers}}</p>
+                                <p>Followers</p>
+                            </a>
+
+                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                <p>{{$follows}}</p>
+                                <p>Followings</p>
+                            </a>
+                        </div>
+                        <div class="flex flex-col justify-around">
+                            <div class="flex justify-between">
+                            <p class="my-2 ml-1 text-5xl font-semibold">{{$user->username}}</p>
                             @if(isset($following))
-                                <!-- binding must be all lower case and adding quotes ('') to username enforces that it's a string -->
-                                <follow-button :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></follow-button>
+                                <follow-button class="my-auto" :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></follow-button>
                             @endif
-                            <div class="flex flex-col justify-around">
-                                <p class="my-2 ml-1">{{$user->username}}</p>
-
-                                <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
-
-                                <a href="/followings/{{$user->username}}" class="my-2 ml-1">Follows {{$follows}}</a>
-
-                                <p class="my-2 ml-1">
-                                    {{$user->bio}}
-                                </p>
                             </div>
+
+                            <p class="my-2 ml-1 text-2xl">{{$user->bio}}</p>
                         </div>
                     </div>
                     
                     <!--User's uploaded content (images + filtering)-->
-                    <div class="w-3/5 h-auto border-2 border-[#291F1F]">
-                        <div class="h-full">
-                            <div class="w-10/12 m-5 mx-auto flex justify-between">
-                                <div class="flex justify-between w-1/3">
-                                    <label class="rounded-full outline outline-offset-2 outline-blue-500 px-2">Page: 1</label>
-                                </div>
-                            </div>
-                            <div class="flex flex-auto justify-between h-5/6">
-
-                                <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Prev</button></div>
-
-                                <div class="flex flex-auto flex-wrap justify-items-start w-max">
-                                    @if($posts !== null)
-                                        @foreach($posts as $post)
-                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
-                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
-
-                                <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Next</button></div>
-
+                    <div class="flex flex-col justify-start m-auto m-5">
+                        <div class="flex flex-auto justify-between">
+                            <div class="flex flex-auto flex-wrap justify-items-start w-max">
+                                @if($posts !== null)
+                                    @foreach($posts as $post)
+                                        <div class="w-1/3 h-auto px-1 relative">
+                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -160,56 +152,56 @@
                 
             @else
                 <!-- Not Logged In -->
-                <navbar-1-component class="max-w-full"></navbar-1-component>
-                <div class="flex grow h-screen mt-5 mb-5">
+                <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
+                <div class="max-w-full grow shrink basis-auto">
                     <!--Profile Info/Bio etc...-->
-                    <div class="w-1/5 h-auto">
-                        <div class="border-2 border-[#291F1F] h-full mx-10">
+                    <div class="mx-2 my-10">
+
+                        <div class="flex justify-around">
                             <!--Profile Image-->
                             @if($user->profile !== null)
-                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
                             @else
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="Avatar" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
                             @endif
+                        </div>
+                        <div class="flex justify-evenly">
+                            <a href="#" class="flex flex-col justify-center m-2 text-center">
+                                <p>22</p>
+                                <p>Postings</p>
+                            </a>
+
                             
-                            <div class="flex flex-col justify-around">
-                                <p class="my-2 ml-1">{{$user->username}}</p>
+                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                <p>{{$followers}}</p>
+                                <p>Followers</p>
+                            </a>
 
-                                <a href="/followers/{{$user->username}}" class="my-2 ml-1">{{$followers}} Followers</a>
-                                
-                                <a href="/followings/{{$user->username}}" class="my-2 ml-1">Follows {{$follows}}</a>
+                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                <p>{{$follows}}</p>
+                                <p>Followings</p>
+                            </a>
+                        </div>
+                        <div class="flex flex-col justify-around mt-5">
+                            <p class="my-2 ml-1 text-5xl font-semibold">{{$user->username}}</p>
 
-                                <p class="my-2 ml-1">
-                                    {{$user->bio}}
-                                </p>
-                            </div>
+                            <p class="my-2 ml-1 text-2xl">
+                                {{$user->bio}}
+                            </p>
                         </div>
                     </div>
                     
                     <!--User's uploaded content (images + filtering)-->
-                    <div class="w-3/5 h-auto border-2 border-[#291F1F]">
-                        <div class="h-full">
-                        <div class="w-10/12 m-5 mx-auto flex justify-between">
-                                <div class="flex justify-between w-1/3">
-                                    <label class="rounded-full outline outline-offset-2 outline-blue-500 px-2">Page: 1</label>
-                                </div>
-                            </div>
-                            <div class="flex flex-auto justify-between h-5/6">
-
-                                <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Prev</button></div>
-
-                                <div class="flex flex-auto flex-wrap justify-items-start w-max">
-                                    @if($posts !== null)
-                                        @foreach($posts as $post)
-                                            <div class="w-1/4 h-1/2 p-2 border-2 border-[#291F1F]">
-                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
-                                            </div>
-                                        @endforeach
-                                    @endif
-                                </div>
-
-                                <div class="self-center"><button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2 m-5">Next</button></div>
-
+                    <div class="flex flex-col justify-start m-auto m-5">
+                        <div class="flex flex-auto justify-between">
+                            <div class="flex flex-auto flex-wrap justify-items-start w-max">
+                                @if($posts !== null)
+                                    @foreach($posts as $post)
+                                        <div class="w-1/3 h-auto px-1 relative">
+                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>

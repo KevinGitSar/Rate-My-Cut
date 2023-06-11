@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full m-0">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,57 +16,57 @@
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
     </head>
-    <body class="antialiased">
-        <div id="app">
-            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
-            
-            <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
-            <div class="flex grow max-w-full">
-                <div class="flex flex-col w-4/5 mt-2 m-auto min-h-61vh justify-center">
+    <body class="antialiased h-full m-0">
+        <div id="app" class="flex flex-col h-full">
+            <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
+            <navbar-2-component class="max-w-full grow-0 shrink basis-auto" :user="{{ Auth::user() }}"></navbar-2-component>
+            <div class="flex max-w-full grow shrink basis-auto justify-center">
+                <div class="flex flex-col justify-evenly">
 
                     <h4 class="text-center text-5xl mt-5">Password Change</h4>
 
                     <form class="mt-5" action="/settings/passwordUpdate" method="POST">
                         {{ csrf_field() }}
 
-                        @if(session('test'))
-                            <h1>{{session('test')}}</h1>
-                        @endif
-                        <div class="flex justify-center mt-5">
-                            <div class="flex flex-col justify-center  w-1/2 p-5">
-                                <div class="flex mt-5 mx-3 justify-center">
-                                    <label class="w-1/4" for="password_old">Enter Old Password:</label>
-                                    <input type="text" name="password_old" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
-                                </div>
-                                @error('password_old')
-                                    <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
-                                @enderror
+                        <div class="mt-5">
+                            <div class="flex flex-col justify-center">
 
-                                <div class="flex mt-5 mx-3 justify-center">
-                                    <label class="w-1/4" for="password">Enter New Password:</label>
-                                    <input type="text" name="password" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                <div class="flex flex-col my-auto mx-8 justify-around mt-5">
+                                    <label class="text-sm" for="password_old">Enter Old Password: 
+                                        @error('password_old')
+                                            <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
+                                        @enderror
+                                    </label>
+                                    <input type="password" name="password_old" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
-                                @error('password')
-                                    <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
-                                @enderror
 
-                                <div class="flex mt-5 mx-3 justify-center">
-                                    <label class="w-1/4" for="password_confirmation">Confirm New Password:</label>
-                                    <input type="text" name="password_confirmation" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D] w-3/6" />
+                                <div class="flex flex-col my-auto mx-8 justify-around mt-5">
+                                    <label class="text-sm" for="password">Enter New Password:  
+                                        @error('password')
+                                            <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
+                                        @enderror
+                                    </label>
+                                    <input type="password" name="password" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
-                                @error('password_confirmation')
-                                    <p class="text-red-600 mt-1 mx-auto">{{$message}}</p>
-                                @enderror
+
+                                <div class="flex flex-col my-auto mx-8 justify-around mt-5">
+                                    <label class="text-sm" for="password_confirmation">Confirm New Password: 
+                                        @error('password_confirmation')
+                                            <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
+                                        @enderror
+                                    </label>
+                                    <input type="password" name="password_confirmation" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
+                                </div>
                             </div>
                         </div>
                         
                         <div class="text-center mb-5 flex justify-evenly w-1/2 mx-auto">
-                            <button type="submit" class="mt-10 bg-[#FFCB77] w-36 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Password</button>
+                            <button type="submit" class="mt-10 bg-[#FFCB77] border-2 border-[#227C9D] w-36 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Password</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <footer-component class="max-w-full"></footer-component>
+            <footer-component class="max-w-full max-w-full grow-0 shrink basis-10"></footer-component>
         </div>
     </body>
 </html>

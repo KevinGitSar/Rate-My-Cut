@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full m-0">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,20 +18,20 @@
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
     </head>
-    <body class="antialiased">
-        <div id="app">
-        <header-component class="max-w-full" title='Rate My Cut!'></header-component>
+    <body class="antialiased h-full m-0">
+        <div id="app" class="flex flex-col h-full">
+        <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
             @auth
                 <!-- Logged In User -->
-                <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
+                <navbar-2-component class="max-w-full grow-0 shrink basis-auto" :user="{{ Auth::user() }}"></navbar-2-component>
             @else
                 <!-- Not Logged In -->
-                <navbar-1-component class="max-w-full"></navbar-1-component>
+                <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
-            <div class="flex grow max-w-full">
+            <div class="flex grow max-w-full justify-center grow shrink basis-auto">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
-                <div class="flex flex-col justify-between items-center w-1/5 border-r-2 border-[#FEB3B1]/25 mt-2">
+                <div class="flex flex-col justify-between items-center mt-2">
                     <filter-form :filters="{{json_encode($filters)}}"></filter-form>
                 </div>
 
@@ -49,7 +49,7 @@
                     </div>
                 </div>
             </div>
-            <footer-component class="max-w-full"></footer-component>
+            <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>
         </div>
     </body>
 </html>

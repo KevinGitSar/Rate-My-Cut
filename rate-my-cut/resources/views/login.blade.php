@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full m-0">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,27 +16,28 @@
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
     </head>
-    <body class="antialiased">
-        <div id="app">
-            <header-component class="max-w-full" title='Rate My Cut!'></header-component>
-            <navbar-1-component class="max-w-full"></navbar-1-component>
-            <div class="flex grow max-w-full">
-                <div class="flex flex-col w-3/6 border-2 border-[#291F1F] rounded-3xl mt-2 m-auto min-h-61vh justify-center">
+    <body class="antialiased h-full m-0">
+        <div id="app" class="flex flex-col h-full">
+            <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
+            <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
+            <!-- content -->
+            <div class="flex max-w-full grow shrink basis-auto justify-center">
+                <div class="flex flex-col justify-evenly">
 
-                    <h4 class="text-center text-5xl mt-5">Login</h4>
+                    <h4 class="text-center text-5xl mt-20">Login</h4>
 
-                    <form class="mt-5" action="/user/authenticate" method="GET">
-                        <div class="flex flex-col w-3/6 m-auto justify-around mt-5">
-                            <label for="username">Username</label>
-                            <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" name="username" value="{{ old('first_name')}}"/>
+                    <form class="mb-5" action="/user/authenticate" method="GET">
+                        <div class="flex flex-col m-auto justify-around mt-5">
+                            <label class="text-sm" for="username">Username</label>
+                            <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" name="username" value="{{ old('first_name')}}"/>
                             @error('username')
                                 <p class="text-red-600 mt-1">{{$message}}</p>
                             @enderror
                         </div>
                         
-                        <div class="flex flex-col w-3/6 m-auto justify-around mt-5">
-                            <label for="password">Password</label>
-                            <input class="rounded-2xl bg-[#FFCB77] pl-2 pr-2" name="password" type="password" />
+                        <div class="flex flex-col m-auto justify-around mt-5">
+                            <label class="text-sm" for="password">Password</label>
+                            <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" name="password" type="password" />
                         </div>
 
                         <div class="text-center">
@@ -49,7 +50,7 @@
                     </form>
                 </div>
             </div>
-            <footer-component class="max-w-full"></footer-component>
+            <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>
         </div>
     </body>
 </html>

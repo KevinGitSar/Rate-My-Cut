@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full m-0">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,26 +16,27 @@
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
     </head>
-    <body class="antialiased">
-        <div id="app">
-        <header-component class="max-w-full" title='Rate My Cut!'></header-component>
+    <body class="antialiased h-full m-0">
+        <div id="app" class="flex flex-col h-full">
+        <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
             @auth
                 <!-- Logged In User -->
-                <navbar-2-component class="max-w-full" :user="{{ Auth::user() }}"></navbar-2-component>
+                <navbar-2-component class="max-w-full grow-0 shrink basis-auto" :user="{{ Auth::user() }}"></navbar-2-component>
             @else
                 <!-- Not Logged In -->
-                <navbar-1-component class="max-w-full"></navbar-1-component>
+                <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
-            <div class="flex grow max-w-full">
-                <div class="flex justify-start flex-col w-5/6 border-2 border-[#291F1F] rounded-3xl mt-2 m-auto min-h-61vh">
+            <div class="max-w-full grow shrink basis-auto">
+                <div class="flex justify-start flex-col m-auto">
+
                     <div class="mx-auto my-10 ">
-                        <h1 class="text-4xl font-semibold">{{$user}} is Following {{$total}} User(s).</h1>
+                        <h1 class="text-3xl text-center font-semibold">{{$user}} is Following {{$total}} User(s).</h1>
                     </div>
 
-                    <div class="flex">
+                    <div class="flex flex-col m-1">
                         @if(isset($followingData))
                             @foreach($followingData as $user)
-                                <div class="w-1/5 rounded overflow-hidden shadow-lg m-2 hover:bg-[#FEB3B1]">
+                                <div class="rounded overflow-hidden shadow-lg my-10 hover:bg-[#FEB3B1] border-2 border-[#FFCB77] hover:border-[#FE6D73]">
                                     <a href="/{{$user->username}}">
                                     @if($user->profile !== null)
                                         <img class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
