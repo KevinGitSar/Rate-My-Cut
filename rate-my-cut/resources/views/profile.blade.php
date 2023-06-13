@@ -33,15 +33,19 @@
                             <!--Profile Image-->
                             <div class="flex justify-around">
                                 @if($user->profile !== null)
-                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
+                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                                 @else
-                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
+                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                                 @endif
                             </div>
 
                             <div class="flex justify-evenly">
                                 <a href="#" class="flex flex-col justify-center m-2 text-center">
-                                    <p>22</p>
+                                    @if($posts == null)
+                                    <p>0</p>
+                                    @else
+                                    <p>{{sizeof($posts)}}</p>
+                                    @endif
                                     <p>Postings</p>
                                 </a>
 
@@ -99,14 +103,18 @@
                         <div class="flex justify-around">
                             <!--Profile Image-->
                             @if($user->profile !== null)
-                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                             @else
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                             @endif
                         </div>
                         <div class="flex justify-evenly">
                             <a href="#" class="flex flex-col justify-center m-2 text-center">
-                                <p>22</p>
+                                @if($posts == null)
+                                <p>0</p>
+                                @else
+                                <p>{{sizeof($posts)}}</p>
+                                @endif
                                 <p>Postings</p>
                             </a>
 
@@ -122,7 +130,7 @@
                             </a>
                         </div>
                         <div class="flex flex-col justify-around">
-                            <div class="flex justify-between">
+                            <div class="flex justify-between md:justify-around">
                             <p class="my-2 ml-1 text-5xl font-semibold">{{$user->username}}</p>
                             @if(isset($following))
                                 <follow-button class="my-auto" :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></follow-button>
@@ -160,14 +168,18 @@
                         <div class="flex justify-around">
                             <!--Profile Image-->
                             @if($user->profile !== null)
-                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                             @else
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 h-auto mx-auto rounded-full mt-5 mb-5">
+                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                             @endif
                         </div>
                         <div class="flex justify-evenly">
                             <a href="#" class="flex flex-col justify-center m-2 text-center">
-                                <p>22</p>
+                                @if($posts == null)
+                                <p>0</p>
+                                @else
+                                <p>{{sizeof($posts)}}</p>
+                                @endif
                                 <p>Postings</p>
                             </a>
 
