@@ -33,14 +33,14 @@
                             <!--Profile Image-->
                             <div class="flex justify-around">
                                 @if($user->profile !== null)
-                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
+                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                                 @else
-                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
+                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                                 @endif
                             </div>
 
                             <div class="flex justify-evenly">
-                                <a href="#" class="flex flex-col justify-center m-2 text-center">
+                                <a href="#" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                     @if($posts == null)
                                     <p>0</p>
                                     @else
@@ -50,12 +50,12 @@
                                 </a>
 
                                 
-                                <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                     <p>{{$followers}}</p>
                                     <p>Followers</p>
                                 </a>
 
-                                <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                                <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                     <p>{{$follows}}</p>
                                     <p>Followings</p>
                                 </a>
@@ -109,7 +109,7 @@
                             @endif
                         </div>
                         <div class="flex justify-evenly">
-                            <a href="#" class="flex flex-col justify-center m-2 text-center">
+                            <a href="#" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                 @if($posts == null)
                                 <p>0</p>
                                 @else
@@ -119,12 +119,12 @@
                             </a>
 
                             
-                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                 <p>{{$followers}}</p>
                                 <p>Followers</p>
                             </a>
 
-                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                 <p>{{$follows}}</p>
                                 <p>Followings</p>
                             </a>
@@ -174,7 +174,7 @@
                             @endif
                         </div>
                         <div class="flex justify-evenly">
-                            <a href="#" class="flex flex-col justify-center m-2 text-center">
+                            <a href="#" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                 @if($posts == null)
                                 <p>0</p>
                                 @else
@@ -184,12 +184,12 @@
                             </a>
 
                             
-                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                 <p>{{$followers}}</p>
                                 <p>Followers</p>
                             </a>
 
-                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center">
+                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
                                 <p>{{$follows}}</p>
                                 <p>Followings</p>
                             </a>
