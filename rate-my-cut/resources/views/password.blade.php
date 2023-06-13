@@ -31,7 +31,7 @@
                         <div class="mt-5">
                             <div class="flex flex-col justify-center">
 
-                                <div class="flex flex-col my-auto mx-8 justify-around mt-5">
+                                <div class="flex flex-col my-auto justify-around mt-5">
                                     <label class="text-sm" for="password_old">Enter Old Password: 
                                         @error('password_old')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
@@ -40,7 +40,7 @@
                                     <input type="password" name="password_old" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
 
-                                <div class="flex flex-col my-auto mx-8 justify-around mt-5">
+                                <div class="flex flex-col my-auto justify-around mt-5">
                                     <label class="text-sm" for="password">Enter New Password:  
                                         @error('password')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
@@ -49,7 +49,7 @@
                                     <input type="password" name="password" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
 
-                                <div class="flex flex-col my-auto mx-8 justify-around mt-5">
+                                <div class="flex flex-col my-auto justify-around mt-5">
                                     <label class="text-sm" for="password_confirmation">Confirm New Password: 
                                         @error('password_confirmation')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
@@ -61,7 +61,7 @@
                         </div>
                         
                         <div class="text-center mb-5 flex justify-evenly w-1/2 mx-auto">
-                            <button type="submit" class="mt-10 bg-[#FFCB77] border-2 border-[#227C9D] w-36 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Password</button>
+                            <button type="submit" class="mt-10 bg-[#FFCB77] border-2 border-[#227C9D] w-36 h-12 sm:w-40 sm:h-16 sm:text-lg sm:font-semibold rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Password</button>
                         </div>
                     </form>
                 </div>

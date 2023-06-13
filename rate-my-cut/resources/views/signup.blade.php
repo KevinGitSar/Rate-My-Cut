@@ -31,7 +31,7 @@
                             <p>Already have an account? Log in <a href="/login" class="text-red-500">here</a>!</p>
                         </div>
 
-                        <div class="">
+                        <div class="lg:w-4/6 lg:mx-auto">
                             <div class="flex flex-col justify-center">
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
                                     <label class="text-sm" for="first_name">First Name: 
@@ -134,7 +134,7 @@
                                 </div>
 
                                 <div class="text-center mb-5">
-                                    <button class="mt-10 bg-[#FFCB77] w-32 h-9 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Sign up!</button>
+                                    <button class="mt-10 bg-[#FFCB77] w-32 h-12 sm:w-40 sm:h-16 sm:text-lg sm:font-semibold rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F] border-2 border-[#227C9D]">Sign up!</button>
                                 </div>
                             </div>
                         </div>

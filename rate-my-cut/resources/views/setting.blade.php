@@ -25,7 +25,7 @@
 
                     <h4 class="text-center text-5xl mt-5">Account Information</h4>
 
-                    <form class="mt-5" action="/settings/update" method="POST" enctype="multipart/form-data">
+                    <form class="mt-5 md:w-10/12 lg:w-8/12 md:mx-auto" action="/settings/update" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         @if (session('notification'))
                             <alert-success :message="'{{session('notification')}}'"></alert-success>
@@ -132,8 +132,9 @@
                         </div>
                         
                         <div class="text-center mb-5 flex justify-evenly mx-auto">
-                            <button type="submit" name="update" value="save" class="mt-10 bg-[#FFCB77] border-2 border-[#227C9D] w-36 h-12 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Changes</button>
-                            <button type="submit" name="update" value="password" class="mt-10 bg-[#FFCB77] border-2 border-[#227C9D] w-36 h-12 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Change Password</button>
+                            <button type="submit" name="update" value="save" class="mt-10 bg-[#FFCB77] border-2 border-[#227C9D] w-36 h-12 sm:w-40 sm:h-16 sm:text-lg sm:font-semibold rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Save Changes</button>
+
+                            <button type="submit" name="update" value="password" class="mt-10 bg-[#FFCB77] border-2 border-[#227C9D] w-36 h-12 sm:w-40 sm:h-16 sm:text-lg sm:font-semibold rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Change Password</button>
                         </div>
                     </form>
                     

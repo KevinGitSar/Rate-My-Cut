@@ -36,17 +36,17 @@
                     <div class="flex flex-col m-1">
                         @if(isset($followingData))
                             @foreach($followingData as $user)
-                                <div class="rounded overflow-hidden shadow-lg my-10 hover:bg-[#FEB3B1] border-2 border-[#FFCB77] hover:border-[#FE6D73]">
+                                <div class="sm:w-3/5 sm:mx-auto rounded overflow-hidden shadow-lg my-10 hover:bg-[#FEB3B1] border-2 border-[#FFCB77] hover:border-[#FE6D73]">
                                     <a href="/{{$user->username}}">
                                     @if($user->profile !== null)
-                                        <img class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
+                                        <img class="w-60 sm:w-40 h-auto aspect-square mx-auto rounded-full mt-5 mb-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
                                     @else
-                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-3/5 h-auto mx-auto rounded-full mt-5 mb-5">
+                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 sm:w-40 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                                     @endif
                                     <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">{{$user->username}}</div>
-                                        <div class="font-bold text-l mb-2">{{$user->first_name}} {{$user->last_name}}</div>
-                                        <p class="text-gray-700 text-base">
+                                        <div class="font-bold text-xl sm:text-lg mb-2">{{$user->username}}</div>
+                                        <div class="font-bold text-lg sm:text-base mb-2">{{$user->first_name}} {{$user->last_name}}</div>
+                                        <p class="text-gray-700 text-base sm:text-md">
                                             {{$user->bio}}
                                         </p>
                                     </div>

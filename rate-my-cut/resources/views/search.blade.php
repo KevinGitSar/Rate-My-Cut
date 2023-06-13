@@ -28,10 +28,10 @@
             @endauth
             <div class="max-w-full grow shrink basis-auto">
                 <div class="flex justify-start flex-col m-auto">
-                    <div class="mx-auto my-5 ">
-                        <form action="/search/user/" method="GET">
+                    <div class="mx-auto sm:mx-5 my-5">
+                        <form action="/search/user/" method="GET" class="text-center">
                             <label class="text-2xl" for="search">Search: </label>
-                            <input type="text" name="search" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
+                            <input type="text" name="search" class="rounded-2xl w-1/2 bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
                             <button type="submit" class="ml-2 mt-10 bg-[#FFCB77] w-16 h-7 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">GO!</button>
                         </form>
                     </div>
@@ -42,14 +42,14 @@
                             <div class="sm:w-3/5 sm:mx-auto rounded overflow-hidden shadow-lg my-10 hover:bg-[#FEB3B1] border-2 border-[#FFCB77] hover:border-[#FE6D73]">
                                 <a href="/{{$user->username}}">
                                     @if($user->profile !== null)
-                                        <img class="w-60 h-auto aspect-square mx-auto rounded-full mt-5 mb-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
+                                        <img class="w-60 sm:w-40 h-auto aspect-square mx-auto rounded-full mt-5 mb-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
                                     @else
-                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
+                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 sm:w-40 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
                                     @endif
                                     <div class="px-6 py-4">
-                                        <div class="font-bold text-xl mb-2">{{$user->username}}</div>
-                                        <div class="font-bold text-l mb-2">{{$user->first_name}} {{$user->last_name}}</div>
-                                        <p class="text-gray-700 text-base">
+                                        <div class="font-bold text-xl sm:text-lg mb-2">{{$user->username}}</div>
+                                        <div class="font-bold text-lg sm:text-base mb-2">{{$user->first_name}} {{$user->last_name}}</div>
+                                        <p class="text-gray-700 text-base sm:text-md">
                                             {{$user->bio}}
                                         </p>
                                     </div>

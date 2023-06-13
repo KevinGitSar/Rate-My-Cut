@@ -26,7 +26,7 @@
             <navbar-2-component class="max-w-full grow-0 shrink basis-auto" :user="{{ Auth::user() }}"></navbar-2-component>
                 @if(Auth::user()->username == $user->username)
                 <!-- Logged In User and User's profile -->
-                <div class="max-w-full grow shrink basis-auto">
+                <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
                     <!--Profile Info/Bio etc...-->
                     <div class="flex flex-col justify-start m-auto">
                         <div class="mx-2 my-10">
@@ -97,7 +97,7 @@
 
                 @else
                 <!-- Logged In User viewing another profile-->
-                <div class="max-w-full grow shrink basis-auto">
+                <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
                     <!--Profile Info/Bio etc...-->
                     <div class="mx-2 my-10">
                         <div class="flex justify-around">
@@ -161,7 +161,7 @@
             @else
                 <!-- Not Logged In -->
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
-                <div class="max-w-full grow shrink basis-auto">
+                <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
                     <!--Profile Info/Bio etc...-->
                     <div class="mx-2 my-10">
 
