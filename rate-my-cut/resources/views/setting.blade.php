@@ -23,7 +23,7 @@
             <div class="flex grow max-w-full">
                 <div class="flex flex-col max-w-full grow shrink basis-auto justify-center">
 
-                    <h4 class="text-center text-5xl mt-5">Account Information</h4>
+                    <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-5">Account Information</h4>
 
                     <form class="mt-5 md:w-10/12 lg:w-8/12 md:mx-auto" action="/settings/update" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -35,98 +35,98 @@
                             <div class="flex flex-col justify-center">
                                 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="profile">Upload Profile</label>
-                                    <input type="file" accept="image/*" name="profile" class="rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]"/>
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="profile">Upload Profile</label>
+                                    <input type="file" accept="image/*" name="profile" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="first_name">First Name: 
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="first_name">First Name: 
                                         @error('first_name')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="text" name="first_name" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->first_name}}"/>
+                                    <input type="text" name="first_name" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->first_name}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="last_name">Last Name: 
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="last_name">Last Name: 
                                         @error('last_name')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="text" name="last_name" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->last_name}}"/>
+                                    <input type="text" name="last_name" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->last_name}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="birthdate">Birthdate:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="birthdate">Birthdate:  
                                         @error('birthdate')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="date" name="birthdate" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->birthdate}}"/>
+                                    <input type="date" name="birthdate" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->birthdate}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="email">E-mail:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="email">E-mail:  
                                         @error('email')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="email" name="email" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->email}}"/>
+                                    <input type="email" name="email" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->email}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="city">City:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="city">City:  
                                         @error('city')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="text" name="city" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->city}}"/>
+                                    <input type="text" name="city" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->city}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="province">Province:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="province">Province:  
                                         @error('province')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="text" name="province" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->province}}"/>
+                                    <input type="text" name="province" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->province}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="country">Country:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="country">Country:  
                                         @error('country')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="text" name="country" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->country}}"/>
+                                    <input type="text" name="country" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->country}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="postal_code">Postal Code:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="postal_code">Postal Code:  
                                         @error('postal_code')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="text" name="postal_code" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->postal_code}}"/>
+                                    <input type="text" name="postal_code" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->postal_code}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="username">Username:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="username">Username:  
                                         @error('username')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="text" name="username" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->username}}"/>
+                                    <input type="text" name="username" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->username}}"/>
                                 </div>
 
                                 <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                                    <label class="text-sm" for="bio">Bio:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="bio">Bio:  
                                         @error('bio')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <textarea name="bio" rows="2" cols="50" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->bio}}"></textarea>
+                                    <textarea name="bio" rows="2" cols="50" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" value="{{$user->bio}}"></textarea>
                                 </div>
                             </div>
                         </div>

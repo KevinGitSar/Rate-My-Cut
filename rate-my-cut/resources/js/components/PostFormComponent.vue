@@ -1,14 +1,15 @@
 <template>
-    <div class="md:w-10/12 mx-auto mt-5">
+    <div class="w-full md:w-10/12 mx-auto mt-5">
         <form :action="'/create/post/'+user.username" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" :value="csrf">
 
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="image">Show off your hair!</label>
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="image">Show off your hair!</label>
                 <strong v-if="errors && errors.image" class="text-red-600">*{{ errors.image[0] }}*</strong>
                 <strong v-if="fileErrorMessage" class="text-red-600 mt-1 mx-auto">{{ fileErrorMessage }}</strong>
                 <input type="file" accept="image/*" name="image" @change="onFileChange" class="block w-full text-sm sm:file:text-lg sm:text-lg md:text-2xl md:file:text-2xl text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:text-sm file:font-semibold file:bg-[#FFCB77] file:border-2 border-[#227C9D] hover:file:bg-[#FEF9EF]"/>
             </div>
+            
             
 
             <div id="preview" class="flex my-auto justify-center mt-5">
@@ -16,15 +17,15 @@
             </div>
             
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="description">Tell us about your new hair style!</label>
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="description">Tell us about your new hair style!</label>
                 <strong v-if="errors && errors.description" class="text-red-600">*{{ errors.description[0] }}*</strong>
-                <textarea name="description" id="description" rows="2" cols="50" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]"></textarea>
+                <textarea name="description" id="description" rows="2" cols="50" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]"></textarea>
             </div>
             
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="category">Who is this hair style generally for?</label>     
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="category">Who is this hair style generally for?</label>     
                 <strong v-if="errors && errors.category" class="text-red-600">*{{ errors.category[0] }}*</strong>
-                <select name="category" id="category" v-model="category" class="text-2xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]">
+                <select name="category" id="category" v-model="category" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]">
                     <option disabled value="null"> -- Please Select an Option -- </option>
                     <option value="W" class="text-center">Women</option>
                     <option value="M" class="text-center">Men</option>
@@ -34,9 +35,9 @@
             </div>
 
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="hair_length">How long is the hair?</label>
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="hair_length">How long is the hair?</label>
                 <strong v-if="errors && errors.hair_length" class="text-red-600">{{ errors.hair_length[0] }}</strong>
-                <select class="text-2xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" name="hair_length" id="hair_length" v-model="length">
+                <select class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" name="hair_length" id="hair_length" v-model="length">
                     <option disabled value="null"> -- Please Select an Option -- </option>
                     <option value="short">Short</option>
                     <option value="medium">Medium</option>
@@ -51,9 +52,9 @@
             </div>
 
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="hair_type">What is your hair type?</label>
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="hair_type">What is your hair type?</label>
                 <strong v-if="errors && errors.hair_type" class="text-red-600">*{{ errors.hair_type[0] }}*</strong>
-                <select class="text-2xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" name="hair_type" id="hair_type" v-model="type">
+                <select class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" name="hair_type" id="hair_type" v-model="type">
                     <option disabled value="null"> -- Please Select an Option -- </option>
                     <option value="straight">Straight</option>
                     <option value="wavy">Wavy</option>
@@ -63,19 +64,19 @@
             </div>
             
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="hair_style">What is this hair style called?*</label>
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="hair_style">What is this hair style called?*</label>
                 <strong v-if="errors && errors.hair_style" class="text-red-600">*{{ errors.hair_style[0] }}*</strong>
-                <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" type="text" name="hair_style" id="hair_style" placeholder="Buzz, Fade, Bob Cut, Ponytail..." />
+                <input class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" type="text" name="hair_style" id="hair_style" placeholder="Buzz, Fade, Bob Cut, Ponytail..." />
             </div>
 
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="location_name">Share where you cut your hair!</label>
-                <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" type="text" name="location_name" id="location_name" placeholder="Ex: Freshcuts" />
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="location_name">Share where you cut your hair!</label>
+                <input class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" type="text" name="location_name" id="location_name" placeholder="Ex: Freshcuts" />
             </div>
 
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm" for="location_address">And location!</label>
-                <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" type="text" name="location_address" id="location_address" placeholder="Ex: 77 Violet Dr, Hamilton, ON L8E 3J2" /> 
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="location_address">And location!</label>
+                <input class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" type="text" name="location_address" id="location_address" placeholder="Ex: 77 Violet Dr, Hamilton, ON L8E 3J2" /> 
             </div>
 
 

@@ -27,12 +27,16 @@
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
             <div class="max-w-full grow shrink basis-auto">
-                <div class="flex justify-start flex-col m-auto">
+                <div class="flex justify-start flex-col">
                     <div class="mx-auto sm:mx-5 my-5">
-                        <form action="/search/user/" method="GET" class="text-center">
-                            <label class="text-2xl" for="search">Search: </label>
-                            <input type="text" name="search" class="rounded-2xl w-1/2 bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
-                            <button type="submit" class="ml-2 mt-10 bg-[#FFCB77] w-16 h-7 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">GO!</button>
+                        <form action="/search/user/" method="GET" class="text-center mt-10">
+                            <div class="flex align-center justify-center">  
+                                <label class="text-center text-xl md:text-2xl lg:text-3xl" for="search">Search: </label>
+                                
+                                <input type="text" name="search" class="text-xl md:text-2xl lg:text-3xl rounded-2xl w-1/2 bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
+                            
+                                <button type="submit" class="ml-2 bg-[#FFCB77] w-16 h-8 sm:w-24 sm:h-10 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">GO!</button>
+                            </div>
                         </form>
                     </div>
 

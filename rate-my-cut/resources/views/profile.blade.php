@@ -29,14 +29,23 @@
                 <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
                     <!--Profile Info/Bio etc...-->
                     <div class="flex flex-col justify-start m-auto">
-                        <div class="mx-2 my-10">
+                        <div class="mx-2 my-10 h-1/5">
                             <!--Profile Image-->
-                            <div class="flex justify-around">
-                                @if($user->profile !== null)
-                                    <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
-                                @else
-                                    <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
-                                @endif
+                            <div class="flex">
+                                <div class="w-1/4 sm:w-1/5 mx-5 md:w-2/12">
+                                    @if($user->profile !== null)
+                                        <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="aspect-square h-auto mx-auto rounded-full mt-5 mb-5">
+                                    @else
+                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="aspect-square h-auto mx-auto rounded-full mt-5 mb-5">
+                                    @endif
+                                </div>
+                                <div class="flex flex-col w-3/4">
+                                    <p class="m-2 font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl">{{$user->username}}</p>
+
+                                    <p class="my-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+                                        {{$user->bio}}
+                                    </p>
+                                </div>
                             </div>
 
                             <div class="flex justify-evenly">
@@ -60,14 +69,6 @@
                                     <p>Followings</p>
                                 </a>
                             </div>
-                            
-                            <div class="flex flex-col justify-around mt-5">
-                                <p class="my-2 ml-1 text-5xl font-semibold">{{$user->username}}</p>
-
-                                <p class="my-2 ml-1 text-2xl">
-                                    {{$user->bio}}
-                                </p>
-                            </div>
                         </div>
                     </div>
                     
@@ -80,13 +81,15 @@
                             </form>
                         </div>
 
-                        <div class="flex flex-auto justify-between">
+                        <div class="flex justify-center">
                             <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                 @if($posts !== null)
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 relative">
-                                            <delete-button class="absolute right-1" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
-                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
+                                            <delete-button class="absolute right-px top-px" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
+                                            <div class="flex flex-col justify-center h-full">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                            </div>
                                         </div>
                                     @endforeach
                                 @endif
@@ -99,56 +102,62 @@
                 <!-- Logged In User viewing another profile-->
                 <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
                     <!--Profile Info/Bio etc...-->
-                    <div class="mx-2 my-10">
-                        <div class="flex justify-around">
-                            <!--Profile Image-->
-                            @if($user->profile !== null)
-                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
-                            @else
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
-                            @endif
-                        </div>
-                        <div class="flex justify-evenly">
-                            <a href="#" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
-                                @if($posts == null)
-                                <p>0</p>
-                                @else
-                                <p>{{sizeof($posts)}}</p>
-                                @endif
-                                <p>Postings</p>
-                            </a>
+                    <div class="flex flex-col justify-start m-auto">
+                        <div class="mx-2 my-10 h-1/5">
+                            <div class="flex">
+                                <div class="w-1/4 sm:w-1/5 mx-5 md:w-2/12">
+                                    <!--Profile Image-->
+                                    @if($user->profile !== null)
+                                        <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="aspect-square h-auto mx-auto rounded-full mt-5 mb-5">
+                                    @else
+                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="aspect-square h-auto mx-auto rounded-full mt-5 mb-5">
+                                    @endif
+                                </div>
+                                <div class="flex flex-col w-3/4">
+                                    <div class="flex justify-between m-2">
+                                        <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">{{$user->username}}</p>
+                                        @if(isset($following))
+                                        <follow-button class="my-auto" :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></follow-button>
+                                        @endif
+                                    </div>
 
-                            
-                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
-                                <p>{{$followers}}</p>
-                                <p>Followers</p>
-                            </a>
-
-                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
-                                <p>{{$follows}}</p>
-                                <p>Followings</p>
-                            </a>
-                        </div>
-                        <div class="flex flex-col justify-around">
-                            <div class="flex justify-between md:justify-around">
-                            <p class="my-2 ml-1 text-5xl font-semibold">{{$user->username}}</p>
-                            @if(isset($following))
-                                <follow-button class="my-auto" :messageprop="{{ $following }}" :user="'{{ $user->username }}'"></follow-button>
-                            @endif
+                                    <p class="m-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">{{$user->bio}}</p>
+                                </div>
                             </div>
+                            <div class="flex justify-evenly">
+                                <a href="#" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
+                                    @if($posts == null)
+                                    <p>0</p>
+                                    @else
+                                    <p>{{sizeof($posts)}}</p>
+                                    @endif
+                                    <p>Postings</p>
+                                </a>
 
-                            <p class="my-2 ml-1 text-2xl">{{$user->bio}}</p>
+                                
+                                <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
+                                    <p>{{$followers}}</p>
+                                    <p>Followers</p>
+                                </a>
+
+                                <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
+                                    <p>{{$follows}}</p>
+                                    <p>Followings</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
                     <!--User's uploaded content (images + filtering)-->
-                    <div class="flex flex-col justify-start m-auto m-5">
-                        <div class="flex flex-auto justify-between">
+                    <div class="flex flex-col justify-start m-auto">
+                        <div class="flex justify-center">
                             <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                 @if($posts !== null)
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 relative">
-                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
+                                            <div class="flex flex-col justify-center h-full">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                            </div>
                                         </div>
                                     @endforeach
                                 @endif
@@ -163,54 +172,61 @@
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
                 <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
                     <!--Profile Info/Bio etc...-->
-                    <div class="mx-2 my-10">
+                    <div class="flex flex-col justify-start m-auto">
+                        <div class="mx-2 my-10 h-1/5">
 
-                        <div class="flex justify-around">
-                            <!--Profile Image-->
-                            @if($user->profile !== null)
-                                <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
-                            @else
-                                <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-56 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
-                            @endif
-                        </div>
-                        <div class="flex justify-evenly">
-                            <a href="#" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
-                                @if($posts == null)
-                                <p>0</p>
-                                @else
-                                <p>{{sizeof($posts)}}</p>
-                                @endif
-                                <p>Postings</p>
-                            </a>
+                            <div class="flex">
+                                <!--Profile Image-->
+                                <div class="w-1/4 sm:w-1/5 mx-5 md:w-2/12">
+                                    @if($user->profile !== null)
+                                        <img src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture" class="aspect-square h-auto mx-auto rounded-full mt-5 mb-5">
+                                    @else
+                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="aspect-square h-auto mx-auto rounded-full mt-5 mb-5">
+                                    @endif
+                                </div>
+                                
+                                <div class="flex flex-col justify-around mt-5">
+                                    <p class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">{{$user->username}}</p>
 
-                            
-                            <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
-                                <p>{{$followers}}</p>
-                                <p>Followers</p>
-                            </a>
+                                    <p class="m-2 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+                                        {{$user->bio}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex justify-evenly">
+                                <a href="#" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
+                                    @if($posts == null)
+                                    <p>0</p>
+                                    @else
+                                    <p>{{sizeof($posts)}}</p>
+                                    @endif
+                                    <p>Postings</p>
+                                </a>
 
-                            <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
-                                <p>{{$follows}}</p>
-                                <p>Followings</p>
-                            </a>
-                        </div>
-                        <div class="flex flex-col justify-around mt-5">
-                            <p class="my-2 ml-1 text-5xl font-semibold">{{$user->username}}</p>
+                                
+                                <a href="/followers/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
+                                    <p>{{$followers}}</p>
+                                    <p>Followers</p>
+                                </a>
 
-                            <p class="my-2 ml-1 text-2xl">
-                                {{$user->bio}}
-                            </p>
+                                <a href="/followings/{{$user->username}}" class="flex flex-col justify-center m-2 text-center sm:text-lg md:text-xl lg:text-2xl">
+                                    <p>{{$follows}}</p>
+                                    <p>Followings</p>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
                     <!--User's uploaded content (images + filtering)-->
-                    <div class="flex flex-col justify-start m-auto m-5">
-                        <div class="flex flex-auto justify-between">
+                    <div class="flex flex-col justify-start m-auto">
+                        <div class="flex justify-center">
                             <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                 @if($posts !== null)
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 relative">
-                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
+                                            <div class="flex flex-col justify-center h-full">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                            </div>
                                         </div>
                                     @endforeach
                                 @endif

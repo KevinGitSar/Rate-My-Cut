@@ -26,7 +26,7 @@
             <div class="max-w-full grow shrink basis-auto">
                 <div class="flex justify-start flex-col m-auto">
 
-                    <h4 class="text-center text-5xl mt-20">Show off your HAIRSTYLE!</h4>
+                    <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-20">Show off your HAIRSTYLE!</h4>
 
                     <div class="flex flex-col justify-evenly">
                         <post-form-component :user="{{ Auth::user() }}" :errors="{{$errors}}"></post-form-component>

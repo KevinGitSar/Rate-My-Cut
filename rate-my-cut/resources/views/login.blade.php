@@ -21,28 +21,28 @@
             <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
             <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             <!-- content -->
-            <div class="max-w-full grow shrink-0 basis-auto mx-auto  sm:w-5/6 lg:w-4/6">
+            <div class="max-w-full grow shrink-0 basis-auto mx-auto  sm:w-5/6 md:w-3/6 lg:w-3/6">
                 <div class="flex flex-col justify-evenly max-w-full">
 
-                    <h4 class="text-center text-5xl mt-20">Login</h4>
+                    <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-20">Login</h4>
 
                     <form class="mb-5" action="/user/authenticate" method="GET">
                         <div class="flex flex-col justify-around mt-5">
-                            <label class="text-sm" for="username">Username: 
+                            <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="username">Username: 
                                 @error('username')
                                     <span class="text-red-600 mt-1">*{{$message}}*</span>
                                 @enderror
                             </label>
-                            <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" name="username" value="{{ old('first_name')}}"/>
+                            <input class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" type="text" name="username" value="{{ old('first_name')}}"/>
                         </div>
                         
                         <div class="flex flex-col justify-around mt-5">
-                            <label class="text-sm" for="password">Password:</label>
-                            <input class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" name="password" type="password" />
+                            <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="password">Password:</label>
+                            <input class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2" name="password" type="password" />
                         </div>
 
                         <div class="text-center">
-                            <button class="mt-10 bg-[#FFCB77] w-32 h-12 sm:w-40 sm:h-16 sm:text-lg sm:font-semibold rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Login!</button>
+                            <button class="mt-10 bg-[#FFCB77] w-32 h-12 sm:w-40 sm:h-16 text-lg sm:text-xl sm:font-semibold rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Login!</button>
                         </div>
 
                         <div class="flex justify-end mr-3.5 text-sm mt-10">

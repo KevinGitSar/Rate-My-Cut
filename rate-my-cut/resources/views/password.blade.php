@@ -23,7 +23,7 @@
             <div class="flex max-w-full grow shrink basis-auto justify-center">
                 <div class="flex flex-col justify-evenly">
 
-                    <h4 class="text-center text-5xl mt-5">Password Change</h4>
+                    <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-5">Password Change</h4>
 
                     <form class="mt-5" action="/settings/passwordUpdate" method="POST">
                         {{ csrf_field() }}
@@ -32,30 +32,30 @@
                             <div class="flex flex-col justify-center">
 
                                 <div class="flex flex-col my-auto justify-around mt-5">
-                                    <label class="text-sm" for="password_old">Enter Old Password: 
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="password_old">Enter Old Password: 
                                         @error('password_old')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="password" name="password_old" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
+                                    <input type="password" name="password_old" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
 
                                 <div class="flex flex-col my-auto justify-around mt-5">
-                                    <label class="text-sm" for="password">Enter New Password:  
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="password">Enter New Password:  
                                         @error('password')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="password" name="password" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
+                                    <input type="password" name="password" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xlbg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
 
                                 <div class="flex flex-col my-auto justify-around mt-5">
-                                    <label class="text-sm" for="password_confirmation">Confirm New Password: 
+                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="password_confirmation">Confirm New Password: 
                                         @error('password_confirmation')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="password" name="password_confirmation" class="text-2xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
+                                    <input type="password" name="password_confirmation" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
                             </div>
                         </div>

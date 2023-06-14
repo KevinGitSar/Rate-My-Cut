@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="followUser" v-if="message == true ? buttonText = 'Unfollow' : buttonText = 'Follow'">
+        <button @click="followUser" v-if="message == true ? buttonText = 'Unfollow' : buttonText = 'Follow'" class="bg-[#FFCB77] w-16 h-8 sm:w-24 sm:h-10 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">
             {{ buttonText }}
         </button>
     </div>
@@ -51,10 +51,4 @@
 </script>
 
 <style scoped>
-    button{
-        background-color: white;
-        border: 2px solid black;
-        border-radius: 15px;
-        padding: 2px;
-    }
 </style>
