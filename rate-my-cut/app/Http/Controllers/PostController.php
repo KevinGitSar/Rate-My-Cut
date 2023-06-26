@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -126,13 +127,18 @@ class PostController extends Controller
 
     public function viewPost(String $username, int $id){
         if(Post::where('username', $username)->where('id', $id)->exists()){
-            $previous = Post::where('id', '<', $id)->max('id');
+            if(User::where('username', $username)->exists()){
+                $user = User::where('username', $username)->get();
 
-            $current = Post::where('id', $id)->get();
+                $previous = Post::where('id', '<', $id)->max('id');
 
-            $next = Post::where('id', '>', $id)->min('id');
+                $current = Post::where('id', $id)->get();
+    
+                $next = Post::where('id', '>', $id)->min('id');
+    
+                return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next]);
+            }
 
-            return view('/singlepost', ['previous' => $previous, 'current' => $current, 'next' => $next]);
         }
     }
 }

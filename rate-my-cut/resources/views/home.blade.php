@@ -41,7 +41,9 @@
                             @if($posts !== null)
                                 @foreach($posts as $post)
                                     <div class="w-1/3 h-auto px-1">
-                                        <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        <a href="/{{$post->username}}">
+                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        </a>
                                     </div>
                                 @endforeach
                             @endif

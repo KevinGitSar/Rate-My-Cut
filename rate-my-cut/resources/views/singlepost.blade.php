@@ -20,32 +20,51 @@
         @vite(['resources/js/app.js'])
     </head>
     <body class="antialiased h-full m-0">
-        <div id="app" class="flex flex-col h-full">
+        
+        <div id="app" class="flex flex-col justify-center h-full">
+            <div class="m-2 p-2">
+                @if($user !== null)
+                    <a href="/{{$user[0]->username}}">Return to Profile</a>
+                @endif
+            </div>
             <div class="flex justify-around">
-                <!-- @if($previous !== null)
-                <div>
-                    <a href="#">{{$previous}}</a>
-                </div>
-                @endif -->
-                @if($current !== null)
+                @if($current !== null && $user !== null)
                 <div class="h-auto px-1 my-1 bg-[#FEB3B1] border-2 border-[#291F1F]">
                     <div class="">
                         <img src="{{ URL::to('/') }}/images/{{$current[0]->image}}" />
                     </div>
                     <div class="bg-white w-max-full">
                         <div class="p-2 m-2">
-                            <h1 class="font-semibold">{{$current[0]->username}}</h1>
+                            <h1 class="font-semibold text-2xl m-2">{{$current[0]->username}}</span></h1> <!-- Like Component-->
                             
-                            <p class="font-semibold">{{$current[0]->username}}</p>
+                            <div class="m-2">
+                                <p class="text-xl">Description:</p>
+                                <p class="text-lg">{{$current[0]->description}}</p>
+                            </div>
+
+                            <div class="flex flex-wrap m-2">
+                                <p class="w-1/2 text-base">Category: {{$current[0]->category}}</p>
+                                <p class="w-1/2 text-base">Hair Style: {{$current[0]->hair_style}}</p>
+                                <p class="w-1/2 text-base">Hair Type: {{$current[0]->hair_type}}</p>
+                                <p class="w-1/2 text-base">Hair Length: {{$current[0]->hair_length}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @endif
-                <!-- @if($next !== null)
-                <div>
-                    <a href="#">{{$next}}</a>
-                </div>
-                @endif -->
+            </div>
+            <div class="m-2 p-2 flex justify-between">
+                @if($previous !== null)
+                <a href="/{{$user[0]->username}}/post/{{$previous}}">Previous</a>
+                @else
+                <div></div>
+                @endif
+
+                @if($next !== null)
+                <a href="/{{$user[0]->username}}/post/{{$next}}">Next</a>
+                @else
+                <div></div>
+                @endif
             </div>
         </div>
     </body>
