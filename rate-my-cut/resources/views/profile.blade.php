@@ -86,10 +86,13 @@
                                 @if($posts !== null)
                                     @foreach($posts as $post)
                                         <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
+                                            
                                             <delete-button class="absolute right-px top-px" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
-                                            <div class="flex flex-col justify-center h-full">
-                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
-                                            </div>
+                                            <a href="/{{$post->username}}/post/{{$post->id}}">
+                                                <div class="flex flex-col justify-center h-full">
+                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                                </div>
+                                            </a>
                                         </div>
                                     @endforeach
                                 @endif

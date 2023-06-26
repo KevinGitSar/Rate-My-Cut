@@ -80,5 +80,7 @@ Route::post('/delete/post/{filename}', [PostController::class, 'destroy']);
 
 Route::get('/upload/profile/{username}',[UserController::class, 'uploadProfile']);
 
+Route::get('/{username}/post/{id}', [PostController::class, 'viewPost']);
+
 // Return a user's profile view.
 Route::get('/{username}', [UserController::class, 'profile']);

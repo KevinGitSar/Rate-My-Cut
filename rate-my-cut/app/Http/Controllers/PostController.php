@@ -123,4 +123,16 @@ class PostController extends Controller
             return view('/errors', ['errorCode' => $errorCode]);
         }
     }
+
+    public function viewPost(String $username, int $id){
+        if(Post::where('username', $username)->where('id', $id)->exists()){
+            $previous = Post::where('id', '<', $id)->max('id');
+
+            $current = Post::where('id', $id)->get();
+
+            $next = Post::where('id', '>', $id)->min('id');
+
+            return view('/singlepost', ['previous' => $previous, 'current' => $current, 'next' => $next]);
+        }
+    }
 }
