@@ -179,7 +179,6 @@ class PostController extends Controller
     public function likePost(Request $request, int $postID){
         if(Auth::check()){
             $authUser = Auth::user();
-
             Like::create([
                 'username' => $authUser->username, 
                 'post_id' => $postID]);
@@ -195,7 +194,6 @@ class PostController extends Controller
 
     public function unlikePost(Request $request, int $postID){
         if(Auth::check()){
-
             $authUser = Auth::user();
             Like::where('username', $authUser->username)->where('post_id', $postID)->delete();
             

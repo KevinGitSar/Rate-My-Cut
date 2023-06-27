@@ -17,7 +17,8 @@
         {
             return{
                 buttonText: '',
-                postID: this.post,
+                postID: this.post['id'],
+                username: this.post['username'],
                 like: this.likeprop,
                 imageSource: '/icons/heart.png',
             }
@@ -27,7 +28,7 @@
             likePost(e)
             {
                 //console.log(this.buttonText);
-                if(this.buttonText == 'Follow'){
+                if(this.buttonText == 'unlike'){
                     axios.get('/like/' + this.postID).then(response =>{
                         if(response.status == 200){
                             //console.log(response.data);
@@ -37,7 +38,7 @@
                         console.log('Error:' + error);
                     });
                 } 
-                else if(this.buttonText == 'Unfollow'){    
+                else if(this.buttonText == 'like'){    
                     axios.get('/unlike/' + this.postID).then(response =>{
                         if(response.status == 200){
                             //console.log(response.data);

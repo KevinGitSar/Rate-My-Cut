@@ -39,7 +39,7 @@
                                 <h1 class="font-semibold text-2xl m-2">{{$current[0]->username}}</h1>
                                 
                                 @if(isset($like))
-                                    <like-button :likeprop="{{$like}}" :post="{{$current[0]->id}}"></like-button>
+                                    <like-button :likeprop="{{$like}}" :post="{{$current[0]}}"></like-button>
                                 @endif
                             </div>
 
