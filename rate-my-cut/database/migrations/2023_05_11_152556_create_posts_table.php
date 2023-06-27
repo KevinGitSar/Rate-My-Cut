@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('posts');
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('username');
             $table->foreign('username')->references('username')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('image');
             $table->string('description');
-            $table->string('category', 1);
+            $table->string('category');
             $table->string('hair_length');
             $table->string('hair_style');
             $table->string('hair_type');
@@ -33,5 +34,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('posts');
+        // Schema::dropIfExists('likes');
+        // Schema::table('posts', function (Blueprint $table){
+        //     $table->dropForeign('likes_username_foreign');
+        //     $table->dropColumn('username');
+        // });
     }
 };

@@ -22,11 +22,11 @@
     <body class="antialiased h-full m-0">
         
         <div id="app" class="flex flex-col justify-center h-full">
-            <div class="m-2 p-2">
                 @if($user !== null)
-                    <a href="/{{$user[0]->username}}">Return to Profile</a>
+                <div class="flex justify-center w-3/5 mx-auto mb-2 bg-[#FEB3B1]">
+                    <a href="/{{$user[0]->username}}" class="m-auto p-2">Return to Profile</a>    
+                </div>
                 @endif
-            </div>
             <div class="flex justify-around">
                 @if($current !== null && $user !== null)
                 <div class="h-auto px-1 my-1 bg-[#FEB3B1] border-2 border-[#291F1F]">
@@ -35,8 +35,14 @@
                     </div>
                     <div class="bg-white w-max-full">
                         <div class="p-2 m-2">
-                            <h1 class="font-semibold text-2xl m-2">{{$current[0]->username}}</span></h1> <!-- Like Component-->
-                            
+                            <div class="flex justify-between">
+                                <h1 class="font-semibold text-2xl m-2">{{$current[0]->username}}</h1>
+                                
+                                @if(isset($like))
+                                    <like-button :likeprop="{{$like}}" :post="{{$current[0]->id}}"></like-button>
+                                @endif
+                            </div>
+
                             <div class="m-2">
                                 <p class="text-xl">Description:</p>
                                 <p class="text-lg">{{$current[0]->description}}</p>

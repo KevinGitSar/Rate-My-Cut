@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Like;
 
 class PostController extends Controller
 {
@@ -126,19 +127,84 @@ class PostController extends Controller
     }
 
     public function viewPost(String $username, int $id){
-        if(Post::where('username', $username)->where('id', $id)->exists()){
-            if(User::where('username', $username)->exists()){
-                $user = User::where('username', $username)->get();
-
-                $previous = Post::where('id', '<', $id)->max('id');
-
-                $current = Post::where('id', $id)->get();
+        if(Auth::check()){
+            $authUser = Auth::user();
+            if(Post::where('username', $username)->where('id', $id)->exists()){
+                if(User::where('username', $username)->exists()){
+                    $user = User::where('username', $username)->get();
     
-                $next = Post::where('id', '>', $id)->min('id');
+                    $previous = Post::where('id', '<', $id)->max('id');
     
-                return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next]);
+                    $current = Post::where('id', $id)->get();
+        
+                    $next = Post::where('id', '>', $id)->min('id');
+        
+                    $like = 'false';
+
+                    if(Like::where('username', $authUser->username)->where('post_id', $id)->exists()){
+                        $like = 'true';
+                    }
+
+                    return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next, 'like' => $like]);
+                } else{
+                    //User not found
+                    $errorCode = 1001;
+                    return view('/errors', ['errorCode' => $errorCode]);
+                }
             }
+        } else {
+            if (Post::where('username', $username)->where('id', $id)->exists()){
+                if(User::where('username', $username)->exists()){
+                    $user = User::where('username', $username)->get();
+    
+                    $previous = Post::where('id', '<', $id)->max('id');
+    
+                    $current = Post::where('id', $id)->get();
+        
+                    $next = Post::where('id', '>', $id)->min('id');
+        
+                    return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next]);
+                    
+                } else{
+                    //User not found
+                    $errorCode = 1001;
+                    return view('/errors', ['errorCode' => $errorCode]);
+                }
+            }
+        }
+        
+        
+    }
 
+    public function likePost(Request $request, int $postID){
+        if(Auth::check()){
+            $authUser = Auth::user();
+
+            Like::create([
+                'username' => $authUser->username, 
+                'post_id' => $postID]);
+
+            $like = 'true';
+            return $like;
+        } else{
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
+        }
+    }
+
+    public function unlikePost(Request $request, int $postID){
+        if(Auth::check()){
+
+            $authUser = Auth::user();
+            Like::where('username', $authUser->username)->where('post_id', $postID)->delete();
+            
+            $like = 'false';
+            return $like;
+        } else{
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 }

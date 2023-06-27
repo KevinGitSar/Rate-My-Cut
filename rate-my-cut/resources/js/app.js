@@ -19,8 +19,9 @@ import Navbar1Component from './components/Navbar1Component.vue';
 import Navbar2Component from './components/Navbar2Component.vue';
 import AlertSuccess from './components/AlertSuccess.vue';
 import FollowButton from './components/FollowButton.vue';
-import PostFormComponent from './components/PostFormComponent.vue';
 import DeleteButton from './components/DeleteButton.vue';
+import LikeButton from './components/LikeButton.vue';
+import PostFormComponent from './components/PostFormComponent.vue';
 import FilterForm from './components/FilterForm.vue';
 import ErrorComponent from './components/ErrorComponent.vue';
 
@@ -36,6 +37,7 @@ const app = createApp({
         'delete-button' : DeleteButton,
         'filter-form' : FilterForm,
         'error-component' : ErrorComponent,
+        'like-button' : LikeButton,
     }
 });
 

@@ -82,5 +82,9 @@ Route::get('/upload/profile/{username}',[UserController::class, 'uploadProfile']
 
 Route::get('/{username}/post/{id}', [PostController::class, 'viewPost']);
 
+Route::get('/like/{postID}', [PostController::class, 'likePost']);
+
+Route::get('/unlike/{postID}', [PostController::class, 'unlikePost']);
+
 // Return a user's profile view.
 Route::get('/{username}', [UserController::class, 'profile']);

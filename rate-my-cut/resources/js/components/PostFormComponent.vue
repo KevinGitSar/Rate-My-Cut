@@ -27,10 +27,10 @@
                 <strong v-if="errors && errors.category" class="text-red-600">*{{ errors.category[0] }}*</strong>
                 <select name="category" id="category" v-model="category" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]">
                     <option disabled value="null"> -- Please Select an Option -- </option>
-                    <option value="W" class="text-center">Women</option>
-                    <option value="M" class="text-center">Men</option>
-                    <option value="G" class="text-center">Girls</option>
-                    <option value="B" class="text-center">Boys</option>
+                    <option value="Women" class="text-center">Women</option>
+                    <option value="Men" class="text-center">Men</option>
+                    <option value="Girls" class="text-center">Girls</option>
+                    <option value="Boys" class="text-center">Boys</option>
                 </select>
             </div>
 
@@ -39,15 +39,15 @@
                 <strong v-if="errors && errors.hair_length" class="text-red-600">{{ errors.hair_length[0] }}</strong>
                 <select class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" name="hair_length" id="hair_length" v-model="length">
                     <option disabled value="null"> -- Please Select an Option -- </option>
-                    <option value="short">Short</option>
-                    <option value="medium">Medium</option>
-                    <option value="long">Long</option>
-                    <option value="ear length">Ear Length</option>
-                    <option value="chin length">Chin Length</option>
-                    <option value="shoulder length">Shoulder Length</option>
-                    <option value="armpit length">Armpit Length</option>
-                    <option value="mid-back length">Mid-back Length</option>
-                    <option value="tailbone length">Tailbone Length</option>
+                    <option value="Short">Short</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Long">Long</option>
+                    <option value="Ear Length">Ear Length</option>
+                    <option value="Chin Length">Chin Length</option>
+                    <option value="Shoulder Length">Shoulder Length</option>
+                    <option value="Armpit Length">Armpit Length</option>
+                    <option value="Mid-back Length">Mid-back Length</option>
+                    <option value="Tailbone Length">Tailbone Length</option>
                 </select>
             </div>
 
@@ -56,10 +56,10 @@
                 <strong v-if="errors && errors.hair_type" class="text-red-600">*{{ errors.hair_type[0] }}*</strong>
                 <select class="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-center rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" name="hair_type" id="hair_type" v-model="type">
                     <option disabled value="null"> -- Please Select an Option -- </option>
-                    <option value="straight">Straight</option>
-                    <option value="wavy">Wavy</option>
-                    <option value="curly">Curly</option>
-                    <option value="coily">Coily</option>
+                    <option value="Straight">Straight</option>
+                    <option value="Wavy">Wavy</option>
+                    <option value="Curly">Curly</option>
+                    <option value="Coily">Coily</option>
                 </select>
             </div>
             
