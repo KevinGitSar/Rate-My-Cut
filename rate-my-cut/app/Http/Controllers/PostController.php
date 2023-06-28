@@ -30,7 +30,7 @@ class PostController extends Controller
             }
         }
 
-        $posts = Post::latest()->filter($request)->get();
+        $posts = Post::latest()->filter($request)->paginate(9);
         return view('home', ['posts' => $posts, 'filters' => $filters]);
     }
     //

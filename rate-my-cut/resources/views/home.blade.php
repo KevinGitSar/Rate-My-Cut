@@ -49,6 +49,9 @@
                             @endif
                         </div>
                     </div>
+                    <div>
+                        {{ $posts->links() }}
+                    </div>
                 </div>
             </div>
             <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>
