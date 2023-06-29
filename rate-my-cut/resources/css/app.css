@@ -7,6 +7,14 @@ body{
         text-shadow: -1px -1px 0 #000, 1px -1px #000, -1px 1px #000, 1px 1px #000;
 }
 
+.text-shadow-FFF{
+        text-shadow: -1px -1px 0 #FFF, 1px -1px #FFF, -1px 1px #FFF, 1px 1px #FFF;
+}
+
+.text-shadow-FEB3B1{
+        text-shadow: -1px -1px 0 #FEB3B1, 1px -1px #FEB3B1, -1px 1px #FEB3B1, 1px 1px #FEB3B1;
+}
+
 .min-h-61vh{
         min-height: 61vh;
 }
