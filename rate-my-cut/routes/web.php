@@ -86,5 +86,9 @@ Route::get('/like/{postID}', [PostController::class, 'likePost']);
 
 Route::get('/unlike/{postID}', [PostController::class, 'unlikePost']);
 
+Route::get('/{username}/favourites/{id}', [PostController::class, 'viewFavouritePost']);
+
+Route::get('/{username}/favourites', [PostController::class, 'favouritePosts']);
+
 // Return a user's profile view.
 Route::get('/{username}', [UserController::class, 'profile']);

@@ -76,9 +76,11 @@
                     <div class="flex flex-col justify-start m-auto">
 
                         <div class="flex justify-between m-5">
-                            <form action="/create/post" method="GET">
+                            <form action="/create/post" method="GET" class="flex flex-col justify-center">
                                 <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Plus+</button>
                             </form>
+                            <a href="/{{Auth::user()->username}}/favourites" class="w-10 h-10 bg-[url({{ URL::to('/') }}/icons/heart-FE6D73.png)] hover:bg-[url({{ URL::to('/') }}/icons/heart-filled-FE6D73.png)] bg-cover">
+                            </a>
                         </div>
 
                         <div class="flex justify-center">

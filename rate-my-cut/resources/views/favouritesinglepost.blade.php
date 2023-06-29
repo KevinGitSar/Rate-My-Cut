@@ -62,13 +62,13 @@
             </div>
             <div class="m-2 p-2 flex justify-between">
                 @if($previous !== null)
-                <a href="/{{$user[0]->username}}/post/{{$previous}}">Previous</a>
+                <a href="/{{$user[0]->username}}/favourites/{{$previous}}">Previous</a>
                 @else
                 <div></div>
                 @endif
 
                 @if($next !== null)
-                <a href="/{{$user[0]->username}}/post/{{$next}}">Next</a>
+                <a href="/{{$user[0]->username}}/favourites/{{$next}}">Next</a>
                 @else
                 <div></div>
                 @endif
@@ -109,13 +109,13 @@
             </div>
             <div class="m-2 p-2 flex justify-between">
                 @if($previous !== null)
-                <a href="/{{$user[0]->username}}/post/{{$previous}}">Previous</a>
+                <a href="/{{$user[0]->username}}/favourites/{{$previous}}">Previous</a>
                 @else
                 <div></div>
                 @endif
 
                 @if($next !== null)
-                <a href="/{{$user[0]->username}}/post/{{$next}}">Next</a>
+                <a href="/{{$user[0]->username}}/favourites/{{$next}}">Next</a>
                 @else
                 <div></div>
                 @endif

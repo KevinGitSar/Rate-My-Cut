@@ -133,11 +133,11 @@ class PostController extends Controller
                 if(User::where('username', $username)->exists()){
                     $user = User::where('username', $username)->get();
     
-                    $previous = Post::where('id', '<', $id)->max('id');
+                    $previous = Post::where('username', $username)->where('id', '<', $id)->max('id');
     
-                    $current = Post::where('id', $id)->get();
+                    $current = Post::where('username', $username)->where('id', $id)->get();
         
-                    $next = Post::where('id', '>', $id)->min('id');
+                    $next = Post::where('username', $username)->where('id', '>', $id)->min('id');
         
                     $like = 'false';
 
@@ -172,8 +172,6 @@ class PostController extends Controller
                 }
             }
         }
-        
-        
     }
 
     public function likePost(Request $request, int $postID){
@@ -204,5 +202,72 @@ class PostController extends Controller
             $errorCode = 401;
             return view('/errors', ['errorCode' => $errorCode]);
         }
+    }
+
+    public function favouritePosts(String $username){
+        if(Auth::check() && Auth::user()->username == $username){
+            $user = Auth::user();
+            if(Like::where('username', $username)->exists()){
+                $post_ids = [];
+                $likes = Like::where('username', $username)->latest()->get();
+                foreach ($likes as $like){
+                    array_push($post_ids, $like->post_id);
+                }
+
+                $posts = [];
+
+                for($index = 0; $index < sizeOf($post_ids); $index++){
+                    array_push($posts, Post::where('id', $post_ids[$index])->first());
+                }
+
+
+                return view('/favourite', ['posts' => $posts, 'user' => $user]);
+            }
+        }
+    }
+
+    public function viewFavouritePost(String $username, int $id){
+        if(Auth::check()){
+            $authUser = Auth::user();
+            if(Like::where('username', $username)->where('post_id', $id)->exists()){
+                if(User::where('username', $username)->exists()){
+                    $user = User::where('username', $username)->get();
+    
+                    //get previous id
+                    $previousLike = Like::where('username', $username)->where('post_id', '<', $id)->max('post_id');
+                    
+    
+                    $current = Post::where('id', $id)->get();
+        
+                    //get next id
+                    $nextLike = Like::where('username', $username)->where('post_id', '>', $id)->min('post_id');
+        
+                    $previous = null;
+                    $next = null;
+
+                    if($previousLike !== null){
+                        $previous = Post::where('id', $previousLike)->get();
+                        $previous = $previous[0]->id;
+                    }
+
+                    if($nextLike !== null){
+                        $next = Post::where('id', $nextLike)->get();
+                        $next = $next[0]->id;
+                    }
+
+                    $like = 'false';
+
+                    if(Like::where('username', $authUser->username)->where('post_id', $id)->exists()){
+                        $like = 'true';
+                    }
+
+                    return view('/favouritesinglepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next, 'like' => $like]);
+                } else{
+                    //User not found
+                    $errorCode = 1001;
+                    return view('/errors', ['errorCode' => $errorCode]);
+                }
+            }
+        } 
     }
 }
