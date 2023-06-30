@@ -24,7 +24,7 @@
         <div id="app" class="flex flex-col justify-center h-full">
         @if($user !== null)
         <div class="flex justify-center w-3/5 mx-auto mb-2 bg-[#FEB3B1]">
-            <a href="/{{$user[0]->username}}" class="m-auto p-2">Return to Profile</a>    
+            <a href="/{{$user[0]->username}}/favourites" class="m-auto p-2">Return to Favourites</a>    
         </div>
         @endif
         @auth

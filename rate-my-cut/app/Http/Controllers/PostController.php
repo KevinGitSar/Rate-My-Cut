@@ -12,6 +12,8 @@ use App\Models\Like;
 class PostController extends Controller
 {
     public function home(){
+
+        // Filtering needs checkup
         $filters = ['category1' => false,'category2' => false,'category3' => false,'category4' => false,
         'length1' => false,'length2' => false,'length3' => false,'length4' => false,'length5' => false,'length6' => false,'length7' => false,'length8' => false,'length9' => false,
         'type1' => false,'type2' => false,'type3' => false,'type4' => false,'style' => ''];
@@ -33,7 +35,11 @@ class PostController extends Controller
         $posts = Post::latest()->filter($request)->paginate(9);
         return view('home', ['posts' => $posts, 'filters' => $filters]);
     }
-    //
+
+    /**
+     * Display Post Form to users that are logged in.
+     * Else show error not logged in.
+     */
     public function index(){
         if(Auth::check()){
             $user = Auth::user();
@@ -46,6 +52,9 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Store post into database on success.
+     */
     public function store(Request $request, String $username){
         if(Auth::check()){
             $form = $request->validate([
@@ -102,12 +111,20 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Store image in storage with unique id.
+     * Return unique id name to store function to be stored in database.
+     */
     private function storeImage($request){
         $newImageName = uniqid() . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $newImageName);
         return $newImageName;
     }
 
+    /**
+     * Delete post from database.
+     * Delete image from storage.
+     */
     public function destroy($filename){
         if(Auth::check()){
             $auth = Auth::user();
@@ -126,6 +143,9 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Display single post with details including Liked or Not liked.
+     */
     public function viewPost(String $username, int $id){
         if(Auth::check()){
             $authUser = Auth::user();
@@ -174,6 +194,9 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Like post and store in database.
+     */
     public function likePost(Request $request, int $postID){
         if(Auth::check()){
             $authUser = Auth::user();
@@ -190,6 +213,9 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Deletes liked post (post becomes unliked by the user).
+     */
     public function unlikePost(Request $request, int $postID){
         if(Auth::check()){
             $authUser = Auth::user();
@@ -204,6 +230,9 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * Display all liked/favourited post to the user.
+     */
     public function favouritePosts(String $username){
         if(Auth::check() && Auth::user()->username == $username){
             $user = Auth::user();
@@ -226,6 +255,9 @@ class PostController extends Controller
         }
     }
 
+    /**
+     * View liked/favourited post in single view.
+     */
     public function viewFavouritePost(String $username, int $id){
         if(Auth::check()){
             $authUser = Auth::user();
@@ -233,26 +265,24 @@ class PostController extends Controller
                 if(User::where('username', $username)->exists()){
                     $user = User::where('username', $username)->get();
     
-                    //get previous id
-                    $previousLike = Like::where('username', $username)->where('post_id', '<', $id)->max('post_id');
-                    
-    
                     $current = Post::where('id', $id)->get();
-        
-                    //get next id
-                    $nextLike = Like::where('username', $username)->where('post_id', '>', $id)->min('post_id');
-        
-                    $previous = null;
-                    $next = null;
+                    
+                    $currentLike = Like::where('username', $username)->where('post_id', $id)->get()[0]->id;
 
+                    $previousLike = Like::where('username', $username)->where('id', '>', $currentLike)->min('id');
+                    
+                    $previous = null;
+                    
                     if($previousLike !== null){
-                        $previous = Post::where('id', $previousLike)->get();
-                        $previous = $previous[0]->id;
+                        $previous = Like::where('id', $previousLike)->get()[0]->post_id;
                     }
 
+                    $nextLike = Like::where('username', $username)->where('id', '<', $currentLike)->max('id');
+
+                    $next = null;
+
                     if($nextLike !== null){
-                        $next = Post::where('id', $nextLike)->get();
-                        $next = $next[0]->id;
+                        $next = Like::where('id', $nextLike)->get()[0]->post_id;
                     }
 
                     $like = 'false';
