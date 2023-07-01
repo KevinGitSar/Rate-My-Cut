@@ -28,7 +28,7 @@
                 <!-- Not Logged In -->
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
-            <div class="flex flex-col grow max-w-full grow shrink basis-auto justify-center">
+            <div class="flex flex-col grow max-w-full md:w-9/12 md:mx-auto lg:w-10/12 grow shrink basis-auto justify-center">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
                 <div class="flex items-center m-2">
@@ -44,8 +44,8 @@
                                         <a href="/{{$post->username}}" class="">
                                             <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                             <div class="absolute w-full bottom-0 right-0 pl-2">
-                                                <p class="text-[10px] font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">&commat;{{$post->username}}</p>
-                                                <p class="text-[10px] font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">{{$post->hair_style}}</p>
+                                                <p class="text-[10px] md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">&commat;{{$post->username}}</p>
+                                                <p class="text-[10px] md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">{{$post->hair_style}}</p>
                                             </div>
                                         </a>
                                     </div>
