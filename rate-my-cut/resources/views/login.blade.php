@@ -10,7 +10,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
 
         <!-- Styles -->
         @vite(['resources/css/app.css'])
@@ -21,8 +20,8 @@
             <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
             <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             <!-- content -->
-            <div class="max-w-full grow shrink-0 basis-auto mx-auto  sm:w-5/6 md:w-3/6 lg:w-3/6">
-                <div class="flex flex-col justify-evenly max-w-full">
+            <div class="max-w-full grow shrink-0 basis-auto sm:w-5/6 md:w-3/6 lg:w-3/6">
+                <div class="flex flex-col justify-evenly w-10/12 mx-auto">
 
                     <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-20">Login</h4>
 
@@ -45,7 +44,7 @@
                             <button class="mt-10 bg-[#FFCB77] w-32 h-12 sm:w-40 sm:h-16 text-lg sm:text-xl sm:font-semibold rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Login!</button>
                         </div>
 
-                        <div class="flex justify-end mr-3.5 text-sm mt-10">
+                        <div class="flex justify-end mr-3.5 text-xs xs:text-sm mt-10">
                             <p>Don't have an account? Sign up <a href="/signup" class="text-red-500">here</a>!</p>
                         </div>
                     </form>

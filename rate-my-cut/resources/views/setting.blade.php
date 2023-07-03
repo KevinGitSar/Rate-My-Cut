@@ -10,7 +10,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
 
         <!-- Styles -->
         @vite(['resources/css/app.css'])

@@ -12,7 +12,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
 
         <!-- Styles -->
         @vite(['resources/css/app.css'])
@@ -44,8 +43,8 @@
                                         <a href="/{{$post->username}}" class="">
                                             <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                             <div class="absolute w-full bottom-0 right-0 pl-2">
-                                                <p class="text-[10px] md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">&commat;{{$post->username}}</p>
-                                                <p class="text-[10px] md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">{{$post->hair_style}}</p>
+                                                <p class="text-[10px] xs:text-sm md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">&commat;{{$post->username}}</p>
+                                                <p class="text-[10px] xs:text-sm md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">{{$post->hair_style}}</p>
                                             </div>
                                         </a>
                                     </div>

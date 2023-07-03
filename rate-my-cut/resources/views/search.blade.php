@@ -10,7 +10,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
-        <script src="https://cdn.tailwindcss.com"></script>
 
         <!-- Styles -->
         @vite(['resources/css/app.css'])
@@ -27,15 +26,15 @@
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
             <div class="max-w-full grow shrink basis-auto">
-                <div class="flex justify-start flex-col">
+                <div class="flex flex-col justify-start w-10/12 mx-auto">
                     <div class="mx-auto sm:mx-5 my-5">
                         <form action="/search/user/" method="GET" class="text-center mt-10">
                             <div class="flex align-center justify-center">  
-                                <label class="text-center text-xl md:text-2xl lg:text-3xl" for="search">Search: </label>
+                                <label class="text-center text-base xs:text-xl md:text-2xl lg:text-3xl" for="search">Search: </label>
                                 
-                                <input type="text" name="search" class="text-xl md:text-2xl lg:text-3xl rounded-2xl w-1/2 bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
+                                <input type="text" name="search" class="text-base xs:text-xl md:text-2xl lg:text-3xl rounded-2xl w-1/2 h-6 xs:h-8 bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
                             
-                                <button type="submit" class="ml-2 bg-[#FFCB77] w-16 h-8 sm:w-24 sm:h-10 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">GO!</button>
+                                <button type="submit" class="ml-2 bg-[#FFCB77] w-12 xs:w-14 h-6 xs:h-8 text-sm xs:text-xl sm:w-24 sm:h-10 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">GO!</button>
                             </div>
                         </form>
                     </div>
@@ -46,11 +45,11 @@
                             <div class="sm:w-3/5 sm:mx-auto rounded overflow-hidden shadow-lg my-10 hover:bg-[#FEB3B1] border-2 border-[#FFCB77] hover:border-[#FE6D73]">
                                 <a href="/{{$user->username}}">
                                     @if($user->profile !== null)
-                                        <img class="w-60 sm:w-40 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full mt-5 mb-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
+                                        <img class="w-36 sm:w-40 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full my-5" src="{{ URL::to('/') }}/images/{{$user->profile}}" alt="{{$user->username}} profile picture">
                                     @else
-                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-60 sm:w-40 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full mt-5 mb-5">
+                                        <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-36 sm:w-40 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full my-5">
                                     @endif
-                                    <div class="px-6 py-4">
+                                    <div class="px-6 pb-4">
                                         <div class="font-bold text-xl sm:text-lg mb-2">{{$user->username}}</div>
                                         <div class="font-bold text-lg sm:text-base mb-2">{{$user->first_name}} {{$user->last_name}}</div>
                                         <p class="text-gray-700 text-base sm:text-md">

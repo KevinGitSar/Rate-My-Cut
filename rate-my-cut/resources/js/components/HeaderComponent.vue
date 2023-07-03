@@ -1,5 +1,5 @@
 <template>
-    <div class="container flex flex-col justify-center bg-[#FFCB77] w-full h-10 sm:h-16 md:h-20 lg:h-24">
+    <div class="container flex flex-col justify-center bg-[#FFCB77] w-full h-10 xs:h-14 sm:h-16 md:h-20 lg:h-24">
         <div class="row justify-content-center">
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center text-[#FEF9EF] m-auto ">{{ title }}</h1>
         </div>
