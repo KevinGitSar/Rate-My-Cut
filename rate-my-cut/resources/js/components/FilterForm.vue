@@ -1,17 +1,17 @@
 <template>
-    <div>
-        <h4 @click="filterDropdown = !filterDropdown" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-lg text-shadow">Filter</h4>
-        <form v-if="filterDropdown" :action="'/'" method="GET" >
+    <div class="w-11/12 mx-auto">
+        <h4 @click="filterDropdown = !filterDropdown" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-48 mx-auto xs:text-lg sm:text-2xl md:text-3xl text-shadow">Filter</h4>
+        <form v-if="filterDropdown" :action="'/'" method="GET" class="" >
             <div class="my-2">
-                <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-sm text-shadow">Location</h4>
+                <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 mx-auto text-sm  sm:text-lg md:text-xl text-shadow">Location</h4>
                 <div>
                     <!-- add location filtering -->
                 </div>
             </div>
             
             <div class="my-2">
-                <h4 @click="category = !category" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-sm text-shadow">Category</h4>
-                <div v-if="category">
+                <h4 @click="category = !category" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 mx-auto text-sm sm:text-lg md:text-xl text-shadow">Category</h4>
+                <div v-if="category" class="w-9/12 mx-auto">
                     <input type="checkbox" id="category1" name="category1" value="W" v-model="category1">
                     <label for="category1">Women</label><br>
 
@@ -27,8 +27,8 @@
             </div>    
             
             <div class="my-2">
-                <h4 @click="length = !length" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-sm text-shadow">Hair Length</h4>
-                <div v-if="length">
+                <h4 @click="length = !length" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 mx-auto text-sm sm:text-lg md:text-xl text-shadow">Hair Length</h4>
+                <div v-if="length" class="w-9/12 mx-auto">
                     <input type="checkbox" id="length1" name="length1" value="short" v-model="length1">
                     <label for="length1">Short</label><br>
 
@@ -59,8 +59,8 @@
             </div>
 
             <div class="my-2">
-                <h4 @click="type = !type" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-sm text-shadow">Hair Type</h4>
-                <div v-if="type">
+                <h4 @click="type = !type" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 mx-auto text-sm sm:text-lg md:text-xl text-shadow">Hair Type</h4>
+                <div v-if="type" class="w-9/12 mx-auto">
                     <input type="checkbox" id="type1" name="type1" value="straight" v-model="type1">
                     <label for="type1">Straight</label><br>
 
@@ -76,15 +76,15 @@
             </div>    
             
             <div class="mt-2">
-                <h4 @click="style = !style" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 text-sm text-shadow">Hair Style</h4>
-                <div v-if="style">
+                <h4 @click="style = !style" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 mx-auto text-sm sm:text-lg md:text-xl text-shadow">Hair Style</h4>
+                <div v-if="style" class="w-9/12 mx-auto">
                     <label for="style">Style</label><br>
-                    <input  class="w-36" type="text" id="style" name="style" placeholder="Ex: Buzz" v-model="styleValue" />
+                    <input  class="w-full" type="text" id="style" name="style" placeholder="Ex: Buzz" v-model="styleValue" />
                 </div>
             </div> 
             
-            <div class="mt-2">
-                <button type="submit" class="bg-[#FFCB77] w-36 h-9 text-sm rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Apply Filters</button>
+            <div class="mt-2 flex justify-center">
+                <button type="submit" class="bg-[#FFCB77] w-36 sm:w-48 h-9 text-sm sm:text-lg md:text-xl rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Apply Filters</button>
             </div>
         </form>
     </div>

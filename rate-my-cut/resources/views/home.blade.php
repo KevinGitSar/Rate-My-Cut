@@ -27,24 +27,25 @@
                 <!-- Not Logged In -->
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
-            <div class="flex flex-col grow max-w-full md:w-9/12 md:mx-auto lg:w-10/12 grow shrink basis-auto justify-center">
+            <div class="flex flex-col grow max-w-full md:w-10/12 md:mx-auto lg:w-10/12 grow shrink basis-auto justify-evenly">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
-                <div class="flex items-center m-2">
+                <div class="flex w-1/2 m-2 mx-auto justify-center sm:my-10">
                     <filter-form :filters="{{json_encode($filters)}}"></filter-form>
                 </div>
 
-                <div class="flex flex-col justify-start">
-                    <div class="flex flex-auto justify-between">
+                    <div class="flex flex-auto justify-between max-w-full">
                         <div class="flex flex-auto flex-wrap justify-items-start">
                             @if($posts !== null)
                                 @foreach($posts as $post)
-                                    <div class="flex flex-col justify-center w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
-                                        <a href="/{{$post->username}}" class="">
-                                            <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
-                                            <div class="absolute w-full bottom-0 right-0 pl-2">
-                                                <p class="text-[10px] xs:text-sm md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">&commat;{{$post->username}}</p>
-                                                <p class="text-[10px] xs:text-sm md:text-sm lg:text-2xl font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">{{$post->hair_style}}</p>
+                                    <div class="flex flex-col justify-center w-1/3 h-auto px-1 my-1 bg-[#FEF9EF]  hover:bg-[#FE6D73]">
+                                        <a href="/{{$post->username}}" class="h-full flex flex-col justify-between border-2 border-[#291F1F]">
+                                            <div class="flex flex-col justify-center h-full">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                            </div>
+                                            <div class="w-full bg-[#FEF9EF]">
+                                                <p class="text-[#291F1F] text-[10px] xs:text-sm md:text-sm lg:text-2xl pl-1 font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">&commat;{{$post->username}}</p>
+                                                <p class="text-[#291F1F]text-[10px] xs:text-sm md:text-sm lg:text-2xl pl-1 font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">{{$post->hair_style}}</p>
                                             </div>
                                         </a>
                                     </div>
@@ -55,7 +56,6 @@
                     <div>
                         {{ $posts->links() }}
                     </div>
-                </div>
             </div>
             <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>
         </div>
