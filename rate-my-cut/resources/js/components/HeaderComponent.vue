@@ -1,7 +1,7 @@
 <template>
-    <div class="container flex flex-col justify-center w-full xs:h-[75px] sm:h-[100px]">
+    <div class="container flex flex-col justify-center w-full xs:h-[75px] sm:h-[100px] lg:h-[150px]">
         <div class="row justify-content-center">
-            <h1 class="text-center text-[#FFCB77] m-auto xs:text-4xl sm:text-5xl md:text-6xl">{{ title }}</h1>
+            <h1 class="text-center text-[#FFCB77] m-auto xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl">{{ title }}</h1>
         </div>
     </div>
 </template>

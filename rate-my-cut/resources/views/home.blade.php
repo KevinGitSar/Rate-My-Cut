@@ -30,7 +30,7 @@
             <div class="flex flex-col grow max-w-full md:w-10/12 md:mx-auto lg:w-10/12 grow shrink basis-auto justify-evenly">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
-                <div class="flex w-1/2 m-2 mx-auto justify-center sm:my-10">
+                <div class="flex w-1/2 m-2 mx-auto justify-center sm:my-10 lg:my-16">
                     <filter-form :filters="{{json_encode($filters)}}"></filter-form>
                 </div>
 
@@ -40,7 +40,7 @@
                                 @foreach($posts as $post)
                                     <div class="flex flex-col justify-center w-1/3 h-auto px-1 my-1 bg-[#FEF9EF]  hover:bg-[#FE6D73]">
                                         <a href="/{{$post->username}}" class="h-full flex flex-col justify-between border-2 border-[#291F1F]">
-                                            <div class="flex flex-col justify-center h-full">
+                                            <div class="flex flex-col justify-center h-full bg-[#291F1F]">
                                                 <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                             </div>
                                             <div class="w-full bg-[#FEF9EF]">
