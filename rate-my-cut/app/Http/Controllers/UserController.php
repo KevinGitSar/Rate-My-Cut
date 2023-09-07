@@ -240,7 +240,7 @@ class UserController extends Controller
 
                 return redirect('/settings')->with('notification', 'Information Change Successful!');
             } else{
-                return view('/password');
+                return redirect('/password');
             }
         } else{
             //User not logged in!

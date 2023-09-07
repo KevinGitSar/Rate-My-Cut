@@ -18,7 +18,7 @@
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
     </head>
-    <body class="antialiased h-full m-0">
+    <body>
         <div id="app" class="flex flex-col h-full">
             <header-component class="max-w-full grow-0 shrink-0 basis-auto" title='Rate My Cut!'></header-component>
             @auth
@@ -76,9 +76,11 @@
 
                         <div class="flex justify-between m-5">
                             <form action="/create/post" method="GET" class="flex flex-col justify-center">
-                                <button class="rounded-full outline outline-offset-2 outline-[#FFCB77] px-2">Plus+</button>
+                                <button class="w-12 h-12 rounded border border-[#FFCB77] border-2 text-4xl flex align-center justify-center">+</button>
                             </form>
-                            <a href="/{{Auth::user()->username}}/favourites" class="w-10 h-10 bg-[url({{ URL::to('/') }}/icons/heart-FE6D73.png)] hover:bg-[url({{ URL::to('/') }}/icons/heart-filled-FE6D73.png)] bg-cover">
+
+                            <a href="/{{Auth::user()->username}}/favourites" class="w-12 h-12 rounded border-[#FE6D73] border border-2 flex items-center">
+                                <img src="{{ URL::to('/') }}/icons/heart-filled-FE6D73.png" class="w-3/4 mx-auto" />
                             </a>
                         </div>
 
@@ -86,11 +88,11 @@
                             <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                 @if($posts !== null)
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
+                                        <div class="w-1/3 h-auto px-1 my-1 hover:bg-[#FE6D73] relative">
                                             
-                                            <delete-button class="absolute right-px top-px" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
+                                            <delete-button class="absolute right-1 top-px" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
                                             <a href="/{{$post->username}}/post/{{$post->id}}">
-                                                <div class="flex flex-col justify-center h-full">
+                                                <div class="flex flex-col justify-center h-full border-2 border-[#291F1F] ">
                                                     <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                                 </div>
                                             </a>

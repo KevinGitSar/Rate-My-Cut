@@ -31,12 +31,13 @@
                             <div class="flex flex-col justify-center">
 
                                 <div class="flex flex-col my-auto justify-around mt-5">
-                                    <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="password_old">Enter Old Password: 
+                                    <label for="password_old" class="text-sm sm:text-base md:text-lg lg:text-xl" >Enter Old Password: 
                                         @error('password_old')
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
+                                
                                     </label>
-                                    <input type="password" name="password_old" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
+                                    <input id="password_old" type="password" name="password_old" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
 
                                 <div class="flex flex-col my-auto justify-around mt-5">
@@ -45,7 +46,7 @@
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="password" name="password" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xlbg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
+                                    <input id="password" type="password" name="password" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
 
                                 <div class="flex flex-col my-auto justify-around mt-5">
@@ -54,7 +55,7 @@
                                             <span class="text-red-600 mt-1 mx-auto">*{{$message}}*</span>
                                         @enderror
                                     </label>
-                                    <input type="password" name="password_confirmation" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
+                                    <input id="password_confirmation" type="password" name="password_confirmation" class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" />
                                 </div>
                             </div>
                         </div>
