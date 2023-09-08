@@ -12,16 +12,16 @@
             <div class="my-2">
                 <h4 @click="category = !category" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl text-shadow">Category</h4>
                 <div v-if="category" class="w-9/12 mx-auto">
-                    <input type="checkbox" id="category1" name="category1" value="W" v-model="category1">
+                    <input type="checkbox" id="category1" name="category1" value="Women" v-model="category1">
                     <label for="category1">Women</label><br>
 
-                    <input type="checkbox" id="category2" name="category2" value="M" v-model="category2">
+                    <input type="checkbox" id="category2" name="category2" value="Men" v-model="category2">
                     <label for="category2">Men</label><br>
 
-                    <input type="checkbox" id="category3" name="category3" value="G" v-model="category3">
+                    <input type="checkbox" id="category3" name="category3" value="Girls" v-model="category3">
                     <label for="category3">Girls</label><br>
 
-                    <input type="checkbox" id="category4" name="category4" value="B" v-model="category4">
+                    <input type="checkbox" id="category4" name="category4" value="Boys" v-model="category4">
                     <label for="category4">Boys</label><br>
                 </div>
             </div>    

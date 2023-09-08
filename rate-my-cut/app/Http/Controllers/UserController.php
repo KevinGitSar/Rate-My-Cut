@@ -86,7 +86,7 @@ class UserController extends Controller
 
                 $userPosts = null;
                 if(Post::where('username', $user->username)->exists()){
-                    $userPosts = Post::where('username', $user->username)->get();
+                    $userPosts = Post::where('username', $user->username)->paginate(6);
                 }
 
                 //Check if authenticated user is following other user.
@@ -117,7 +117,7 @@ class UserController extends Controller
 
                 $userPosts = null;
                 if(Post::where('username', $user->username)->exists()){
-                    $userPosts = Post::where('username', $user->username)->get();
+                    $userPosts = Post::where('username', $user->username)->paginate(6);
                 }
 
                 return view('/profile', ['user' => $user, 'followers' => $followers, 'follows' => $follows, 'posts' => $userPosts]);

@@ -85,11 +85,11 @@
                         </div>
 
                         <div class="flex justify-center">
-                            <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                 @if($posts !== null)
+                                <div class="scrolling-pagination">
+                                    <div class="flex flex-auto flex-wrap justify-items-start">
                                     @foreach($posts as $post)
                                         <div class="w-1/3 h-auto px-1 my-1 hover:bg-[#FE6D73] relative">
-                                            
                                             <delete-button class="absolute right-1 top-px" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
                                             <a href="/{{$post->username}}/post/{{$post->id}}">
                                                 <div class="flex flex-col justify-center h-full border-2 border-[#291F1F] ">
@@ -98,8 +98,12 @@
                                             </a>
                                         </div>
                                     @endforeach
+                                    </div>
+                                    <div class="pagination-links">
+                                        {{ $posts->links() }}
+                                    </div>
+                                </div>
                                 @endif
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,19 +161,24 @@
                     <!--User's uploaded content (images + filtering)-->
                     <div class="flex flex-col justify-start m-auto">
                         <div class="flex justify-center">
-                            <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                 @if($posts !== null)
+                                <div class="scrolling-pagination">
+                                    <div class="flex flex-auto flex-wrap justify-items-start">
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
-                                            <a href="/{{$post->username}}/post/{{$post->id}}">
+                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEF9EF] hover:bg-[#FE6D73] relative">
+                                            <a href="/{{$post->username}}/post/{{$post->id}}" class="flex flex-col justify-center h-full bg-[#291F1F] border-2 border-[#291F1F]">
                                                 <div class="flex flex-col justify-center h-full">
                                                     <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                                 </div>
-                                            <a href="/{{$post->username}}/post/{{$post->id}}">
+                                            </a>
                                         </div>
                                     @endforeach
+                                    </div>
+                                    <div class="pagination-links">
+                                        {{ $posts->links() }}
+                                    </div>
+                                </div>
                                 @endif
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -228,19 +237,24 @@
                     <!--User's uploaded content (images + filtering)-->
                     <div class="flex flex-col justify-start m-auto">
                         <div class="flex justify-center">
-                            <div class="flex flex-auto flex-wrap justify-items-start w-max">
                                 @if($posts !== null)
+                                <div class="scrolling-pagination">
+                                    <div class="flex flex-auto flex-wrap justify-items-start">
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
-                                            <a href="/{{$post->username}}/post/{{$post->id}}">
+                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEF9EF] hover:bg-[#FE6D73] relative">
+                                            <a href="/{{$post->username}}/post/{{$post->id}}" class="flex flex-col justify-center h-full bg-[#291F1F] border-2 border-[#291F1F]">
                                                 <div class="flex flex-col justify-center h-full">
                                                     <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                                 </div>
                                             <a href="/{{$post->username}}/post/{{$post->id}}">
                                         </div>
                                     @endforeach
+                                    </div>
+                                    <div class="pagination-links">
+                                        {{ $posts->links() }}
+                                    </div>
+                                </div>
                                 @endif
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -248,5 +262,24 @@
             
             <footer-component class="max-w-full"></footer-component>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+        <script type="text/javascript">
+            $('.pagination-links').hide();
+            $(function() {
+                console.log('loading next...');
+                $('.scrolling-pagination').jscroll({
+                    autoTrigger: true,
+                    loadingHtml: '<img class="center-block w-1/2 mx-auto" src="/icons/loading-infinity-transparent.gif" alt="Loading..." />',
+                    loadingFunction: true,
+                    padding: 0,
+                    nextSelector: '#next-link',
+                    contentSelector: '.scrolling-pagination',
+                    callback: function() {
+                        $('.pagination-links').remove();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

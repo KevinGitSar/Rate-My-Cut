@@ -30,11 +30,11 @@
             <div class="flex flex-col grow max-w-full md:w-10/12 md:mx-auto lg:w-10/12 grow shrink basis-auto justify-evenly">
 
                 <!-- Change filter box to fit the screen add scroll wheel for overflow content -->
-                <div class="flex w-1/2 m-2 mx-auto justify-center sm:my-10 lg:my-16">
+                <div class="flex w-1/2 m-2 mx-auto justify-center sm:my-10 lg:my-16 mt-5">
                     <filter-form :filters="{{json_encode($filters)}}"></filter-form>
                 </div>
 
-                    <div class="flex flex-auto justify-between max-w-full">
+                    <div class="flex flex-auto justify-between max-w-full mt-5">
                         <div class="flex flex-auto flex-wrap justify-items-start">
                             @if($posts !== null)
                                 @foreach($posts as $post)
@@ -50,11 +50,11 @@
                                         </a>
                                     </div>
                                 @endforeach
+                                <div class="w-1/2 mx-auto mt-5">
+                                    {{ $posts->links() }}
+                                </div>
                             @endif
                         </div>
-                    </div>
-                    <div>
-                        {{ $posts->links() }}
                     </div>
             </div>
             <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>

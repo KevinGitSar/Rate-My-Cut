@@ -13,6 +13,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
+
+        
+        
         <!-- Styles -->
         @vite(['resources/css/app.css'])
         @vite(['resources/js/app.js'])
@@ -27,25 +30,30 @@
                 <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
                     
                     <!--User's favourited content-->
+                    
                     <div class="flex flex-col justify-start m-auto">
-                        <h1>
-                            Your Favourite Hair-dos!
-                        </h1>
+                        <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-5">Your Favourite Hair-dos!</h4>
 
-                        <div class="flex justify-center">
-                            <div class="flex flex-auto flex-wrap justify-items-start w-max">
+                        <div class="flex justify-center mt-5">
                                 @if($posts !== null)
-                                    @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEB3B1] hover:bg-[#FE6D73] border-2 border-[#291F1F] relative">
-                                            <a href="/{{$user->username}}/favourites/{{$post->id}}">
-                                                <div class="flex flex-col justify-center h-full">
-                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
-                                                </div>
-                                            </a>
+                                <!-- <div class="scrolling-pagination flex flex-auto flex-wrap justify-items-start w-max"> -->
+                                    <div class="scrolling-pagination">
+                                        <div class="flex flex-auto flex-wrap justify-items-start">
+                                        @foreach($posts as $post)
+                                            <div class="w-1/3 h-auto px-1 my-1 hover:bg-[#FE6D73] relative">
+                                                <a href="/{{$user->username}}/favourites/{{$post->id}}">
+                                                    <div class="flex flex-col justify-center h-full bg-[#291F1F]  border-2 border-[#291F1F]">
+                                                        <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        @endforeach
                                         </div>
-                                    @endforeach
+                                        <div class="pagination-links">
+                                            {{ $posts->links() }}
+                                        </div>
+                                    </div>
                                 @endif
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,5 +62,24 @@
             
             <footer-component class="max-w-full"></footer-component>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jscroll/2.4.1/jquery.jscroll.min.js"></script>
+        <script type="text/javascript">
+            $('.pagination-links').hide();
+            $(function() {
+                console.log('loading next...');
+                $('.scrolling-pagination').jscroll({
+                    autoTrigger: true,
+                    loadingHtml: '<img class="center-block w-1/2 mx-auto" src="/icons/loading-infinity-transparent.gif" alt="Loading..." />',
+                    padding: 0,
+                    nextSelector: '#next-link',
+                    contentSelector: '.scrolling-pagination',
+                    callback: function() {
+                        $('.pagination-links').remove();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

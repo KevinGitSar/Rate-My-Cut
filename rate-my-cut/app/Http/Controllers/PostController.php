@@ -32,7 +32,7 @@ class PostController extends Controller
             }
         }
 
-        $posts = Post::latest()->filter($request)->paginate(9);
+        $posts = Post::latest()->filter($request)->paginate(6);
         return view('home', ['posts' => $posts, 'filters' => $filters]);
     }
 
@@ -243,12 +243,19 @@ class PostController extends Controller
                     array_push($post_ids, $like->post_id);
                 }
 
-                $posts = [];
+                // $posts = [];
 
-                for($index = 0; $index < sizeOf($post_ids); $index++){
-                    array_push($posts, Post::where('id', $post_ids[$index])->first());
-                }
+                // // for($index = 0; $index < sizeOf($post_ids); $index++){
+                // //     array_push($posts, Post::where('id', $post_ids[$index])->first());
+                // // }
 
+                // for($index = 0; $index < sizeOf($post_ids); $index++){
+                //     array_push($posts, Post::where('id', $post_ids[$index])->first());
+                // }
+
+                $posts = Post::whereIn('id', $post_ids)->paginate(3);
+
+                
 
                 return view('/favourite', ['posts' => $posts, 'user' => $user]);
             }
