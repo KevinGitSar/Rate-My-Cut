@@ -2,12 +2,13 @@
     <div class="w-11/12 mx-auto">
         <h4 @click="filterDropdown = !filterDropdown" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-48 lg:w-56 lg:py-2 mx-auto xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl text-shadow">Filter</h4>
         <form v-if="filterDropdown" :action="'/'" method="GET" class="" >
-            <div class="my-2">
-                <h4 class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm  sm:text-lg md:text-xl lg:text-2xl text-shadow">Location</h4>
-                <div>
-                    <!-- add location filtering -->
+            <!-- <div class="my-2">
+                <h4 @click="location = !location" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm  sm:text-lg md:text-xl lg:text-2xl text-shadow">Location</h4>
+                <div v-if="location" class="w-9/12 mx-auto">
+                    
+                    <p>SHOW SOMETHING HERE</p>
                 </div>
-            </div>
+            </div> -->
             
             <div class="my-2">
                 <h4 @click="category = !category" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl text-shadow">Category</h4>
@@ -97,6 +98,7 @@
         data(){
             return{
                 filterDropdown: false,
+                location: false,
                 category: false,
                 length: false,
                 type: false,

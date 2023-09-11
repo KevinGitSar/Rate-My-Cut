@@ -246,7 +246,7 @@
                                                 <div class="flex flex-col justify-center h-full">
                                                     <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
                                                 </div>
-                                            <a href="/{{$post->username}}/post/{{$post->id}}">
+                                            </a>
                                         </div>
                                     @endforeach
                                     </div>

@@ -165,7 +165,13 @@ class PostController extends Controller
                         $like = 'true';
                     }
 
-                    return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next, 'like' => $like]);
+                    $link = NULL;
+                    if($current[0]->location_address != 'N/A'){
+                        $string = $current[0]->location_address;
+                        $link = 'https://www.google.com/maps/search/?api=1&query=' . str_replace(' ', '+', $string);
+                    }
+
+                    return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next, 'like' => $like, 'link' => $link]);
                 } else{
                     //User not found
                     $errorCode = 1001;
@@ -177,13 +183,19 @@ class PostController extends Controller
                 if(User::where('username', $username)->exists()){
                     $user = User::where('username', $username)->get();
     
-                    $previous = Post::where('id', '<', $id)->max('id');
+                    $previous = Post::where('username', $username)->where('id', '<', $id)->max('id');
     
-                    $current = Post::where('id', $id)->get();
+                    $current = Post::where('username', $username)->where('id', $id)->get();
         
-                    $next = Post::where('id', '>', $id)->min('id');
+                    $next = Post::where('username', $username)->where('id', '>', $id)->min('id');
+
+                    $link = NULL;
+                    if($current[0]->location_address != 'N/A'){
+                        $string = $current[0]->location_address;
+                        $link = 'https://www.google.com/maps/search/?api=1&query=' . str_replace(' ', '+', $string);
+                    }
         
-                    return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next]);
+                    return view('/singlepost', ['user' => $user,'previous' => $previous, 'current' => $current, 'next' => $next, 'link' => $link]);
                     
                 } else{
                     //User not found

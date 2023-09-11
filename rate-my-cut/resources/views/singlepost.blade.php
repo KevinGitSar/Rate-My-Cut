@@ -42,7 +42,16 @@
                                     <like-button :likeprop="{{$like}}" :post="{{$current[0]}}"></like-button>
                                 @endif
                             </div>
-
+                            @if($current[0]->location_name != 'N/A' && $link != NULL)
+                            <div class="m-2">
+                                <p class="text-xl">Location: {{$current[0]->location_name}}</p>
+                                @if($link != NULL)
+                                    <a :href="'{{$link}}'" target="_blank" class="text-lg">{{$current[0]->location_address}}</p>
+                                @else
+                                    <p class="text-lg">{{$current[0]->location_address}}</p>
+                                @endif
+                            </div>
+                            @endif
                             <div class="m-2">
                                 <p class="text-xl">Description:</p>
                                 <p class="text-lg">{{$current[0]->description}}</p>
@@ -89,7 +98,16 @@
                             <div class="flex justify-between">
                                 <h1 class="font-semibold text-2xl m-2">{{$current[0]->username}}</h1>
                             </div>
-
+                            @if($current[0]->location_name != 'N/A' && $link != NULL)
+                            <div class="m-2">
+                                <p class="text-xl">Location: {{$current[0]->location_name}}</p>
+                                @if($link != NULL)
+                                    <a :href="'{{$link}}'" target="_blank" class="text-lg">{{$current[0]->location_address}}</p>
+                                @else
+                                    <p class="text-lg">{{$current[0]->location_address}}</p>
+                                @endif
+                            </div>
+                            @endif
                             <div class="m-2">
                                 <p class="text-xl">Description:</p>
                                 <p class="text-lg">{{$current[0]->description}}</p>
