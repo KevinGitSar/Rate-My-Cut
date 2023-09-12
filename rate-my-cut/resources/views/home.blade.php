@@ -34,7 +34,7 @@
                     <filter-form :filters="{{json_encode($filters)}}"></filter-form>
                 </div>
 
-                    <div class="flex flex-auto justify-between max-w-full mt-5">
+                    <div class="flex flex-auto justify-between max-w-full mt-5 xl:w-10/12 2xl:w-1/2 xl:mx-auto">
                         <div class="flex flex-auto flex-wrap justify-items-start">
                             @if($posts !== null)
                                 @foreach($posts as $post)

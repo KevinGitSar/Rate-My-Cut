@@ -26,15 +26,15 @@
                 <navbar-1-component class="max-w-full grow-0 shrink basis-auto"></navbar-1-component>
             @endauth
             <div class="max-w-full grow shrink basis-auto">
-                <div class="flex flex-col justify-start w-10/12 mx-auto">
+                <div class="flex flex-col justify-start w-11/12 xl:w-3/4 2xl:w-1/2 mx-auto">
                     <div class="mx-auto sm:mx-5 my-5">
                         <form action="/search/user/" method="GET" class="text-center mt-10">
                             <div class="flex align-center justify-center">  
-                                <label class="text-center text-base xs:text-xl md:text-2xl lg:text-3xl" for="search">Search: </label>
+                                <label class="text-center text-base xs:text-xl md:text-2xl lg:text-3xl" id="search">Search: </label>
                                 
                                 <input type="text" name="search" class="text-base xs:text-xl md:text-2xl lg:text-3xl rounded-2xl w-1/2 h-6 xs:h-8 bg-[#FFCB77] pl-2 pr-2 ml-2 border-2 border-[#227C9D]"/>
                             
-                                <button type="submit" class="ml-2 bg-[#FFCB77] w-12 xs:w-14 h-6 xs:h-8 text-sm xs:text-xl sm:w-24 sm:h-10 rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">GO!</button>
+                                <button type="submit" class="ml-2 bg-[#FFCB77] w-12 xs:w-14 h-6 xs:h-8 text-sm xs:text-xl sm:w-24 sm:h-8 rounded-xl hover:bg-[#FFE2B3] border-2 border-[#227C9D] hover:border-2 hover:border-[#291F1F]">GO!</button>
                             </div>
                         </form>
                     </div>
@@ -50,9 +50,9 @@
                                         <img src="https://www.w3schools.com/w3images/avatar2.png" alt="{{$user->username}} profile picture" class="w-36 sm:w-40 md:w-60 lg:w-72 h-auto aspect-square mx-auto rounded-full my-5">
                                     @endif
                                     <div class="px-6 pb-4">
-                                        <div class="font-bold text-xl sm:text-lg mb-2">{{$user->username}}</div>
-                                        <div class="font-bold text-lg sm:text-base mb-2">{{$user->first_name}} {{$user->last_name}}</div>
-                                        <p class="text-gray-700 text-base sm:text-md">
+                                        <div class="font-bold text-xl sm:text-lg lg:text-2xl mb-2">{{'@' . $user->username}}</div>
+                                        <div class="font-bold text-lg sm:text-base lg:text-xl mb-2">{{$user->first_name}} {{$user->last_name}}</div>
+                                        <p class="text-gray-700 text-base sm:text-md lg:text-lg">
                                             {{$user->bio}}
                                         </p>
                                     </div>

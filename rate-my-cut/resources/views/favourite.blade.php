@@ -27,14 +27,14 @@
                 <navbar-2-component class="max-w-full grow-0 shrink basis-auto" :user="{{ Auth::user() }}"></navbar-2-component>
                 @if(Auth::user()->username == $user->username)
                 <!-- Logged In User and User's profile -->
-                <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 sm:mx-auto">
+                <div class="max-w-full grow shrink basis-auto sm:w-11/12 md:w-10/12 lg:w-8/12 2xl:w-1/2 sm:mx-auto">
                     
                     <!--User's favourited content-->
                     
                     <div class="flex flex-col justify-start m-auto">
-                        <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-5">Your Favourite Hair-dos!</h4>
+                        <h4 class="text-center text-3xl md:text-4xl lg:text-5xl mt-10">Your Favourite Hair-dos!</h4>
 
-                        <div class="flex justify-center mt-5">
+                        <div class="flex justify-center mt-10">
                                 @if($posts !== null)
                                 <!-- <div class="scrolling-pagination flex flex-auto flex-wrap justify-items-start w-max"> -->
                                     <div class="scrolling-pagination">

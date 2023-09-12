@@ -1,10 +1,10 @@
 <template>
-    <div class="w-full md:w-10/12 mx-auto mt-5">
+    <div class="w-full md:w-10/12 lg:w-8/12 xl:w-1/2 2xl:w-1/4 mx-auto mt-5">
         <form :action="'/create/post/'+user.username" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" :value="csrf">
 
-            <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="image">Show off your hair!</label>
+            <div class="flex flex-col my-auto mx-8 justify-around mt-5 mx-auto w-1/2">
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="image">Select the hair to show off!</label>
                 <strong v-if="errors && errors.image" class="text-red-600">*{{ errors.image[0] }}*</strong>
                 <strong v-if="fileErrorMessage" class="text-red-600 mt-1 mx-auto">{{ fileErrorMessage }}</strong>
                 <input type="file" accept="image/*" name="image" @change="onFileChange" class="block w-full text-sm sm:file:text-lg sm:text-lg md:text-2xl md:file:text-2xl text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:text-sm file:font-semibold file:bg-[#FFCB77] file:border-2 border-[#227C9D] hover:file:bg-[#FEF9EF]"/>
@@ -12,8 +12,8 @@
             
             
 
-            <div id="preview" class="flex my-auto justify-center mt-5">
-                <img v-if="url" :src="url" class="h-96 w-max" />
+            <div id="preview" class="flex my-auto justify-center mt-5 mx-2 sm:mx-5">
+                <img v-if="url" :src="url" class="w-max aspect-auto" />
             </div>
             
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
@@ -75,7 +75,7 @@
             </div>
 
             <div class="flex flex-col my-auto mx-8 justify-around mt-5">
-                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="location_address">And location!</label>
+                <label class="text-sm sm:text-base md:text-lg lg:text-xl" for="location_address">And the location!</label>
                 <input class="text-xl sm:text-2xl md:text-3xl lg:text-4xl rounded-2xl bg-[#FFCB77] pl-2 pr-2 border-2 border-[#227C9D]" type="text" name="location_address" id="location_address" placeholder="Ex: 77 Violet Dr, Hamilton, ON L8E 3J2" /> 
             </div>
 

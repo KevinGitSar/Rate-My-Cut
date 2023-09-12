@@ -46,7 +46,7 @@
                             <div class="m-2">
                                 <p class="text-xl">Location: {{$current[0]->location_name}}</p>
                                 @if($link != NULL)
-                                    <a :href="'{{$link}}'" target="_blank" class="text-lg">{{$current[0]->location_address}}</p>
+                                    <a :href="'{{$link}}'" target="_blank" class="text-lg">{{$current[0]->location_address}}</a>
                                 @else
                                     <p class="text-lg">{{$current[0]->location_address}}</p>
                                 @endif
@@ -102,7 +102,7 @@
                             <div class="m-2">
                                 <p class="text-xl">Location: {{$current[0]->location_name}}</p>
                                 @if($link != NULL)
-                                    <a :href="'{{$link}}'" target="_blank" class="text-lg">{{$current[0]->location_address}}</p>
+                                    <a :href="'{{$link}}'" target="_blank" class="text-lg">{{$current[0]->location_address}}</a>
                                 @else
                                     <p class="text-lg">{{$current[0]->location_address}}</p>
                                 @endif
