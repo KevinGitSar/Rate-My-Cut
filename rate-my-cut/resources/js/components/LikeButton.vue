@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col justify-center">
-        <button @click="likePost" v-if="like == true ? buttonText = 'like' : buttonText = 'unlike'" class="w-8 h-8 sm:w-24 sm:h-10 ">
+        <button @click="likePost" v-if="like == true ? buttonText = 'like' : buttonText = 'unlike'" class="w-8 h-8 sm:w-16 sm:h-16 ">
             <img v-if="buttonText=='like'" v-bind:src="'/icons/heart-x-FE6D73.png'" class="rounded-lg hover:bg-black"/>
             <img v-if="buttonText=='unlike'" v-bind:src="'/icons/heart-plus.png'" class="rounded-lg hover:bg-[#FE6D73]"/>
         </button>

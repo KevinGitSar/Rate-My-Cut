@@ -20,10 +20,10 @@
     </head>
     <body class="antialiased h-full m-0">
         
-        <div id="app" class="flex flex-col justify-center h-full">
+        <div id="app" class="flex flex-col justify-center w-11/12 sm:w-10/12 lg:w-8/12 xl:w-1/2 xl:mt-5 mx-auto">
         @if($user !== null)
-        <div class="flex justify-center w-3/5 mx-auto mb-2 bg-[#FEB3B1]">
-            <a href="/{{$user[0]->username}}/favourites" class="m-auto p-2">Return to Favourites</a>    
+        <div class="flex justify-center w-3/5 md:mt-5 mx-auto bg-[#FEB3B1] border-2 border-[#291F1F]">
+            <a href="/{{$user[0]->username}}/favourites" class="m-auto p-2 font-semibold sm:text-xl md:text-2xl">Return to Favourites</a>    
         </div>
         @endif
         @auth
@@ -59,20 +59,20 @@
                 </div>
                 @endif
             </div>
-            <div class="m-2 p-2 flex justify-between">
+            <div class="flex justify-between">
                 @if($previous !== null)
-                <a href="/{{$user[0]->username}}/favourites/{{$previous}}">Previous</a>
+                <a href="/{{$user[0]->username}}/favourites/{{$previous}}" class="p-2 text-center font-semibold w-[100px] bg-[#FEB3B1] hover:bg-[#FFE2B3] border-2 border-[#291F1F] hover:border-2 hover:border-[#291F1F]">Previous</a>
                 @else
                 <div></div>
                 @endif
 
                 @if($next !== null)
-                <a href="/{{$user[0]->username}}/favourites/{{$next}}">Next</a>
+                <a href="/{{$user[0]->username}}/favourites/{{$next}}" class="p-2 text-center font-semibold w-[100px] bg-[#FEB3B1] hover:bg-[#FFE2B3] border-2 border-[#291F1F] hover:border-2 hover:border-[#291F1F]">Next</a>
                 @else
                 <div></div>
                 @endif
             </div>
-        @else
+        <!-- @else
             @if($user !== null)
             <div class="flex justify-center w-3/5 mx-auto mb-2 bg-[#FEB3B1]">
                 <a href="/{{$user[0]->username}}" class="m-auto p-2">Return to Profile</a>    
@@ -118,7 +118,7 @@
                 @else
                 <div></div>
                 @endif
-            </div>
+            </div> -->
         @endauth
             
         </div>

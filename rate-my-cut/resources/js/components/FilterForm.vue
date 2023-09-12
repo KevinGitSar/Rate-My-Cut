@@ -1,6 +1,6 @@
 <template>
     <div class="w-11/12 mx-auto">
-        <h4 @click="filterDropdown = !filterDropdown" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-48 lg:w-56 lg:py-2 mx-auto xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl text-shadow">Filter</h4>
+        <h4 @click="filterDropdown = !filterDropdown" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-48 lg:w-56 lg:py-2 mx-auto xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl text-shadow hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer">Filter</h4>
         <form v-if="filterDropdown" :action="'/'" method="GET" class="" >
             <!-- <div class="my-2">
                 <h4 @click="location = !location" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm  sm:text-lg md:text-xl lg:text-2xl text-shadow">Location</h4>
