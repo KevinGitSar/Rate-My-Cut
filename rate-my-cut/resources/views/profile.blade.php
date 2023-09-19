@@ -76,10 +76,10 @@
 
                         <div class="flex justify-between m-5">
                             <form action="/create/post" method="GET" class="flex flex-col justify-center">
-                                <button class="w-12 h-12 rounded border border-[#FFCB77] border-2 text-4xl flex align-center justify-center">+</button>
+                                <button class="w-12 h-12 rounded border border-[#FFCB77] hover:border-[#FE6D73] border-2 text-4xl flex align-center justify-center">+</button>
                             </form>
 
-                            <a href="/{{Auth::user()->username}}/favourites" class="w-12 h-12 rounded border-[#FE6D73] border border-2 flex items-center">
+                            <a href="/{{Auth::user()->username}}/favourites" class="w-12 h-12 rounded border-[#FFCB77] hover:border-[#FE6D73] border border-2 flex items-center">
                                 <img src="{{ URL::to('/') }}/icons/heart-filled-FE6D73.png" class="w-3/4 mx-auto" />
                             </a>
                         </div>

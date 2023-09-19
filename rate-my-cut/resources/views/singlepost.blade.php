@@ -21,12 +21,13 @@
     <body class="antialiased h-full m-0">
         
         <div id="app" class="flex flex-col justify-center w-11/12 sm:w-10/12 lg:w-8/12 xl:w-1/4 xl:mt-5 mx-auto">
+        
+        @auth
         @if($user != null)
         <div class="flex justify-center w-3/5 md:mt-5 mx-auto bg-[#FEB3B1] border-2 border-[#291F1F]">
             <a href="/{{$user[0]->username}}" class="m-auto p-2 font-semibold sm:text-xl md:text-2xl">Return to Profile</a>    
         </div>
         @endif
-        @auth
             <div class="flex justify-around">
                 @if($current !== null && $user !== null)
                 <div class="h-auto p-1 my-1 bg-[#FEB3B1] border-2 border-[#291F1F]">

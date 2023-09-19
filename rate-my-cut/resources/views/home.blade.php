@@ -38,7 +38,7 @@
                         <div class="flex flex-auto flex-wrap justify-items-start">
                             @if($posts !== null)
                                 @foreach($posts as $post)
-                                    <div class="flex flex-col justify-center w-1/3 h-auto px-1 my-1 bg-[#FEF9EF]  hover:bg-[#FE6D73]">
+                                    <div class="flex flex-col justify-center w-1/3 h-[200px] sm:h-[350px] lg:h-[450px] xl:h-[500px] 2xl:h-[600px] px-1 my-1 bg-[#FEF9EF]  hover:bg-[#FE6D73]">
                                         <a href="/{{$post->username}}" class="h-full flex flex-col justify-between border-2 border-[#291F1F]">
                                             <div class="flex flex-col justify-center h-full bg-[#291F1F]">
                                                 <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
@@ -50,11 +50,12 @@
                                         </a>
                                     </div>
                                 @endforeach
-                                <div class="w-1/2 mx-auto mt-5">
-                                    {{ $posts->links() }}
-                                </div>
                             @endif
                         </div>
+                    </div>
+                    
+                    <div class="w-1/2 mx-auto mt-5">
+                        {{ $posts->appends(request()->all())->links() }}
                     </div>
             </div>
             <footer-component class="max-w-full grow-0 shrink basis-10"></footer-component>

@@ -1,6 +1,6 @@
 <template>
     <div class="w-11/12 mx-auto">
-        <h4 @click="filterDropdown = !filterDropdown" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-48 lg:w-56 lg:py-2 mx-auto xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl text-shadow hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer">Filter</h4>
+        <h4 @click="filterDropdown = !filterDropdown" class="text-center text-[#FEF9EF] hover:rounded-xl bg-[#FFCB77] p-1 w-36 sm:w-48 lg:w-56 lg:py-2 mx-auto xs:text-lg sm:text-2xl md:text-3xl lg:text-4xl text-shadow hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer">Filter</h4>
         <form v-if="filterDropdown" :action="'/'" method="GET" class="" >
             <!-- <div class="my-2">
                 <h4 @click="location = !location" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm  sm:text-lg md:text-xl lg:text-2xl text-shadow">Location</h4>
@@ -11,8 +11,8 @@
             </div> -->
             
             <div class="my-2">
-                <h4 @click="category = !category" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl text-shadow">Category</h4>
-                <div v-if="category" class="w-9/12 mx-auto">
+                <h4 @click="category = !category" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl hover:rounded-xl text-shadow hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer">Category</h4>
+                <div v-if="category" class="w-9/12 sm:w-1/2 lg:w-5/12 xl:w-1/3 2xl:w-1/6 mx-auto">
                     <input type="checkbox" id="category1" name="category1" value="Women" v-model="category1">
                     <label for="category1">Women</label><br>
 
@@ -28,8 +28,8 @@
             </div>    
             
             <div class="my-2">
-                <h4 @click="length = !length" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl text-shadow">Hair Length</h4>
-                <div v-if="length" class="w-9/12 mx-auto">
+                <h4 @click="length = !length" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl hover:rounded-xl text-shadow hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer">Hair Length</h4>
+                <div v-if="length" class="w-9/12 sm:w-1/2 lg:w-5/12 xl:w-1/3 2xl:w-1/6 mx-auto">
                     <input type="checkbox" id="length1" name="length1" value="short" v-model="length1">
                     <label for="length1">Short</label><br>
 
@@ -60,8 +60,8 @@
             </div>
 
             <div class="my-2">
-                <h4 @click="type = !type" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl text-shadow">Hair Type</h4>
-                <div v-if="type" class="w-9/12 mx-auto">
+                <h4 @click="type = !type" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl hover:rounded-xl text-shadow hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer">Hair Type</h4>
+                <div v-if="type" class="w-9/12 sm:w-1/2 lg:w-5/12 xl:w-1/3 2xl:w-1/6 mx-auto">
                     <input type="checkbox" id="type1" name="type1" value="straight" v-model="type1">
                     <label for="type1">Straight</label><br>
 
@@ -77,15 +77,15 @@
             </div>    
             
             <div class="mt-2">
-                <h4 @click="style = !style" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl text-shadow">Hair Style</h4>
-                <div v-if="style" class="w-9/12 mx-auto">
+                <h4 @click="style = !style" class="text-center text-[#FEF9EF] bg-[#FFCB77] p-1 w-36 sm:w-40 lg:w-44 mx-auto text-sm sm:text-lg md:text-xl lg:text-2xl hover:rounded-xl text-shadow hover:bg-[#FE6D73] hover:underline hover:underline-offset-4 hover:decoration-2 cursor-pointer">Hair Style</h4>
+                <div v-if="style" class="w-9/12 sm:w-1/2 lg:w-5/12 xl:w-1/3 2xl:w-1/6 mx-auto">
                     <label for="style">Style</label><br>
                     <input  class="w-full" type="text" id="style" name="style" placeholder="Ex: Buzz" v-model="styleValue" />
                 </div>
             </div> 
             
             <div class="mt-2 flex justify-center">
-                <button type="submit" class="bg-[#FFCB77] w-36 sm:w-48 lg:w-56 lg:py-2 h-9 lg:h-12 text-sm sm:text-lg md:text-xl lg:text-2xl rounded-xl hover:bg-[#FFE2B3] hover:border-2 hover:border-[#291F1F]">Apply Filters</button>
+                <button type="submit" class="bg-[#FFCB77] w-36 sm:w-48 lg:w-56 lg:py-2 h-9 lg:h-12 text-sm sm:text-lg md:text-xl lg:text-2xl hover:rounded-xl text-[#FEF9EF] text-shadow hover:bg-[#FE6D73] hover:underline">Apply Filters</button>
             </div>
         </form>
     </div>

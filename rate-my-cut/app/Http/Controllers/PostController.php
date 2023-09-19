@@ -177,7 +177,12 @@ class PostController extends Controller
                     $errorCode = 1001;
                     return view('/errors', ['errorCode' => $errorCode]);
                 }
+            } else{
+                // Post does not exists --> That post may not be from Earth
+                $errorCode = 404;
+                return view('/errors', ['errorCode' => $errorCode]);
             }
+            
         } else {
             if (Post::where('username', $username)->where('id', $id)->exists()){
                 if(User::where('username', $username)->exists()){
@@ -202,6 +207,10 @@ class PostController extends Controller
                     $errorCode = 1001;
                     return view('/errors', ['errorCode' => $errorCode]);
                 }
+            } else{
+                // Post does not exists --> That post may not be from Earth
+                $errorCode = 404;
+                return view('/errors', ['errorCode' => $errorCode]);
             }
         }
     }
