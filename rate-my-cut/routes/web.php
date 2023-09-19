@@ -16,10 +16,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-//Anyone can see
-// Route::get('/', function () {
-//     return view('home');
-// });
+// Display the home page.
 Route::get('/', [PostController::class, 'home']);
 
 // Show the login page
@@ -63,31 +60,34 @@ Route::get('/follow/{username}', [FollowingController::class, 'follow']);
 // Need to add check if not following can not unfollow again.
 Route::get('/unfollow/{username}', [FollowingController::class, 'unfollow']);
 
-//
+// Display a list of followers of the selected user.
 Route::get('/followers/{username}', [FollowingController::class, 'followerList']);
 
-//
+// Display a list of what the user is following.
 Route::get('/followings/{username}', [FollowingController::class, 'followingList']);
 
 // Display post creation page.
 Route::get('/create/post', [PostController::class, 'index']);
 
-// Authenticated user can store a post
+// Authenticated user can store a post.
 Route::post('/create/post/{username}', [PostController::class, 'store']);
 
-// Authenticated user can delete their post
+// Authenticated user can delete their post.
 Route::post('/delete/post/{filename}', [PostController::class, 'destroy']);
 
-Route::get('/upload/profile/{username}',[UserController::class, 'uploadProfile']);
-
+// A single post view of a User's post (if it exists).
 Route::get('/{username}/post/{id}', [PostController::class, 'viewPost']);
 
+// Authenticated users can like a post (including their own).
 Route::get('/like/{postID}', [PostController::class, 'likePost']);
 
+// Authenticated users can unlike a post.
 Route::get('/unlike/{postID}', [PostController::class, 'unlikePost']);
 
+// Authenticated users can only view their posts they've favourited
 Route::get('/{username}/favourites/{id}', [PostController::class, 'viewFavouritePost']);
 
+// Authenticated users can only access their own collection of favourited posts
 Route::get('/{username}/favourites', [PostController::class, 'favouritePosts']);
 
 // Return a user's profile view.

@@ -11,6 +11,9 @@ use App\Models\Like;
 
 class PostController extends Controller
 {
+    /**
+     * Display the home page, filtered or unfiltered.
+     */
     public function home(){
 
         // Filtering needs checkup
@@ -208,7 +211,7 @@ class PostController extends Controller
                     return view('/errors', ['errorCode' => $errorCode]);
                 }
             } else{
-                // Post does not exists --> That post may not be from Earth
+                // Post does not exists --> That post may not be from Earth (joke)
                 $errorCode = 404;
                 return view('/errors', ['errorCode' => $errorCode]);
             }
@@ -221,12 +224,18 @@ class PostController extends Controller
     public function likePost(Request $request, int $postID){
         if(Auth::check()){
             $authUser = Auth::user();
-            Like::create([
-                'username' => $authUser->username, 
-                'post_id' => $postID]);
+            if(Post::where('id', $postID)->exists()){
+                Like::create([
+                    'username' => $authUser->username, 
+                    'post_id' => $postID]);
 
-            $like = 'true';
-            return $like;
+                $like = 'true';
+                return $like;
+            } else{
+                // Liked Post does not exists
+                $errorCode = 404;
+                return view('/errors', ['errorCode' => $errorCode]);
+            }
         } else{
             //User not logged in!
             $errorCode = 401;
@@ -240,10 +249,16 @@ class PostController extends Controller
     public function unlikePost(Request $request, int $postID){
         if(Auth::check()){
             $authUser = Auth::user();
-            Like::where('username', $authUser->username)->where('post_id', $postID)->delete();
-            
-            $like = 'false';
-            return $like;
+            if(Like::where('post_id', $postID)->exists()){
+                Like::where('username', $authUser->username)->where('post_id', $postID)->delete();
+                
+                $like = 'false';
+                return $like;
+            } else{
+                // Liked Post does not exists
+                $errorCode = 404;
+                return view('/errors', ['errorCode' => $errorCode]);
+            }
         } else{
             //User not logged in!
             $errorCode = 401;
@@ -264,22 +279,18 @@ class PostController extends Controller
                     array_push($post_ids, $like->post_id);
                 }
 
-                // $posts = [];
-
-                // // for($index = 0; $index < sizeOf($post_ids); $index++){
-                // //     array_push($posts, Post::where('id', $post_ids[$index])->first());
-                // // }
-
-                // for($index = 0; $index < sizeOf($post_ids); $index++){
-                //     array_push($posts, Post::where('id', $post_ids[$index])->first());
-                // }
-
                 $posts = Post::whereIn('id', $post_ids)->paginate(3);
-
-                
 
                 return view('/favourite', ['posts' => $posts, 'user' => $user]);
             }
+        } else if(!Auth::check()){
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
+        } else {
+            //Page can't be found
+            $errorCode = 404;
+            return view('/errors', ['errorCode' => $errorCode]);
         }
     }
 
@@ -287,7 +298,7 @@ class PostController extends Controller
      * View liked/favourited post in single view.
      */
     public function viewFavouritePost(String $username, int $id){
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->username == $username){
             $authUser = Auth::user();
             if(Like::where('username', $username)->where('post_id', $id)->exists()){
                 if(User::where('username', $username)->exists()){
@@ -325,7 +336,19 @@ class PostController extends Controller
                     $errorCode = 1001;
                     return view('/errors', ['errorCode' => $errorCode]);
                 }
+            } else{
+                //Posts not found
+                $errorCode = 404;
+                return view('/errors', ['errorCode' => $errorCode]);
             }
-        } 
+        } else if(!Auth::check()){
+            //User not logged in!
+            $errorCode = 401;
+            return view('/errors', ['errorCode' => $errorCode]);
+        } else {
+            //Page can't be found
+            $errorCode = 404;
+            return view('/errors', ['errorCode' => $errorCode]);
+        }
     }
 }

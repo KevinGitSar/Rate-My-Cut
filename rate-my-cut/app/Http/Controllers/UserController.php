@@ -200,6 +200,11 @@ class UserController extends Controller
         return redirect('/login');
     }
 
+    /**
+     * Updating User Profile Information, Including Password
+     * On success, user profile information will be updated.
+     * On failure, user profile information will not be updated.
+     */
     public function updateUser(Request $request){
         if(Auth::check()){
             if($request->input('update') == 'save'){
@@ -249,6 +254,10 @@ class UserController extends Controller
         }
     }
 
+
+    /**
+     * Sub function to store an image in the database.
+     */
     private function storeImage($request){
         $auth = Auth::user();
         
@@ -267,6 +276,12 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Password Update function.
+     * Checks if old password is correct.
+     * On success hash new password and
+     * replace old hashed password in the database.
+     */
     public function updatePassword(Request $request){
         if(Auth::check()){
             
@@ -322,6 +337,11 @@ class UserController extends Controller
         return view('search');
     }
 
+    /**
+     * Function to filter existing users.
+     * Returns existing users with a matching query.
+     * *query*
+     */
     public function userSearch(){
         $users = User::filter(request(['search']))->get();
         return view('/search', ['users' => $users]);

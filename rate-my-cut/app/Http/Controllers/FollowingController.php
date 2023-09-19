@@ -9,16 +9,25 @@ use App\Models\User;
 
 class FollowingController extends Controller
 {
-    
+    /**
+     * Follow function.
+     * Authenticated users can follow a user.
+     */
     public function follow(Request $request, String $usertoFollow){
         if(Auth::check()){
             $authUser = Auth::user();
-            Following::create([
-                'username' => $authUser->username, 
-                'following_user' => $usertoFollow]);
+            if(User::where('username', $usertoFollow)->exists()){
+                Following::create([
+                    'username' => $authUser->username, 
+                    'following_user' => $usertoFollow]);
 
-            $following = 'true';
-            return $following;
+                $following = 'true';
+                return $following;
+            } else{
+                //User does not exist!
+                $errorCode = 1001;
+                return view('/errors', ['errorCode' => $errorCode]);
+            }
         } else{
             //User not logged in!
             $errorCode = 401;
@@ -26,14 +35,24 @@ class FollowingController extends Controller
         }
     }
 
+    /**
+     * Unfollow function
+     * Authenticated user can unfollow a user.
+     * */
     public function unfollow(Request $request, String $usertoUnfollow){
         if(Auth::check()){
 
             $authUser = Auth::user();
-            Following::where('username', $authUser->username)->where('following_user', $usertoUnfollow)->delete();
-            
-            $following = 'false';
-            return $following;
+            if(User::where('username', $usertoUnfollow)->exists()){
+                Following::where('username', $authUser->username)->where('following_user', $usertoUnfollow)->delete();
+                
+                $following = 'false';
+                return $following;
+            } else{
+                //User does not exist!
+                $errorCode = 1001;
+                return view('/errors', ['errorCode' => $errorCode]);
+            }
         } else{
             //User not logged in!
             $errorCode = 401;
@@ -41,6 +60,10 @@ class FollowingController extends Controller
         }
     }
 
+    /**
+     * FollowerList Function.
+     * Displays a list of followers for an existing user.
+     */
     public function followerList(String $username){
         if(User::where('username', $username)->exists()){
             if(Following::where('following_user', $username)->exists()){
@@ -74,6 +97,10 @@ class FollowingController extends Controller
         }
     }
 
+    /**
+     * FollowingList Function.
+     * Displays a list of existing users that the selected user if following.
+     */
     public function followingList(String $username){
         if(User::where('username', $username)->exists()){
             if(Following::where('username', $username)->exists()){
