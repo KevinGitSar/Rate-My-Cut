@@ -35,21 +35,25 @@
                 </div>
 
                     <div class="flex flex-auto justify-between max-w-full mt-5 xl:w-10/12 2xl:w-1/2 xl:mx-auto">
-                        <div class="flex flex-auto flex-wrap justify-items-start">
+                        <div class="w-full">
                             @if($posts !== null)
+                                <div class="flex flex-auto flex-wrap justify-items-start">
                                 @foreach($posts as $post)
-                                    <div class="flex flex-col justify-center w-1/3 h-[200px] sm:h-[350px] lg:h-[450px] xl:h-[500px] 2xl:h-[600px] px-1 my-1 bg-[#FEF9EF]  hover:bg-[#FE6D73]">
-                                        <a href="/{{$post->username}}" class="h-full flex flex-col justify-between border-2 border-[#291F1F]">
-                                            <div class="flex flex-col justify-center h-full bg-[#291F1F]">
-                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                <div class="w-1/3 h-auto px-1 my-1 bg-[#FEF9EF] hover:bg-[#FE6D73]">
+                                    <a href="/{{$post->username}}">
+                                        <div class="border-2 border-[#291F1F] bg-[#291F1F]">
+                                            <div class="flex flex-col justify-center h-[150px] sm:h-[175px] md:h-[200px] lg:h-[250px] xl:h-[300px] 2xl:h-[350px]">
+                                                <img src="{{ URL::to('/') }}/images/{{$post->image}}" class="object-contain w-full h-full"/>
                                             </div>
                                             <div class="w-full bg-[#FEF9EF]">
                                                 <p class="text-[#291F1F] text-[10px] xs:text-sm md:text-sm lg:text-2xl pl-1 font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">&commat;{{$post->username}}</p>
                                                 <p class="text-[#291F1F]text-[10px] xs:text-sm md:text-sm lg:text-2xl pl-1 font-semibold text-ellipsis overflow-hidden truncate text-shadow-FFF">{{$post->hair_style}}</p>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </div>
+                                    </a>
+                                </div>
                                 @endforeach
+                                </div>
                             @endif
                         </div>
                     </div>

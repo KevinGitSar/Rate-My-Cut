@@ -84,7 +84,7 @@
                             </a>
                         </div>
 
-                        <div class="flex justify-center">
+                        <div class="w-full">
                                 @if($posts !== null)
                                 <div class="scrolling-pagination">
                                     <div class="flex flex-auto flex-wrap justify-items-start">
@@ -92,8 +92,8 @@
                                         <div class="w-1/3 h-auto px-1 my-1 hover:bg-[#FE6D73] relative">
                                             <delete-button class="absolute right-1 top-px" :user="{{ Auth::user() }}" :imagepath="'{{$post->image}}'"></delete-button>
                                             <a href="/{{$post->username}}/post/{{$post->id}}">
-                                                <div class="flex flex-col justify-center h-full border-2 border-[#291F1F] ">
-                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                                <div class="flex flex-col justify-center h-[150px] sm:h-[175px] md:h-[200px] lg:h-[250px] xl:h-[300px] 2xl:h-[350px] border-2 border-[#291F1F] bg-[#291F1F]">
+                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" class="object-contain w-full h-full" />
                                                 </div>
                                             </a>
                                         </div>
@@ -160,15 +160,15 @@
                     
                     <!--User's uploaded content (images + filtering)-->
                     <div class="flex flex-col justify-start m-auto">
-                        <div class="flex justify-center">
+                        <div class="w-full">
                                 @if($posts !== null)
                                 <div class="scrolling-pagination">
                                     <div class="flex flex-auto flex-wrap justify-items-start">
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEF9EF] hover:bg-[#FE6D73] relative">
-                                            <a href="/{{$post->username}}/post/{{$post->id}}" class="flex flex-col justify-center h-full bg-[#291F1F] border-2 border-[#291F1F]">
-                                                <div class="flex flex-col justify-center h-full">
-                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEF9EF] hover:bg-[#FE6D73]">
+                                            <a href="/{{$post->username}}/post/{{$post->id}}">
+                                                <div class="flex flex-col justify-center h-[150px] sm:h-[175px] md:h-[200px] lg:h-[250px] xl:h-[300px] 2xl:h-[350px] border-2 border-[#291F1F] bg-[#291F1F]">
+                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" class="object-contain w-full h-full"/>
                                                 </div>
                                             </a>
                                         </div>
@@ -236,15 +236,15 @@
                     
                     <!--User's uploaded content (images + filtering)-->
                     <div class="flex flex-col justify-start m-auto">
-                        <div class="flex justify-center">
+                        <div class="w-full">
                                 @if($posts !== null)
                                 <div class="scrolling-pagination">
                                     <div class="flex flex-auto flex-wrap justify-items-start">
                                     @foreach($posts as $post)
-                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEF9EF] hover:bg-[#FE6D73] relative">
-                                            <a href="/{{$post->username}}/post/{{$post->id}}" class="flex flex-col justify-center h-full bg-[#291F1F] border-2 border-[#291F1F]">
-                                                <div class="flex flex-col justify-center h-full">
-                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" />
+                                        <div class="w-1/3 h-auto px-1 my-1 bg-[#FEF9EF] hover:bg-[#FE6D73]">
+                                            <a href="/{{$post->username}}/post/{{$post->id}}">
+                                                <div class="flex flex-col justify-center h-[150px] sm:h-[175px] md:h-[200px] lg:h-[250px] xl:h-[300px] 2xl:h-[350px] border-2 border-[#291F1F] bg-[#291F1F]">
+                                                    <img src="{{ URL::to('/') }}/images/{{$post->image}}" class="object-contain w-full h-full"/>
                                                 </div>
                                             </a>
                                         </div>

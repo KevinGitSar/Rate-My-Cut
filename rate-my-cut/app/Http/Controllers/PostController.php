@@ -282,6 +282,10 @@ class PostController extends Controller
                 $posts = Post::whereIn('id', $post_ids)->paginate(3);
 
                 return view('/favourite', ['posts' => $posts, 'user' => $user]);
+            } else{
+                //Page can't be found
+                $errorCode = 404;
+                return view('/errors', ['errorCode' => $errorCode]);
             }
         } else if(!Auth::check()){
             //User not logged in!
