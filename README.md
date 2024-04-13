@@ -27,3 +27,29 @@ Rate My Cut is a catalogue/review web application for users that want to browse 
 Setup database backend using MySQL
 
 ```php artisan serve```
+
+## Development Tools
+
+<img src="https://github.com/KevinGitSar/Rate-My-Cut/assets/74475291/e936dc7f-015c-4413-9c0b-828db2055e07" alt="vue" width="50">
+
+[Vue.js](https://vuejs.org/)
+<br />
+<br />
+
+<img src="https://github.com/KevinGitSar/Rate-My-Cut/assets/74475291/e4b3c1e6-404e-4345-bd71-1be9c0b3a873" alt="laravel" width="50">
+
+[Laravel](https://laravel.com/)
+<br />
+<br />
+
+<img src="https://github.com/KevinGitSar/Rate-My-Cut/assets/74475291/fd901109-27e3-4a0d-900c-621b61201fda" alt="mysql" width="50">
+
+[MySQL](https://www.mysql.com/)
+<br />
+<br />
+
+<img src="https://github.com/KevinGitSar/Rate-My-Cut/assets/74475291/032c8f19-92a0-4f0e-b95e-91c022ffbd06" alt="digitalocean" width="50">
+
+[Digital Ocean](https://www.digitalocean.com/)
+<br />
+<br />
